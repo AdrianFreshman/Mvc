@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+
+{% block title %}API Quote{% endblock %}
+
+{% block body %}
+    <h1>API Quote</h1>
+    <p>This is the quote of the day:</p>
+    <p>{{ quoteData.quote }}</p>
+    <p>Date: {{ quoteData.date }}</p>
+    <p>Timestamp: {{ quoteData.timestamp }}</p>
+{% endblock %}

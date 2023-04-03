@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+       
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+    <header class="site-header" style="background-image: url({{ asset('img/background.jpg') }})">
+    <span class="site-title">My Symfony Site</span>
+</header>
+        <nav>
+        <ul>
+        <li><a href="{{ path('home') }}">Home</a></li>
+        <li><a href="{{ path('about') }}">About</a></li>
+        <li><a href="{{ path('lucky_number') }}">Lucky number</a></li>
+        <li><a href="{{ path('report') }}">Reports</a></li>
+        <li><a href="{{ path('quote') }}">Daily Quote</a></li>
+        </ul>
+        </nav>
+        <main>{% block body %}{% endblock %}</main>
+        <footer class= "site-footer "><p>Adrian Dedorson - Student for MVC BTH</p>
+</footer>
+    </body>
+</html>
