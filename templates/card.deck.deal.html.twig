@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Deal Cards</h1>
+
+    {% for key, hand in hands %}
+        <div class="hand">
+            <h2>Player {{ key + 1 }}</h2>
+            {% for card in hand %}
+                <div class="card {{ card.getSuit() }}">
+                    <img src="{{ card.getImagePath() }}" class="card-img-top" alt="{{ card.getValue() }} of {{ card.getSuit() }}">
+                    <div class="card-body"> 
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <p>{{ remainingCards }} cards remaining in the deck.</p>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+    <h1>Card Game</h1>
+    <div class="grid">
+        {% for name, link in links %}
+            <div class="card-link" onclick="window.location.href='{% if name == 'deal' %}{{ url(link['url'], {'players': 2, 'cards': 0}) }}{% elseif name == 'draw_multiple' %}{{ url(link['url'], {'number': 1}) }}{% else %}{{ url(link['url']) }}{% endif %}'">
+                <h2>{{ name }}</h2>
+                <p class="card-description">{{ link['description'] }}</p>
+            </div>
+        {% endfor %}
+    </div>
+<p>På landningssidan för projektet finns en kort beskrivning av strukturen av klasserna. Det finns tre klasser i projektet: BaseCard, Deck, och Card.
+<br><br>
+BaseCard-klassen implementerar Card-gränssnittet och har privata instansvariabler för att hålla värdet och färgen för varje kort. Klassen har även metoder för att hämta värdet och färgen för varje kort och för att hämta sökvägen för kortets bild.
+<br><br>
+Deck-klassen är en samling av kort som skapas när en instans av klassen skapas. Klassen innehåller alla 52 kort i en standard kortlek. Klassen har metoder för att blanda korten, dela ut ett kort från kortleken, hämta alla kort i kortleken och för att räkna antalet kort i kortleken.
+ <br><br>
+Card-gränssnittet definierar två metoder som krävs för varje kort: getValue och getSuit.
+
+Klassen "BaseCard" implementerar "Card" interfacet vilket innebär att den måste ha en implementation för alla metoder som finns i interfacet. "BaseCard" klassen har också två privata egenskaper ($value och $suit) och en publikt tillgänglig metod "getImagePath()".
+<br><br>
+Klassen "Deck" har en kompositionsrelation till "BaseCard" klassen, vilket innebär att den använder "BaseCard" klassen genom att skapa objekt av den och lagra dem i sin egen privata egenskap "$cards". "Deck" klassen har också flera metoder som ger funktionalitet till objekt av denna klass, inklusive att skapa en ny kortlek, blanda kortleken, ge ut ett kort och hämta antalet kort i kortleken.
+</p>
+
+<a href="{{ asset('img/umlmvc.png') }}">
+        <img src="{{ asset('img/umlmvc.png') }}" alt="">
+    </a>
+    
+{% endblock %}

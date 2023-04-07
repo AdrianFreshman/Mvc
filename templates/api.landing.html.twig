@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}API{% endblock %}
+
+{% block body %}
+<h1>API Routes</h1>
+
+<div class="grid">
+    {% for name, route in routes %}
+        <div class="card-link" onclick="window.location.href={% if name == 'deal' %}
+            '{{ path(name, {'players': 0, 'cards': 0}) }}'
+        {% elseif name == 'draw_multiple' %}
+            '{{ path(name, {'number': 1}) }}'
+        {% else %}
+            '{{ path(name) }}'
+        {% endif %}">
+            <a href="#" class="api-link">{{ name }}</a>
+            <p class="api-description">{{ route['description'] }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

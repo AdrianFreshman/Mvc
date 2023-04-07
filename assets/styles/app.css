@@ -5,7 +5,7 @@ body {
 
 main {
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 1000px;
 }
 
 .site-title {
@@ -58,4 +58,82 @@ nav a {
     color: #fff;
     text-align: center;
     padding: 10px 0;
+}
+
+p {
+    font-family: monospace;
+    font-size: 2vh;
+}
+
+.card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    flex: 1 0 10%;
+    margin: 10px;
+    max-width: 120px;
+}
+
+.hand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card {
+    margin: 0 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    padding: 0;
+}
+
+.card-link {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    font-size: 1.2rem;
+    font-family: Arial, sans-serif;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.card-link:hover {
+    background-color: #f5f5f5;
+}
+
+.card-link h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #333;
+    text-align: center;
+    text-decoration: none;
+}
+
+.card-description {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #666;
+    text-align: center;
+    max-height: 3.6em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+a {
+    text-decoration: none;
 }

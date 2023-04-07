@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Draw a Card</h1>
+    <p>There are {{ count }} cards in the deck:</p>
+    <div class="card-deck">
+    {% for card in cards %}
+        <div class="card">
+            <img src="{{ card.getImagePath() }}" class="card-img-top" alt="{{ card.getValue() }} of {{ card.getSuit() }}">
+            <div class="card-body"> 
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
