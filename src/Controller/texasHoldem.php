@@ -24,6 +24,10 @@ class TexasHoldem {
         return $this->communityCards;
     }
 
+    public function getPot() {
+        return $this->pot;
+    }
+
     public function __construct() {
         $this->players = array(
             new Player('Player', 1),
@@ -35,72 +39,50 @@ class TexasHoldem {
         $this->currentPlayerIndex = 0;
     }
 
-     public function play() {
-        if (!isset($this->pot)) {
-            $this->pot = 0;
-        }
-
-         // Shuffle the deck before dealing the cards
-        $this->deck->shuffle();
-
-        // Deal 2 cards to each player
-        foreach ($this->players as $player) {
-            $card1 = $this->deck->dealCard();
-            $card2 = $this->deck->dealCard();
-            $player->addCards($card1, $card2);
-            $card1ImagePath = $card1->getImagePath();
-            $card2ImagePath = $card2->getImagePath();
-        }
-
-        // Set the small blind
-        $this->players[0]->bet(1);
-        $this->pot += 1;
-
-        // Set the big blind
-        $this->players[1]->bet(2);
-        $this->pot += 2;
-        $this->currentBet = 2;
-
-        // Start the first round of betting
-        $this->bettingRound();
-
-        // Deal the flop (3 cards)
-        $this->communityCards[] = $this->deck->dealCard();
-        $this->communityCards[] = $this->deck->dealCard();
-        $this->communityCards[] = $this->deck->dealCard();
-
-        foreach ($this->communityCards as $communityCard) {
-            $communityCardImagePath = $communityCard->getImagePath();
-        }
-
-        // Start the second round of betting
-        $this->bettingRound();
-
-        // Deal the turn (4th card)
-        $this->communityCards[] = $this->deck->dealCard();
-
-        $turnCardImagePath = end($this->communityCards)->getImagePath();
-
-        // Start the third round of betting
-        $this->bettingRound();
-
-        // Deal the river (5th card)
-        $this->communityCards[] = $this->deck->dealCard();
-
-        $riverCardImagePath = end($this->communityCards)->getImagePath();
-
-        // Start the final round of betting
-        $this->bettingRound();
-
-        // // Determine the winner
-        // $winningPlayer = $this->determineWinner();
-        // $winningPlayer->winPot($this->pot);
-
-        // // Reset the game state
-        // $this->reset();
+    public function play() {
+    if (!isset($this->pot)) {
+        $this->pot = 0;
     }
 
-    
+    // Shuffle the deck before dealing the cards
+    $this->deck->shuffle();
+
+    // Deal 2 cards to each player
+    foreach ($this->players as $player) {
+        $card1 = $this->deck->dealCard();
+        $card2 = $this->deck->dealCard();
+        $player->addCards($card1, $card2);
+        $card1ImagePath = $card1->getImagePath();
+        $card2ImagePath = $card2->getImagePath();
+    }
+
+    // Set the small blind
+    $this->players[0]->bet(1);
+    $this->pot += 1;
+
+    // Set the big blind
+    $this->players[1]->bet(2);
+    $this->pot += 2;
+    $this->currentBet = 2;
+
+    // Start the first round of betting
+    $this->bettingRound();
+
+    // Deal the flop (3 cards)
+    $this->communityCards[] = $this->deck->dealCard();
+    $this->communityCards[] = $this->deck->dealCard();
+    $this->communityCards[] = $this->deck->dealCard();
+
+    // Show the first three community cards
+    $shownCommunityCards = array_slice($this->communityCards, 0, 3);
+    $shownCommunityCardsImagePaths = array();
+    foreach ($shownCommunityCards as $communityCard) {
+        $shownCommunityCardsImagePaths[] = $communityCard->getImagePath();
+    }
+
+
+}
+
 
 
     private function bettingRound() {
@@ -109,38 +91,42 @@ class TexasHoldem {
     $lastRaiseIndex = -1;
     $numPlayersLeft = $numPlayers;
 
-     while (!$roundComplete) {
-            $currentPlayer = $this->players[$this->currentPlayerIndex];
+    while (!$roundComplete) {
+        $currentPlayer = $this->players[$this->currentPlayerIndex];
 
-            if ($currentPlayer instanceof AIPlayer) {
-                $betAmount = 1;
+        if ($currentPlayer instanceof AIPlayer) {
+            $betAmount = $this->currentBet + 1;
+        } else {
+            if ($_POST && $_POST['action'] == 'bet') {
+                $betAmount = $_POST['bet-amount'];
             } else {
-                $betAmount = 2;
+                $betAmount = $this->currentBet;
             }
+        }
 
-            // Place the bet
-            $currentPlayer->bet($betAmount);
-            $this->pot += $betAmount;
-            $this->currentBet = $betAmount;
+        // Place the bet
+        $currentPlayer->bet($betAmount);
+        $this->pot += $betAmount;
+        $this->currentBet = $betAmount;
 
-            // Update the current highest bet
-            if ($this->currentBet > $this->highestBet) {
-                $this->highestBet = $this->currentBet;
-                $lastRaiseIndex = $this->currentPlayerIndex;
+        // Update the current highest bet
+        if ($this->currentBet > $this->highestBet) {
+            $this->highestBet = $this->currentBet;
+            $lastRaiseIndex = $this->currentPlayerIndex;
+        }
+
+        // Move to the next player
+        $this->currentPlayerIndex++;
+        if ($this->currentPlayerIndex >= $numPlayers) {
+            $this->currentPlayerIndex = 0;
+        }
+
+        // Check if the round is complete
+        $numPlayersLeft = 0;
+        foreach ($this->players as $player) {
+            if ($player->getChips() > 0 && !$player->hasFolded()) {
+                $numPlayersLeft++;
             }
-
-            // Move to the next player
-            $this->currentPlayerIndex++;
-            if ($this->currentPlayerIndex >= $numPlayers) {
-                $this->currentPlayerIndex = 0;
-            }
-
-            // Check if the round is complete
-            $numPlayersLeft = 0;
-            foreach ($this->players as $player) {
-                if ($player->getChips() > 0 && !$player->hasFolded()) {
-                    $numPlayersLeft++;
-                }
         }
 
         // If only one player is left, end the round
