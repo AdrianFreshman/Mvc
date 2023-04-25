@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="playfield">
+        <div class="table">
+            {% for player in game.getPlayers() %}
+                <div class="player" id="player-{{ player.getId() }}">
+    <p>{{ player.getId() }}</p>
+    {% for card in player.getCards() %}
+        <img src="{{ card.getImagePath() }}" alt="{{ card.getSuit() }} {{ card.getValue() }}" class="card">
+    {% endfor %}
+</div>
+            {% endfor %}
+            <div class="community-cards">
+    {% for card in game.getCommunityCards() %}
+        <img src="{{ card.getImagePath() }}" alt="{{ card.getSuit() }} {{ card.getValue() }}" class="card">
+    {% endfor %}
+</div>
+        </div>
+        <form method="post">
+            <label for="bet-amount">Bet amount:</label>
+            <input type="number" id="bet-amount" name="bet-amount" min="0" max="" required>
+            <button type="submit" name="action" value="bet">Bet</button>
+            <button type="submit" name="action" value="fold">Fold</button>
+            <button type="submit" name="action" value="call">Call</button>
+        </form>
+    </div>
+{% endblock %}

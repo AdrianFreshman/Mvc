@@ -62,27 +62,27 @@ class ApiController extends AbstractController
     }
 
 
-    #[Route("/api/deck/shuffle", name: "shuffle")]
-    public function shuffleDeck(SessionInterface $session): JsonResponse
+ #[Route("/api/deck/shuffle", name: "shuffle")]
+    public function shuffle(SessionInterface $session): JsonResponse
     {
-        $deck = $session->get('deck', new Deck());
+        $deck = $session->get('deck') ?? new Deck();
 
-        $deck->shuffle();
-
-        $session->set('deck', $deck);
-
-        $cards = $deck->getAllCards();
-
-        return $this->json($cards);
-    }
+        if ($deck instanceof Deck) {
+            $deck->shuffle();
+            $session->set('deck', $deck);
+            $cards = $deck->getAllCards();
+            return $this->json($cards);
+        } else {
+            return new JsonResponse(['error' => 'Invalid deck object.'], 400);
+        }
+}
 
 
     #[Route("/api/deck/draw", name: "draw")]
     #[Route("/api/deck/draw/{number}", name: "draw_multiple")]
-
     public function drawCards(SessionInterface $session, Request $request): JsonResponse
     {
-        $deck = $session->get('deck', new Deck());
+        $deck = $session->get('deck') ?? new Deck();
 
         $number = $request->get('number', 1);
 
@@ -102,39 +102,39 @@ class ApiController extends AbstractController
 
         $response = [
             'cards' => $cards,
-            'count' => $deck->countCards()
+            'count' => $deck->countCards() ?? 0
         ];
 
         return $this->json($response);
     }
 
 
-    #[Route("/api/deck/deal/{players}/{cards}", name: "deal")]
-    public function dealCards(SessionInterface $session, int $players, int $cards): JsonResponse
-    {
-        $deck = $session->get('deck', new Deck());
+#[Route("/api/deck/deal/{players}/{cards}", name: "deal")]
+public function dealCards(SessionInterface $session, int $players, int $cards): JsonResponse
+{
+    $deck = $session->get('deck') ?? new Deck();
 
-        $hands = [];
+    $hands = [];
 
-        for ($i = 0; $i < $players; $i++) {
-            $hand = [];
+    for ($i = 0; $i < $players; $i++) {
+        $hand = [];
 
-            for ($j = 0; $j < $cards; $j++) {
-                $hand[] = $deck->dealCard();
-            }
-
-            $hands[] = $hand;
+        for ($j = 0; $j < $cards; $j++) {
+            $hand[] = $deck->dealCard();
         }
 
-        $session->set('deck', $deck);
-
-        $response = [
-            'hands' => $hands,
-            'remainingCards' => $deck->countCards()
-        ];
-
-        return $this->json($response);
+        $hands[] = $hand;
     }
+
+    $session->set('deck', $deck);
+
+    $response = [
+        'hands' => $hands,
+        'remainingCards' => $deck->countCards() ?? 0
+    ];
+
+    return $this->json($response);
+}
 
     #[Route("/api/quote", name: "quote")]
     public function jsonQuote(): Response

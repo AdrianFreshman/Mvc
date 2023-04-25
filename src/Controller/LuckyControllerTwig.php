@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Controller\Card\Card;
 use Controller\Card\Deck;
+use Controller\Card\TexasHoldem;
 
 class LuckyControllerTwig extends AbstractController
 {
@@ -52,36 +53,34 @@ class LuckyControllerTwig extends AbstractController
     #[Route("/api/quote", name: "quote")]
     public function jsonQuote(): Response
     {
-        $quotes = [
-            "The best way to predict the future is to invent it.",
-            "The only way to do great work is to love what you do.",
-            "Stay hungry, stay foolish.",
-            "The future belongs to those who believe in the beauty of their dreams.",
-            "If you want to live a happy life, tie it to a goal, not to people or things.",
-            "The only limit to our realization of tomorrow will be our doubts of today.",
-            "The only thing we have to fear is fear itself.",
-            "You can't use up creativity. The more you use, the more you have.",
-            "Believe you can and you're halfway there.",
-            "I have not failed. I've just found 10,000 ways that won't work.",
-            "The power of imagination makes us infinite."
-        ];
+    $quotes = [
+        "The best way to predict the future is to invent it.",
+        "The only way to do great work is to love what you do.",
+        "Stay hungry, stay foolish.",
+        "The future belongs to those who believe in the beauty of their dreams.",
+        "If you want to live a happy life, tie it to a goal, not to people or things.",
+        "The only limit to our realization of tomorrow will be our doubts of today.",
+        "The only thing we have to fear is fear itself.",
+        "You can't use up creativity. The more you use, the more you have.",
+        "Believe you can and you're halfway there.",
+        "I have not failed. I've just found 10,000 ways that won't work.",
+        "The power of imagination makes us infinite."
+    ];
 
-        $selectedQuote = $quotes[array_rand($quotes)];
+    $selectedQuote = $quotes[array_rand($quotes)];
 
-        $data = [
-            'quote' => $selectedQuote,
-            'date' => date('Y-m-d'),
-            'timestamp' => time(),
-        ];
+    $data = [
+        'quote' => $selectedQuote,
+        'date' => date('Y-m-d'),
+        'timestamp' => time(),
+    ];
 
-        $response = new Response();
-        $response->setContent(json_encode($data));
-        $response->headers->set('Content-Type', 'application/json');
+    $response = new Response();
+    $response->headers->set('Content-Type', 'application/json');
+    $response->setContent(json_encode($data));
 
-        return $this->render('quotes.html.twig', [
-        'quoteData' => $data,
-        ]);
-    }
+    return $response;
+}
 
 
     #[Route("/card", name: "card")]
@@ -147,59 +146,88 @@ class LuckyControllerTwig extends AbstractController
            ]);
     }
 
-    #[Route("/card/deck/draw/{number}", name: "card_deck_draw_multiple")]
-    #[Route("/card/deck/draw", name: "card_deck_draw")]
-    public function draw(SessionInterface $session, $number = 1): Response
-    {
-        $deck = $session->get('deck');
+#[Route("/card/deck/draw/{number}", name: "card_deck_draw_multiple")]
+#[Route("/card/deck/draw", name: "card_deck_draw")]
+public function draw(SessionInterface $session, int $number = 1): Response
+{
+    $deck = $session->get('deck');
 
-        if (!$deck) {
-            $deck = new Deck();
-            $session->set('deck', $deck);
+    if (!$deck instanceof Deck) {
+        $deck = new Deck();
+        $session->set('deck', $deck);
+    }
+
+    $cards = [];
+    for ($i = 0; $i < $number; $i++) {
+        $card = $deck->dealCard();
+        if (!$card instanceof Card) {
+            break;
         }
+        $cards[] = $card;
+    }
 
-        $cards = [];
-        for ($i = 0; $i < $number; $i++) {
+    return $this->render('card.deck.draw.html.twig', [
+        'cards' => $cards,
+        'count' => $deck->countCards()
+    ]);
+}
+
+#[Route("/card/deck/deal/{players}/{cards}", name: "card_deck_deal")]
+public function deal(SessionInterface $session, int $players, int $cards): Response
+{
+    $deck = $session->get('deck');
+
+    if (!$deck instanceof Deck) {
+        $deck = new Deck();
+        $session->set('deck', $deck);
+    }
+
+    $hands = [];
+
+    for ($i = 0; $i < $players; $i++) {
+        $hand = [];
+
+        for ($j = 0; $j < $cards; $j++) {
             $card = $deck->dealCard();
-            if (!$card) {
+            if (!$card instanceof Card) {
                 break;
             }
-            $cards[] = $card;
+            $hand[] = $card;
         }
 
-        return $this->render('card.deck.draw.html.twig', [
-            'cards' => $cards,
-            'count' => $deck->countCards()
-        ]);
+        $hands[] = $hand;
     }
-   #[Route("/card/deck/deal/{players}/{cards}", name: "card_deck_deal")]
-    public function deal(SessionInterface $session, $players, $cards): Response
-    {
-        $deck = $session->get('deck');
 
-        if (!$deck) {
-            $deck = new Deck();
-            $session->set('deck', $deck);
-        }
+    $remainingCards = $deck->countCards();
+    $session->set('remaining_cards', $remainingCards);
 
-        $hands = [];
+    return $this->render('card.deck.deal.html.twig', [
+        'hands' => $hands,
+        'remainingCards' => $remainingCards
+    ]);
 
-        for ($i = 0; $i < $players; $i++) {
-            $hand = [];
+}
 
-            for ($j = 0; $j < $cards; $j++) {
-                $hand[] = $deck->dealCard();
-            }
+#[Route("/texas-holdem", name: "texas_holdem")]
+public function texasHoldem(): Response
+{
+    // Create a new instance of the texasHoldem class
+    $game = new texasHoldem();
 
-            $hands[] = $hand;
-        }
+    // Call the Play method to start the game
+    $game->Play();
 
-        $remainingCards = $deck->countCards();
-        $session->set('remaining_cards', $remainingCards);
+    // Get the current player index and name
+    $current_player = $game->getCurrentPlayerIndex();
+    $current_player_name = $game->getPlayers()[$current_player]->getName();
 
-        return $this->render('card.deck.deal.html.twig', [
-            'hands' => $hands,
-            'remainingCards' => $remainingCards
+    // Create an array with the game instance data
+
+    $content = $this->render('poker.html.twig', [
+            'current_player' => $current_player,
+            'game' => $game,
         ]);
-    }
+
+        return new Response($content);
+}
 }
