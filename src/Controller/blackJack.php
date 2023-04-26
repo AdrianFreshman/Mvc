@@ -95,6 +95,14 @@ class BlackjackGame
         $this->playerCards[] = $this->deck->dealCard();
         $this->dealerCards[] = $this->deck->dealCard();
 
+        // Check if the player has a blackjack and declare the winner if they do
+        if ($this->getPlayerScore() === 21) {
+            $this->gameOver = true;
+            $this->winner = 'player';
+            return;
+        }
+
+
         // Set current bet to 0
         $this->currentBet = 0;
     }
@@ -254,13 +262,12 @@ public function getWinner(): ?string
     if (!$this->gameOver) {
         return null;
     }
-    if ($this->getPlayerScore() == 21 && $this->getDealerScore() == 21 ) {
-        return "It's a tie!";
-    } elseif ($this->getPlayerScore() == 21) {
-        return 'player';
-    } elseif ($this->getPlayerScore() > 21) {
+
+    if ($this->getPlayerScore() > 21) {
         return 'dealer';
     } elseif ($this->getDealerScore() > 21) {
+        return 'player';
+    } elseif ($this->getPlayerScore() == 21) {
         return 'player';
     } elseif ($this->getPlayerScore() > $this->getDealerScore()) {
         return 'player';
@@ -271,4 +278,3 @@ public function getWinner(): ?string
     }
 }
 }
-

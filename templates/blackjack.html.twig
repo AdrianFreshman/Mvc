@@ -14,19 +14,21 @@
                 {% endfor %}
                 <p>Score: {{ player_score }}</p>
             </div>
-            <div class="dealer" id="dealer">
-                <p>Dealer</p>
-                {% for card in dealer_cards %}
-                    {% if loop.first %}
-                        <img src="{{ asset('img/back_card.png') }}" alt="Card Back" class="card">
-                    {% else %}
-                        <img src="{{ card.getImagePath() }}" alt="{{ card.getSuit() }} {{ card.getValue() }}" class="card">
-                    {% endif %}
-                {% endfor %}
-                {% if game_over %}
-                    <p>Score: {{ dealer_score }}</p>
-                {% endif %}
-            </div>
+           <div class="dealer" id="dealer">
+    <p>Dealer</p>
+    {% for card in dealer_cards %}
+        {% if loop.first %}
+            {% if game_over %}
+                <img src="{{ card.getImagePath() }}" alt="{{ card.getSuit() }} {{ card.getValue() }}" class="card">
+            {% else %}
+                <img src="{{ asset('img/back_card.png') }}" alt="Card Back" class="card">
+            {% endif %}
+        {% else %}
+            <img src="{{ card.getImagePath() }}" alt="{{ card.getSuit() }} {{ card.getValue() }}" class="card">
+        {% endif %}
+    {% endfor %}
+        <p>Score: {{ dealer_score }}</p>
+</div>
         </div>
         <form method="post">
             {% if player_turn and not game_over %}
@@ -42,7 +44,7 @@
                 <input type="number" id="bet-amount" name="bet-amount" min="0" max="{{ player_chips }}" >
                 <button type="submit" name="action" value="bet">Bet</button>
                 <button type="submit" name="action" value="reset">Reset</button>
-                 <button type="submit" name="action" value="next">Next round</button>
+                 <button type="submit" name="action" value="next">Next Round</button>
                 {% if winner == 'player' %}
     <div class="winner">You win!</div>
 {% elseif winner == 'dealer' %}
