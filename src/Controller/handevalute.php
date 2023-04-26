@@ -5,16 +5,16 @@ namespace Controller\Card;
 class HandEvaluator
 {
     // Define constants for hand rankings
-    const HAND_VALUE_HIGH_CARD = 0;
-    const HAND_VALUE_PAIR = 1;
-    const HAND_VALUE_TWO_PAIR = 2;
-    const HAND_VALUE_THREE_OF_A_KIND = 3;
-    const HAND_VALUE_STRAIGHT = 4;
-    const HAND_VALUE_FLUSH = 5;
-    const HAND_VALUE_FULL_HOUSE = 6;
-    const HAND_VALUE_FOUR_OF_A_KIND = 7;
-    const HAND_VALUE_STRAIGHT_FLUSH = 8;
-    const HAND_VALUE_ROYAL_FLUSH = 9;
+    public const HAND_VALUE_HIGH_CARD = 0;
+    public const HAND_VALUE_PAIR = 1;
+    public const HAND_VALUE_TWO_PAIR = 2;
+    public const HAND_VALUE_THREE_OF_A_KIND = 3;
+    public const HAND_VALUE_STRAIGHT = 4;
+    public const HAND_VALUE_FLUSH = 5;
+    public const HAND_VALUE_FULL_HOUSE = 6;
+    public const HAND_VALUE_FOUR_OF_A_KIND = 7;
+    public const HAND_VALUE_STRAIGHT_FLUSH = 8;
+    public const HAND_VALUE_ROYAL_FLUSH = 9;
 
     // Evaluate a hand and return its hand ranking
     public static function evaluateHand(array $cards): int

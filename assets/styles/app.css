@@ -163,17 +163,23 @@ a {
 
 .player {
     position: absolute;
-    top: 50%;
+    top: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100px;
     margin-top: 100px; /* add a margin-top value to move the player cards down */
+    left: 120px;
+    transform: rotate(45deg) translate(-50%, -50%);
+}
+
+.player p {
+    color: white;
 }
 
 #player-1 {
     left: 130px;
-    transform: rotate(45deg) translate(-50%, -50%);
+    transform: rotate(-45deg) translate(50%, -50%);
 }
 
 #player-2 {
@@ -191,4 +197,15 @@ a {
     display: inline;
     float: left;
     margin-top: -10px;
+}
+
+.winner {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    font-size: 24px;
+    font-weight: bold;
 }

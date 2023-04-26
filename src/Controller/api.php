@@ -75,7 +75,7 @@ class ApiController extends AbstractController
         } else {
             return new JsonResponse(['error' => 'Invalid deck object.'], 400);
         }
-}
+    }
 
 
     #[Route("/api/deck/draw", name: "draw")]
