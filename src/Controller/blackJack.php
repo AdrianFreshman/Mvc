@@ -2,6 +2,36 @@
 
 namespace Controller\Card;
 
+namespace Controller\Card;
+
+class ScoreCalculator
+{
+    public function calculateScore(array $cards): int
+    {
+        $score = 0;
+        $aceCount = 0;
+        foreach ($cards as $card) {
+            $value = $card->getValue();
+            if ($value === 'King' || $value === 'Queen' || $value === 'Knight') {
+                $score += 10;
+            }
+            if ($value === 'Ace') {
+                $score += 11;
+                $aceCount++;
+            }
+            if (is_numeric($value)) {
+                $score += $value;
+            }
+        }
+        // Handle the case where there are aces and the score is over 21
+        while ($score > 21 && $aceCount > 0) {
+            $score -= 10;
+            $aceCount--;
+        }
+        return $score;
+    }
+}
+
 class BlackjackGame
 {
     private Deck $deck;
@@ -16,6 +46,7 @@ class BlackjackGame
     private int $roundsPlayed = 0; // Keep track of the number of rounds played
     private int $pot = 0; // The amount of chips that have been bet by both the player and the dealer
     private $winner;
+    private ScoreCalculator $scoreCalculator;
 
     public function resetGame(string $winner): void
     {
@@ -102,7 +133,6 @@ class BlackjackGame
             return;
         }
 
-
         // Set current bet to 0
         $this->currentBet = 0;
     }
@@ -134,15 +164,14 @@ class BlackjackGame
 
     public function getPlayerScore(): int
     {
-        return $this->calculateScore($this->playerCards);
+        return $this->scoreCalculator->calculateScore($this->playerCards);
     }
 
-    
     public function getDealerScore(): int
     {
         // Only show the first card of the dealer
         $dealerCards = array_slice($this->dealerCards, 1);
-        return $this->calculateScore($dealerCards);
+        return $this->scoreCalculator->calculateScore($dealerCards);
     }
 
     public function isPlayerTurn(): bool
