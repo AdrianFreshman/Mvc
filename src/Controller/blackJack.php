@@ -2,7 +2,6 @@
 
 namespace Controller\Card;
 
-namespace Controller\Card;
 
 class ScoreCalculator
 {
@@ -50,14 +49,9 @@ class BlackjackGame
 
     public function resetGame(string $winner): void
     {
-    if ($winner === 'player') {
-        $this->playerChips += $this->pot;
-    } elseif ($winner === 'dealer') {
-        $this->dealerChips += $this->pot;
-    } else {
-        $this->playerChips += $this->pot / 2;
-        $this->dealerChips += $this->pot / 2;
-    }
+    
+    $this->playerChips += ($winner === 'player') ? $this->pot : (($winner === 'dealer') ? 0 : $this->pot / 2);
+    $this->dealerChips += ($winner === 'dealer') ? $this->pot : (($winner === 'player') ? 0 : $this->pot / 2);
     
     $this->playerCards = [];
     $this->dealerCards = [];
@@ -77,7 +71,6 @@ class BlackjackGame
         $this->gameOver = true;
     }
     }
-
 
     public function getPlayerCards(): array
     {
@@ -114,6 +107,7 @@ class BlackjackGame
         $this->playerChips = $startingChips;
         $this->dealerChips = $startingChips;
         $this->currentBet = 0;
+        $this->scoreCalculator = new ScoreCalculator();
     }
 
     public function startGame(): void
@@ -135,31 +129,6 @@ class BlackjackGame
 
         // Set current bet to 0
         $this->currentBet = 0;
-    }
-
-    public function calculateScore(array $cards): int
-    {
-        $score = 0;
-        $aceCount = 0;
-        foreach ($cards as $card) {
-            $value = $card->getValue();
-            if ($value === 'King' || $value === 'Queen' || $value === 'Knight') {
-                $score += 10;
-            }
-            if ($value === 'Ace') {
-                $score += 11;
-                $aceCount++;
-            }
-            if (is_numeric($value)) {
-                $score += $value;
-            }
-        }
-        // Handle the case where there are aces and the score is over 21
-        while ($score > 21 && $aceCount > 0) {
-            $score -= 10;
-            $aceCount--;
-        }
-        return $score;
     }
 
     public function getPlayerScore(): int
@@ -269,11 +238,9 @@ class BlackjackGame
             return;
         }
         
-        if ($this->getDealerScore() > $this->getPlayerScore()) {
-            $this->dealerChips += $this->currentBet * 2;
-        } else {
-            $this->playerChips += $this->currentBet;
-        }
+        $this->getDealerScore() > $this->getPlayerScore()
+        ? $this->dealerChips += $this->currentBet * 2
+        : $this->playerChips += $this->currentBet;
         
         $this->gameOver = true;
     }
@@ -306,6 +273,6 @@ class BlackjackGame
         if ($dealerScore > $playerScore) {
             return 'dealer';
         }
-        return "It's a tie!";
+        return $this->winner ?? "It's a tie!";
     }
 }
