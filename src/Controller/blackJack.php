@@ -17,38 +17,36 @@ class BlackjackGame
     private int $pot = 0; // The amount of chips that have been bet by both the player and the dealer
     private $winner;
 
-    public function updateChips(string $winner): void
+    public function resetGame(string $winner): void
     {
-        if ($winner === 'player') {
-            $this->playerChips += $this->pot;
-        } elseif ($winner === 'dealer') {
-            $this->dealerChips += $this->pot;
-        } else {
-            $this->playerChips += $this->pot / 2;
-            $this->dealerChips += $this->pot / 2;
-        }
+    if ($winner === 'player') {
+        $this->playerChips += $this->pot;
+    } elseif ($winner === 'dealer') {
+        $this->dealerChips += $this->pot;
+    } else {
+        $this->playerChips += $this->pot / 2;
+        $this->dealerChips += $this->pot / 2;
+    }
+    
+    $this->playerCards = [];
+    $this->dealerCards = [];
+    $this->playerTurn = true;
+    $this->gameOver = false;
+    $this->currentBet = 0;
+    $this->pot = 0;
+    $this->roundsPlayed++;
+    if ($this->roundsPlayed >= $this->maxRounds) {
+        $this->playerChips = 100;
+        $this->dealerChips = 100;
+        $this->roundsPlayed = 0;
+    }
+    $this->winner = ''; // Reset the winner property
+    
+    if ($this->playerChips == 0 || $this->dealerChips == 0 || $this->dealerChips < 0) {
+        $this->gameOver = true;
+    }
     }
 
-    public function resetGame(): void
-    {
-        if ($this->playerChips == 0 || $this->dealerChips == 0 || $this->dealerChips < 0) {
-            $this->gameOver = true;
-
-        }
-        $this->playerCards = [];
-        $this->dealerCards = [];
-        $this->playerTurn = true;
-        $this->gameOver = false;
-        $this->currentBet = 0;
-        $this->pot = 0;
-        $this->roundsPlayed++;
-        if ($this->roundsPlayed >= $this->maxRounds) {
-            $this->playerChips = 100;
-            $this->dealerChips = 100;
-            $this->roundsPlayed = 0;
-        }
-        $this->winner = ''; // Reset the winner property
-    }
 
     public function getPlayerCards(): array
     {
@@ -90,8 +88,6 @@ class BlackjackGame
     public function startGame(): void
     {
 
-
-        
         // Shuffle the deck and deal two cards to the player and two cards to the dealer
         $this->deck->shuffle();
         $this->playerCards[] = $this->deck->dealCard();
@@ -168,6 +164,26 @@ class BlackjackGame
         $this->pot = $amount * 2;
     }
 
+        private function playerWins(): void
+        {
+            $this->playerChips += $this->currentBet * 2; // Add the current bet to the player's chips
+            $this->gameOver = true;
+
+        }
+
+        private function dealerWins(): void
+        {
+            $this->dealerChips += $this->currentBet * 2; // Add the current bet to the dealer's chips
+            $this->gameOver = true;
+
+        }
+
+        private function tie(): void
+        {
+            $this->gameOver = true;
+
+        }
+
     public function playerHit(): void
     {
         if (!$this->playerTurn || $this->gameOver) {
@@ -210,26 +226,6 @@ class BlackjackGame
         }
         
         $this->tie();
-    }
-
-    private function playerWins(): void
-    {
-        $this->playerChips += $this->currentBet * 2; // Add the current bet to the player's chips
-        $this->gameOver = true;
-
-    }
-
-    private function dealerWins(): void
-    {
-        $this->dealerChips += $this->currentBet * 2; // Add the current bet to the dealer's chips
-        $this->gameOver = true;
-
-    }
-
-    private function tie(): void
-    {
-        $this->gameOver = true;
-
     }
 
     public function dealerPlay(): void

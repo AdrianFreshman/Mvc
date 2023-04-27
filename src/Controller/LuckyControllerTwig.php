@@ -218,7 +218,6 @@ public function playBlackjack(SessionInterface $session, Request $request): Resp
             break;
         case 'next':
             $winner = $game->getWinner();
-            $game->updateChips($winner);
             $game->resetGame($winner);
             break;
         default:

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Controller\Card\Card;
 use Controller\Card\Deck;
+use Controller\Card\BlackjackGame;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,6 +41,10 @@ class ApiController extends AbstractController
             'quote' => [
                 'url' => '/api/quote',
                 'description' => 'Returns a random quote along with its date and timestamp.'
+            ],
+            'game_state' => [
+                'url' => '/api/game',
+                'description' => 'Returns game state of blackjack'
             ]
         ];
 
@@ -58,6 +63,34 @@ class ApiController extends AbstractController
 
         return $this->json($cards);
     }
+
+
+
+#[Route('/api/game', name: 'game_state')]
+public function getGameState(SessionInterface $session): JsonResponse
+{
+    $game = $session->get('blackjack_game');
+
+    if (!$game) {
+        $game = new BlackjackGame();
+        $session->set('blackjack_game', $game);
+    }
+
+    // Get the current game state
+     $state = [
+        'playerScore' => $game->getPlayerScore(),
+        'dealerScore' => $game->getDealerScore(),
+        'playerCards' => $game->getPlayerCards(),
+        'dealerCards' => $game->getDealerCards(),
+        'playerTurn' => $game->isPlayerTurn(),
+        'gameOver' => $game->isGameOver(),
+        'winner' => $game->getWinner(),
+        'playerChips' => $game->getPlayerChips(),
+        'dealerChips' => $game->getDealerChips(),
+    ];
+
+    return $this->json($state);
+}
 
     #[Route("/api/deck/shuffle", name: "shuffle")]
     public function shuffle(SessionInterface $session): JsonResponse
