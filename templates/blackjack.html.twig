@@ -15,20 +15,20 @@
                 <p>Score: {{ playerScore }}</p>
             </div>
            <div class="dealer" id="dealer">
-    <p>Dealer</p>
-    {% for card in dealerCards %}
-        {% if loop.first %}
-            {% if gameOver %}
-                <img src="{{ card.getImagePath() }}" alt="{{ card.getSuit() }} {{ card.getValue() }}" class="card">
-            {% else %}
-                <img src="{{ asset('img/back_card.png') }}" alt="Card Back" class="card">
-            {% endif %}
-        {% else %}
-            <img src="{{ card.getImagePath() }}" alt="{{ card.getSuit() }} {{ card.getValue() }}" class="card">
-        {% endif %}
-    {% endfor %}
-        <p>Score: {{ dealerScore }}</p>
-</div>
+                <p>Dealer</p>
+                {% for card in dealerCards %}
+                    {% if loop.first %}
+                        {% if gameOver %}
+                            <img src="{{ card.getImagePath() }}" alt="{{ card.getSuit() }} {{ card.getValue() }}" class="card">
+                        {% else %}
+                            <img src="{{ asset('img/back_card.png') }}" alt="Card Back" class="card">
+                        {% endif %}
+                    {% else %}
+                        <img src="{{ card.getImagePath() }}" alt="{{ card.getSuit() }} {{ card.getValue() }}" class="card">
+                    {% endif %}
+                {% endfor %}
+                <p>Score: {{ dealerScore }}</p>
+            </div>
         </div>
         <form method="post">
             {% if playerTurn and not gameOver %}
@@ -41,19 +41,26 @@
             {% elseif not gameOver %}
                 <button type="submit" name="action" value="reset">Reset</button>
             {% else %}
-                <input type="number" id="bet-amount" name="bet-amount" min="" max="{{ playerChips }}" >
-                <button type="submit" name="action" value="bet">Bet</button>
-                <button type="submit" name="action" value="reset">Reset</button>
-                 <button type="submit" name="action" value="next">Next Round</button>
-                {% if winner == 'player' %}
-    <div class="winner">You win!</div>
-{% elseif winner == 'dealer' %}
-    <div class="winner">Dealer wins!</div>
-{% else %}
-    <div class="winner">It's a tie!</div>
-{% endif %}
+                {% if dealerChips <= 0 and winner == 'player' %}
+                    <div class="winner">Game over! Player 1 wins!</div>
+                    <button type="submit" name="action" value="reset">Reset</button>
+                {% elseif playerChips <= 0 and winner == 'dealer' %}
+                   <div class="winner">Game over! Dealer wins!</div>
+                    <button type="submit" name="action" value="reset">Reset</button>
+                {% else %}
+                    <input type="number" id="bet-amount" name="bet-amount" min="1" max="{{ playerChips }}" >
+                    <button type="submit" name="action" value="bet">Bet</button>
+                    <button type="submit" name="action" value="reset">Reset</button>
+                    <button type="submit" name="action" value="next">Next Round</button>
+                    {% if winner == 'player' %}
+                        <div class="winner">You win!</div>
+                    {% elseif winner == 'dealer' %}
+                        <div class="winner">Dealer wins!</div>
+                    {% else %}
+                        <div class="winner">It's a tie!</div>
+                    {% endif %}
+                {% endif %}
             {% endif %}
         </form>
     </div>
-   
 {% endblock %}

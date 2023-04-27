@@ -178,6 +178,13 @@ class BlackjackGame
         if ($this->getPlayerScore() > 21) {
             $this->dealerWins();
         }
+
+        // Check if the player has a blackjack and declare the winner if they do
+        if ($this->getPlayerScore() === 21) {
+            $this->gameOver = true;
+            $this->winner = 'player';
+            return;
+        }
     }
 
     public function playerStand(): void
