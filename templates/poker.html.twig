@@ -12,7 +12,7 @@
         </div>
             <div class="table">
                 {% for player in game.getPlayers() %}
-                    <div class="player" id="player-{{ player.getId() }}">
+                    <div class="playerTex" id="player-{{ player.getId() }}">
         <p>{{ player.getId() }}</p>
         {% for card in player.getCards() %}
             <img src="{{ card.getImagePath() }}" alt="{{ card.getSuit() }} {{ card.getValue() }}" class="card">

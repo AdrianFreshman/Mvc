@@ -10,80 +10,10 @@ use Controller\Card\Card;
 use Controller\Card\Deck;
 use Controller\Card\TexasHoldem;
 use Controller\Card\BlackjackGame;
+use Symfony\Component\HttpFoundation\Request;
 
 class LuckyControllerTwig extends AbstractController
 {
-    #[Route("/lucky", name: "lucky_number")]
-    public function number(): Response
-    {
-        $number = random_int(0, 100);
-
-        $data = [
-            'number' => $number,
-            'images' => ['one.png', 'six.png', 'five.png', 'four.png', 'three.png', 'two.png', 'sadpug.gif']
-        ];
-
-        return $this->render('lucky_number2.html.twig', $data);
-    }
-
-    #[Route("/", name: "home")]
-    public function home(): Response
-    {
-        return $this->render('home.html.twig');
-    }
-
-    #[Route("/about", name: "about")]
-    public function about(): Response
-    {
-        return $this->render('about.html.twig');
-    }
-
-    #[Route("/report", name: "report")]
-    public function report(): Response
-    {
-        return $this->render('report.html.twig');
-    }
-
-    #[Route("/report#kmom01", name: "kmom01")]
-    public function kmom01(): Response
-    {
-        return $this->render('report.html.twig');
-    }
-
-
-    #[Route("/api/quote", name: "quote")]
-    public function jsonQuote(): Response
-    {
-        $quotes = [
-            "The best way to predict the future is to invent it.",
-            "The only way to do great work is to love what you do.",
-            "Stay hungry, stay foolish.",
-            "The future belongs to those who believe in the beauty of their dreams.",
-            "If you want to live a happy life, tie it to a goal, not to people or things.",
-            "The only limit to our realization of tomorrow will be our doubts of today.",
-            "The only thing we have to fear is fear itself.",
-            "You can't use up creativity. The more you use, the more you have.",
-            "Believe you can and you're halfway there.",
-            "I have not failed. I've just found 10,000 ways that won't work.",
-            "The power of imagination makes us infinite."
-        ];
-
-        $selectedQuote = $quotes[array_rand($quotes)];
-
-        $data = [
-            'quote' => $selectedQuote,
-            'date' => date('Y-m-d'),
-            'timestamp' => time(),
-        ];
-
-        $response = new Response();
-        $response->headers->set('Content-Type', 'application/json');
-        $response->setContent(json_encode($data));
-
-        return $response;
-    }
-
-
     #[Route("/card", name: "card")]
     public function card(): Response
     {
@@ -116,7 +46,33 @@ class LuckyControllerTwig extends AbstractController
 
         return $this->render('card.html.twig', [
         'links' => $links,
-]);
+    ]);
+    }
+
+
+    #[Route("/game", name: "game")]
+        public function game(): Response
+        {
+            $links = [
+                'blackjack' => [
+                    'url' => 'blackjack',
+                    'description' => 'Click to play blackjack'
+                ],
+            'Documentation' => [
+                'url' => 'docs',
+                'description' => 'Documentations for page.'
+            ]
+            ];
+
+            return $this->render('blackjack.landing.html.twig', [
+            'links' => $links,
+    ]);
+        }
+
+    #[Route("/game/doc", name: "docs")]
+    public function doc(): Response
+    {
+        return $this->render('blackjack.doc.html.twig');
 
     }
 
@@ -219,13 +175,13 @@ public function texasHoldem(): Response
     $game->Play();
 
     // Get the current player index and name
-    $current_player = $game->getCurrentPlayerIndex();
-    $current_player_name = $game->getPlayers()[$current_player]->getName();
+    $currentPlayer = $game->getCurrentPlayerIndex();
+    // $currentPlayerName = $game->getPlayers()[$currentPlayer]->getName();
 
     // Create an array with the game instance data
 
     $content = $this->render('poker.html.twig', [
-            'current_player' => $current_player,
+            'current_player' => $currentPlayer,
             'game' => $game,
         ]);
 
@@ -233,55 +189,52 @@ public function texasHoldem(): Response
 }
 
 #[Route('/blackjack', name: 'blackjack')]
-public function playBlackjack(SessionInterface $session): Response
+public function playBlackjack(SessionInterface $session, Request $request): Response
 {
     $game = $session->get('blackjack_game');
-    $action = $_POST['action'] ?? null;
-    $betAmount = $_POST['bet-amount'] ?? null;
-    $show_continue_button = $game->isGameOver() && $game->getPlayerChips() > 0;
+    $action = $request->request->get('action');
+    $betAmount = $request->request->get('bet-amount');
 
     if (!$game) {
         $game = new BlackjackGame();
         $session->set('blackjack_game', $game);
     }
 
-    $errorMessage = null;
-
-    try {
-        if ($action === 'hit') {
+    switch ($action) {
+        case 'hit':
             $game->playerHit();
-        } elseif ($action === 'stand') {
+            break;
+        case 'stand':
             $game->playerStand();
-        } elseif ($action === 'bet') {
+            break;
+        case 'bet':
             $game->placeBet($betAmount);
             $game->startGame();
-        } elseif ($action === 'reset') {
+            break;
+        case 'reset':
             $session->invalidate();
             $game = new BlackjackGame();
             $session->set('blackjack_game', $game);
-        } elseif ($action === 'next') {
+            break;
+        case 'next':
             $winner = $game->getWinner();
             $game->updateChips($winner);
-            $game->resetGame();
-        }
-
-    } catch (\InvalidArgumentException $e) {
-        $errorMessage = $e->getMessage();
-    } catch (\LogicException $e) {
-        $errorMessage = $e->getMessage();
+            $game->resetGame($winner);
+            break;
+        default:
+            break;
     }
 
     $data = [
-        'player_score' => $game->getPlayerScore(),
-        'dealer_score' => $game->getDealerScore(),
-        'player_cards' => $game->getPlayerCards(),
-        'dealer_cards' => $game->getDealerCards(),
-        'player_turn' => $game->isPlayerTurn(),
-        'game_over' => $game->isGameOver(),
+        'playerScore' => $game->getPlayerScore(),
+        'dealerScore' => $game->getDealerScore(),
+        'playerCards' => $game->getPlayerCards(),
+        'dealerCards' => $game->getDealerCards(),
+        'playerTurn' => $game->isPlayerTurn(),
+        'gameOver' => $game->isGameOver(),
         'winner' => $game->getWinner(),
-        'player_chips' => $game->getPlayerChips(),
-        'dealer_chips' => $game->getDealerChips(),
-        'error_message' => $errorMessage,
+        'playerChips' => $game->getPlayerChips(),
+        'dealerChips' => $game->getDealerChips(),
     ];
 
     return $this->render('blackjack.html.twig', $data);

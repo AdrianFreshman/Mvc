@@ -3,22 +3,22 @@
 {% block body %}
     <div class="playfield">
         <div class="chips">
-            <p>Player chips: {{ player_chips }}</p>
-            <p>Dealer chips: {{ dealer_chips }}</p>
+            <p>Player chips: {{ playerChips }}</p>
+            <p>Dealer chips: {{ dealerChips }}</p>
         </div>
         <div class="table">
-            <div class="player" id="player">
+            <div class="player" id="player1">
                 <p>Player</p>
-                {% for card in player_cards %}
+                {% for card in playerCards %}
                     <img src="{{ card.getImagePath() }}" alt="{{ card.getSuit() }} {{ card.getValue() }}" class="card">
                 {% endfor %}
-                <p>Score: {{ player_score }}</p>
+                <p>Score: {{ playerScore }}</p>
             </div>
            <div class="dealer" id="dealer">
     <p>Dealer</p>
-    {% for card in dealer_cards %}
+    {% for card in dealerCards %}
         {% if loop.first %}
-            {% if game_over %}
+            {% if gameOver %}
                 <img src="{{ card.getImagePath() }}" alt="{{ card.getSuit() }} {{ card.getValue() }}" class="card">
             {% else %}
                 <img src="{{ asset('img/back_card.png') }}" alt="Card Back" class="card">
@@ -27,21 +27,21 @@
             <img src="{{ card.getImagePath() }}" alt="{{ card.getSuit() }} {{ card.getValue() }}" class="card">
         {% endif %}
     {% endfor %}
-        <p>Score: {{ dealer_score }}</p>
+        <p>Score: {{ dealerScore }}</p>
 </div>
         </div>
         <form method="post">
-            {% if player_turn and not game_over %}
+            {% if playerTurn and not gameOver %}
                 <label for="bet-amount">Bet amount:</label>
-                <input type="number" id="bet-amount" name="bet-amount" min="0" max="{{ player_chips }}" >
+                <input type="number" id="bet-amount" name="bet-amount" min="1" max="{{ playerChips }}" >
                 <button type="submit" name="action" value="bet">Bet</button>
                 <button type="submit" name="action" value="hit">Hit</button>
                 <button type="submit" name="action" value="stand">Stand</button>
                 <button type="submit" name="action" value="reset">Reset</button>
-            {% elseif not game_over %}
+            {% elseif not gameOver %}
                 <button type="submit" name="action" value="reset">Reset</button>
             {% else %}
-                <input type="number" id="bet-amount" name="bet-amount" min="0" max="{{ player_chips }}" >
+                <input type="number" id="bet-amount" name="bet-amount" min="" max="{{ playerChips }}" >
                 <button type="submit" name="action" value="bet">Bet</button>
                 <button type="submit" name="action" value="reset">Reset</button>
                  <button type="submit" name="action" value="next">Next Round</button>

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Blackjack Documentation{% endblock %}
+
+{% block body %}
+<a href="{{ asset('img/simpleflowchart.png') }}">
+        <img src="{{ asset('img/simpleflowchart.png') }}" alt="">
+    </a>
+
+
+
+<p>The BlackjackGame class could represents a game of blackjack and contains properties to keep track of the state of the game, such as the player's and dealer's cards, the number of chips, the current bet, and the winner of the game. It also contains methods to update the chip count, reset the game, and get the player's and dealer's cards and chip count. A __construct() method could initializes a Deck object (from the card.php file) and sets the initial chip count to 100. it could continue using methods form the Deck like shuffle,deal.etc . One could also potentially createa additional classes for dealer,player and scoring,winner scenarios.</p>
+
+
+<br><br>    
+<p>Pseudocode:
+startGame()
+shuffle the deck
+deal 2 cards to the player
+deal 2 cards to the dealer
+if player has blackjack
+declare player as winner and end game
+set current bet to 0
+<br><br>
+playerTurn()
+loop
+ask player to hit or stand
+if hit
+deal 1 card to player
+recalculate player score
+if player score is over 21
+declare dealer as winner and end game
+if stand
+end player turn
+end loop
+<br><br>
+compareScores()
+if player score is higher than dealer score
+declare player as winner
+if dealer score is higher than player score
+declare dealer as winner
+if scores are equal
+declare tie
+<br><br>
+updateChips(string winner)
+if winner is player
+player chips += pot
+if winner is dealer
+dealer chips += pot
+if winner is tie
+player chips += pot/2
+dealer chips += pot/2
+<br><br>
+resetGame()
+if player chips is 0 or dealer chips is 0 or dealer chips is less than 0
+set game over to true
+reset player cards
+reset dealer cards
+set player turn to true
+set game over to false meaning that next game can go on if enough chips
+</p>
+
+{% endblock %}

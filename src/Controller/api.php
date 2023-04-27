@@ -14,7 +14,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class ApiController extends AbstractController
 {
     #[Route("/api", name: "api_landing")]
-
     public function apiLanding(): Response
     {
         $routes = [
@@ -50,8 +49,7 @@ class ApiController extends AbstractController
     }
 
 
-     #[Route("/api/deck", name: "deck")]
-
+    #[Route("/api/deck", name: "deck")]
     public function getDeck(): JsonResponse
     {
         $deck = new Deck();
@@ -61,8 +59,7 @@ class ApiController extends AbstractController
         return $this->json($cards);
     }
 
-
- #[Route("/api/deck/shuffle", name: "shuffle")]
+    #[Route("/api/deck/shuffle", name: "shuffle")]
     public function shuffle(SessionInterface $session): JsonResponse
     {
         $deck = $session->get('deck') ?? new Deck();
@@ -72,11 +69,10 @@ class ApiController extends AbstractController
             $session->set('deck', $deck);
             $cards = $deck->getAllCards();
             return $this->json($cards);
-        } else {
-            return new JsonResponse(['error' => 'Invalid deck object.'], 400);
         }
-    }
+        return new JsonResponse(['error' => 'Invalid deck object.'], 400);
 
+    }
 
     #[Route("/api/deck/draw", name: "draw")]
     #[Route("/api/deck/draw/{number}", name: "draw_multiple")]
@@ -93,9 +89,8 @@ class ApiController extends AbstractController
 
             if ($card) {
                 $cards[] = $card;
-            } else {
-                break;
             }
+            break;
         }
 
         $session->set('deck', $deck);

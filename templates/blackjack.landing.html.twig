@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+    <h1>Blackjack Game</h1>
+    <div class="grid">
+        {% for name, link in links %}
+            <div class="card-link" onclick="window.location.href='{% if name == 'deal' %}{{ url(link['url'], {'players': 2, 'cards': 0}) }}{% elseif name == 'draw_multiple' %}{{ url(link['url'], {'number': 1}) }}{% else %}{{ url(link['url']) }}{% endif %}'">
+                <h2>{{ name }}</h2>
+                <p class="card-description">{{ link['description'] }}</p>
+            </div>
+        {% endfor %}
+    </div>
+<p>A Blackjack game, which is a popular card game where players try to get a hand value of 21 or as close to 21 as possible without exceeding it.
+
+The class contains methods for shuffling and dealing cards, updating and resetting the game, and calculating the score for the player and the dealer. It also keeps track of the number of rounds played, the chips the player and the dealer have, and the current bet. 
+<br><br>
+
+<p>The first button with the value "bet" allows the player to place a bet by submitting the form. The bet amount is specified using an input field with the ID "bet-amount". The bet amount must be between 0 and the player's remaining chips, as specified by the "min" and "max" attributes of the input field. game starts after bet is inserted like in blackjack
+<br><br>
+The second button with the value "hit" allows the player to request another card from the dealer. This button is only visible if it is currently the player's turn, and the game is not yet over.
+<br><br>
+The third button with the value "stand" allows the player to end their turn and pass control to the dealer. This button is only visible if it is currently the player's turn, and the game is not yet over.
+<br><br>
+The fourth button with the value "reset" allows the player to reset the game state and start a new round. This button is visible both before and after the game is over.
+<br><br>
+The fifth button with the value "next" allows the player to start a new round after the game has ended. This button is only visible when the game is over, and the player has not yet placed a bet for the next round. After clicked it starts a fresh and place bet again to get your hand again</p>
+    
+{% endblock %}
