@@ -45,8 +45,45 @@ I min implementation av kortspelet i uppgiften använde jag arv och komposition 
 Att modellera kortspelet med flödesdiagram och pseudokod var mycket hjälpsamt för att strukturera min kod. Det hjälpte mig att visualisera hur olika delar av spelet samverkar och identifiera eventuella problemområden som jag behövde ta hänsyn till i min kod. Men ananrs verkar jag nog ha missat en del steg i hur det ska fungera, använde mig av uml som jag använde till oopython<br><br>
 
 Min TIL för detta kmom är hur man använder objektorienterade konstruktioner som arv, komposition, interface och trait i PHP för att skapa modulär och återanvändbar kod.</p>
-    <h4>Kmom03</h4
-    <p></p>
+<h4>Kmom03</h4
+<p> Se till att följande frågor besvaras i din redovisningstext.
+
+Berätta hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod. Var det något som du tror stödjer dig i din problemlösning och tankearbete för att strukturera koden kring en applikation?
+<br><br>
+
+Det var intressant att skapa flödesdiagram och pseudokod för blackjack-spelet eftersom det gav en bättre överblick över hur spelet fungerade och vilka steg som krävdes för att spela det. Även om det fanns andra tester innan vi började med flödesdiagrammet och pseudokoden, så var det en annan nivå av strukturering som gjorde det enklare att se spelet som regler och steg istället för en röra av kod.
+<br><br>
+Det blevenklare att planera koden och hitta eventuella fel innan jag börjar skriva själva koden. Dessutom blvr det enklare att kommunicera med andra om koden eftersom man har en gemensam förståelse av hur spelet fungerar.
+<br><br>
+Att modellera ett kortspel med flödesdiagram och pseudokod kändes som en utmaning eftersom det krävdes att tänka på många olika scenarier och steg som ingår i spelet. Men samtidigt var det en lärorik process som gav en bättre förståelse för hur man kan strukturera kod kring en applikation.
+<br><br>
+Jag tror definitivt att det stödjer mig i min problemlösning och tankearbete. Genom att bryta ner problemet i mindre delar och visualisera dem, blir det enklare att tänka på alla scenarier som behöver hanteras. Det blir också lättare att se mönster och undvika onödig repetition av kod.
+<br><br>
+Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden, dina klasser och applikationen som helhet?
+<br><br>
+Spelet är byggt med flera klasser som samverkar för att skapa en fungerande applikation.
+<br><br>
+En viktig klass är BlackjackGame som är en kontrollklass som håller koll på spelets logik och status. Klassen innehåller också andra klasser som Deck och ScoreCalculator som hanterar kortleken och poängräkning.
+<br><br>
+En annan klass är ScoreCalculator som används för att beräkna poängen för en spelares kort. Den här klassen loopar igenom korten och adderar poängen. Klassen hanterar också essen på ett särskilt sätt för att undvika att spelare får för höga poäng.
+<br><br>
+Jag skapade 30% av ett Texas hold'em-spel tidigare, men jag insåg att det skulle kräva mycket tid och många klasser att skapa en komplett applikation. Därför bestämde jag mig för att skapa en enklare version av blackjack istället. Trots att jag bara skapade en enklare version av spelet är jag ganska nöjd med det jag åstadkommit. Jag lyckades skapa en fungerande version av spelet med lite rolig CSS.
+<br><br>
+Det finns alltid förbättringspotential när det gäller kod, och jag kan se en del saker jag skulle vilja förbättra. Till exempel skulle jag vilja lägga till fler funktioner, som att kunna satsa flera gånger per runda, och att skapa en bättre hantering av vinst- och förlustsituationer, dubbla och halvera och andra extra regler samt vinst statestik kring hand. Det skulle också vara kul att förbättra spelets grafiska utseende. Men överlag är jag ganska nöjd med min implementation och tycker att den fungerar bra som en enkel version av blackjack-spelet.
+<br><br>
+Vilken är din känsla för att koda i ett ramverk som Symfony, så här långt in i kursen?
+<br><br>
+Jag trivs väldigt bra med att koda i Symfony, det är ett väldigt robust och flexibelt ramverk som gör det lätt att skapa avancerade webbapplikationer. Gillar start den inbyggda felhanteringen och att jag upplever det flexibelt.Efter att ha arbetat med Symfony ett tag har jag upptäckt att det finns många smarta verktyg och funktioner som kan underlätta arbetet och göra koden mer läsbar och strukturerad.
+<br><br>
+Vilken är din TIL för detta kmom?</p>
+<br><br>
+
+Under detta kursmoment har jag lärt mig hur man kan skapa objektorienterade lösningar och använder klasser för att organisera kod och funktioner. Det är viktigt att tänka på objektorientering för att skriva ren, modulär och återanvändbar kod. Klasserna kan användas för att gruppera relaterade funktioner och data, och det blir lättare att lägga till och ändra funktionalitet.
+<br><br>
+För att skapa kluriga klasser kan man tänka på att följa SOLID-principerna, särskilt öppen-stängd-principen (Open-Closed Principle) som betyder att en klass ska vara öppen för utökning men stängd för ändring. Detta innebär att man inte ska behöva ändra en klass för att lägga till funktionalitet, utan istället utöka den med en ny klass eller funktion som bygger vidare på den ursprungliga klassen.
+<br><br>
+För att skapa egen error hantering kan man använda verktyg som PHPStan som kan analysera koden för att hitta potentiella fel och problem. Man kan också skapa egna undantag (exceptions) som ger mer detaljerade felmeddelanden än de vanliga PHP-felen. Detta gör det enklare att felsöka och förbättra koden. Genom att skapa egna undantag kan man också bättre hantera fel som kan uppstå i en större applikation eller ramverk.Dock lekte jag inte mycket med detta
+
     <h4>Kmom04</h4
     <p></p>
     <h4>Kmom05</h4

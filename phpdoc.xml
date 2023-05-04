@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <phpdocumentor
         configVersion="3"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -11,7 +11,7 @@
     <version number="3.0.0">
         <api>
             <source dsn=".">
-                <path>src</path>
+                <path>src/Controller</path>
             </source>
         </api>
     </version>

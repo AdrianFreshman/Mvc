@@ -1,4 +1,6 @@
 {
+    "name": "mos/phpunit-test",
+    "description": "To start get going with unittesting and phpunit.",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
@@ -97,6 +99,8 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
+        "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
+        "phpdoc": "tools/phpdoc/phpdoc",
         "csfix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src",
         "csfix:dry": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src --dry-run -v",
         "phpmd": "tools/phpmd/vendor/bin/phpmd . text phpmd.xml || true",
