@@ -3,6 +3,7 @@
 namespace App\Dice;
 
 require_once __DIR__ . '/../../src/Controller/Dice/dice.php';
+require_once __DIR__ . '/../../src/Controller/card.php';
 
 
 use PHPUnit\Framework\TestCase;
