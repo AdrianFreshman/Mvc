@@ -111,7 +111,8 @@ class Player
 
 
     public function getCards(): array // add getCards() method
-    {return $this->cards;
+    {
+        return $this->cards;
     }
 
     public function getId()

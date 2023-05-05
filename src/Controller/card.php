@@ -14,22 +14,44 @@ class BaseCard implements Card
     private int|string $value;
     private string $suit;
 
+    /**
+     * Create a new instance of a card with a given value and suit.
+     *
+     * @param int|string $value The numerical or string value of the card.
+     * @param string $suit The suit of the card.
+     */
     public function __construct(int|string $value, string $suit)
     {
         $this->value = $value;
         $this->suit = $suit;
     }
 
-    public function getValue(): int|string
+    /**
+     * Get the numerical or string value of the card.
+     *
+     * @return mixed The value of the card.
+     */
+    public function getValue(): mixed
     {
         return $this->value;
     }
 
-    public function getSuit(): string
+    /**
+     * Get the suit of the card.
+     *
+     * @return mixed The suit of the card.
+     */
+    public function getSuit(): mixed
     {
         return $this->suit;
     }
 
+
+    /**
+     * Get the path to the image file for the card.
+     *
+     * @return string The path to the image file for the card.
+     */
     public function getImagePath(): string
     {
         // Define an array of suits and their corresponding image file prefix
@@ -56,6 +78,9 @@ class Deck
     /** @var BaseCard[] */
     private array $cards;
 
+    /**
+     * Create a new deck of cards with all 52 cards.
+     */
     public function __construct()
     {
         $this->cards = array();
@@ -69,8 +94,10 @@ class Deck
         }
     }
 
-   /**
-     * @return Card[]
+    /**
+     * Shuffle the deck of cards.
+     *
+     * @return Card[] The shuffled array of cards.
      */
     public function shuffle(): array
     {
@@ -79,6 +106,8 @@ class Deck
     }
 
     /**
+     * Deal a card from the top of the deck.
+     *
      * @return BaseCard|null
      */
     public function dealCard(): ?BaseCard
@@ -90,6 +119,8 @@ class Deck
     }
 
     /**
+     * Deal All cards from the deck
+     *
      * @return array<BaseCard>
      */
     public function getAllCards(): array
@@ -97,11 +128,22 @@ class Deck
         return $this->cards;
     }
 
+    /**
+     * Returns the number of cards in the deck.
+     *
+     * @return int The number of cards in the deck.
+     */
     public function countCards(): int
     {
         return count($this->cards);
     }
 
+    /**
+     * Deals a card from the deck at the specified index.
+     *
+     * @param int $index The index of the card to deal.
+     * @return BaseCard|null The card dealt or null if the deck is empty or the index is out of bounds.
+     */
     public function dealCardManually(int $index): ?BaseCard
     {
         if (empty($this->cards) || $index < 0 || $index >= count($this->cards)) {
@@ -111,6 +153,8 @@ class Deck
     }
 
     /**
+     * Deals specific card.
+     *
      * @param int|string $value The value of the card to search for
      * @param string $suit The suit of the card to search for
      * @return BaseCard|null The found card or null if not found

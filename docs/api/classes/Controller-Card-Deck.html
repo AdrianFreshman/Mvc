@@ -63,6 +63,10 @@
                 <a href="namespaces/app-controller.html" class="">Controller</a>
                 
             </li>
+                    <li>
+                <a href="namespaces/app-dice.html" class="">Dice</a>
+                
+            </li>
             </ul>
 
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
@@ -71,10 +75,6 @@
     <ul class="phpdocumentor-list">
                     <li>
                 <a href="namespaces/controller-card.html" class="">Card</a>
-                
-            </li>
-                    <li>
-                <a href="namespaces/controller-dice.html" class="">Dice</a>
                 
             </li>
             </ul>
@@ -125,7 +125,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/card.php"><a href="files/src-controller-card.html"><abbr title="src/Controller/card.php">card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">54</span>
+    <span class="phpdocumentor-element-found-in__line">76</span>
 
     </aside>
 
@@ -157,35 +157,49 @@
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd></dd>
+<dd>Create a new deck of cards with all 52 cards.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Controller-Card-Deck.html#method_countCards">countCards()</a>
     <span>
                                 &nbsp;: int    </span>
 </dt>
-<dd></dd>
+<dd>Returns the number of cards in the deck.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Controller-Card-Deck.html#method_dealCard">dealCard()</a>
     <span>
                                 &nbsp;: <a href="classes/Controller-Card-BaseCard.html"><abbr title="\Controller\Card\BaseCard">BaseCard</abbr></a>|null    </span>
 </dt>
-<dd></dd>
+<dd>Deal a card from the top of the deck.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Controller-Card-Deck.html#method_dealCardManually">dealCardManually()</a>
+    <span>
+                                &nbsp;: <a href="classes/Controller-Card-BaseCard.html"><abbr title="\Controller\Card\BaseCard">BaseCard</abbr></a>|null    </span>
+</dt>
+<dd>Deals a card from the deck at the specified index.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Controller-Card-Deck.html#method_dealSpecificCard">dealSpecificCard()</a>
+    <span>
+                                &nbsp;: <a href="classes/Controller-Card-BaseCard.html"><abbr title="\Controller\Card\BaseCard">BaseCard</abbr></a>|null    </span>
+</dt>
+<dd>Deals specific card.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Controller-Card-Deck.html#method_getAllCards">getAllCards()</a>
     <span>
                                 &nbsp;: array&lt;string|int, <a href="classes/Controller-Card-BaseCard.html"><abbr title="\Controller\Card\BaseCard">BaseCard</abbr></a>&gt;    </span>
 </dt>
-<dd></dd>
+<dd>Deal All cards from the deck</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Controller-Card-Deck.html#method_shuffle">shuffle()</a>
     <span>
                                 &nbsp;: array&lt;string|int, <a href="classes/Controller-Card-Card.html"><abbr title="\Controller\Card\Card">Card</abbr></a>&gt;    </span>
 </dt>
-<dd></dd>
+<dd>Shuffle the deck of cards.</dd>
 
         </dl>
 
@@ -215,7 +229,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/card.php"><a href="files/src-controller-card.html"><abbr title="src/Controller/card.php">card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">79</span>
 
     </aside>
 
@@ -251,17 +265,17 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/card.php"><a href="files/src-controller-card.html"><abbr title="src/Controller/card.php">card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">59</span>
+    <span class="phpdocumentor-element-found-in__line">84</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Create a new deck of cards with all 52 cards.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
@@ -284,24 +298,26 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/card.php"><a href="files/src-controller-card.html"><abbr title="src/Controller/card.php">card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">100</span>
+    <span class="phpdocumentor-element-found-in__line">136</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Returns the number of cards in the deck.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">countCards</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>The number of cards in the deck.</p>
+</section>
+
     
 </article>
                     <article
@@ -317,11 +333,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/card.php"><a href="files/src-controller-card.html"><abbr title="src/Controller/card.php">card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">84</span>
+    <span class="phpdocumentor-element-found-in__line">113</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Deal a card from the top of the deck.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">dealCard</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Controller-Card-BaseCard.html"><abbr title="\Controller\Card\BaseCard">BaseCard</abbr></a>|null</span></code>
@@ -342,6 +359,109 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_dealCardManually">
+        dealCardManually()
+        <a href="classes/Controller-Card-Deck.html#method_dealCardManually" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/card.php"><a href="files/src-controller-card.html"><abbr title="src/Controller/card.php">card.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">147</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Deals a card from the deck at the specified index.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">dealCardManually</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$index</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Controller-Card-BaseCard.html"><abbr title="\Controller\Card\BaseCard">BaseCard</abbr></a>|null</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$index</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The index of the card to deal.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/Controller-Card-BaseCard.html"><abbr title="\Controller\Card\BaseCard">BaseCard</abbr></a>|null</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>The card dealt or null if the deck is empty or the index is out of bounds.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_dealSpecificCard">
+        dealSpecificCard()
+        <a href="classes/Controller-Card-Deck.html#method_dealSpecificCard" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/card.php"><a href="files/src-controller-card.html"><abbr title="src/Controller/card.php">card.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">162</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Deals specific card.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">dealSpecificCard</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$suit</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Controller-Card-BaseCard.html"><abbr title="\Controller\Card\BaseCard">BaseCard</abbr></a>|null</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int|string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The value of the card to search for</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$suit</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The suit of the card to search for</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/Controller-Card-BaseCard.html"><abbr title="\Controller\Card\BaseCard">BaseCard</abbr></a>|null</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>The found card or null if not found</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getAllCards">
         getAllCards()
         <a href="classes/Controller-Card-Deck.html#method_getAllCards" class="headerlink"><i class="fas fa-link"></i></a>
@@ -349,11 +469,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/card.php"><a href="files/src-controller-card.html"><abbr title="src/Controller/card.php">card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">95</span>
+    <span class="phpdocumentor-element-found-in__line">126</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Deal All cards from the deck</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getAllCards</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/Controller-Card-BaseCard.html"><abbr title="\Controller\Card\BaseCard">BaseCard</abbr></a>&gt;</span></code>
@@ -381,11 +502,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Controller/card.php"><a href="files/src-controller-card.html"><abbr title="src/Controller/card.php">card.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">75</span>
+    <span class="phpdocumentor-element-found-in__line">102</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Shuffle the deck of cards.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">shuffle</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/Controller-Card-Card.html"><abbr title="\Controller\Card\Card">Card</abbr></a>&gt;</span></code>
@@ -397,7 +519,9 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/Controller-Card-Card.html"><abbr title="\Controller\Card\Card">Card</abbr></a>&gt;</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>The shuffled array of cards.</p>
+</section>
+
     
 </article>
             </section>

@@ -2,7 +2,6 @@
 
 namespace App\Dice;
 
-
 class Dice
 {
     protected int $value;

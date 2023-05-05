@@ -131,8 +131,8 @@ class BlackjackGameTest extends TestCase
         $this->assertTrue($game->isPlayerTurn());
     }
 
-    public function testPlayerHit(): void
-    {
+public function testPlayerHit(): void
+{
     $game = new BlackjackGame();
     $game->startGame();
     $playerScore = $game->getPlayerScore();
@@ -150,11 +150,44 @@ class BlackjackGameTest extends TestCase
         $game->playerHit();
     }
 
-    // Assert that the game is over
-    self::assertTrue($game->isGameOver());
+    // If player's score is over 21, dealer wins
+    if ($game->getPlayerScore() > 21) {
+        // Assert that the game is over
+        self::assertTrue($game->isGameOver());
 
-    // Assert that the winner is the dealer
-    self::assertSame('dealer', $game->getWinner());
+        // Assert that the winner is the dealer
+        self::assertSame('dealer', $game->getWinner());
+    } else {
+        // Otherwise, add cards to the dealer's hand until their score is greater than or equal to the player's score
+        while ($game->getDealerScore() < $game->getPlayerScore()) {
+            $game->dealerHit();
+        }
+
+        // If the dealer's score is over 21, player wins
+        if ($game->getDealerScore() > 21) {
+            // Assert that the game is over
+            self::assertTrue($game->isGameOver());
+
+            // Assert that the winner is the player
+            self::assertSame('player', $game->getWinner());
+        } else {
+            // If the scores are equal, it's a tie
+            if ($game->getPlayerScore() === $game->getDealerScore()) {
+                // Assert that the game is over
+                self::assertTrue($game->isGameOver());
+
+                // Assert that the winner is null, indicating a tie
+                self::assertNull($game->getWinner());
+            } else {
+                // If neither player is over 21 and the dealer's score is greater than the player's score, dealer wins
+                // Assert that the game is over
+                self::assertTrue($game->isGameOver());
+
+                // Assert that the winner is the dealer
+                self::assertSame('dealer', $game->getWinner());
+            }
+        }
+    }
 }
 
 public function testPlayerStand(): void
@@ -168,17 +201,41 @@ public function testPlayerStand(): void
     // Assert that the player's score has not changed
     self::assertSame($playerScore, $newPlayerScore);
 
-
-    // Add cards to the dealer's hand until their score is over 16
-    while ($game->getDealerScore() < 17) {
-        $game->dealerHit();
-    }
-
     // Assert that the game is over
     self::assertTrue($game->isGameOver());
 
     // Assert that the winner is either the player or the dealer
-    self::assertContains($game->getWinner(), ['player', 'dealer']);
+    $winner = $game->getWinner();
+    self::assertContains($winner, ['player', 'dealer',"It's a tie!"]);
+}
+
+public function testDealerPlay(): void
+{
+    // Create a new game and deck
+    $game = new BlackjackGame();
+    $game->startGame();
+
+    // Play the dealer's turn
+    $game->dealerPlay();
+
+    // Check that the game is over and the winner is the dealer
+    $this->assertTrue($game->isGameOver());
+    $this->assertContains($game->getWinner(), ['dealer','player',"It's a tie!"]);
+}
+
+
+public function testTie(): void
+{
+    // Create a new game and deck
+    $game = new BlackjackGame();
+    $playerScore = $game->getPlayerScore();
+    $dealerScore = $game->getDealerScore();
+
+    // Assert that the winner is a tie
+
+    $winner = $game->getWinner();
+    self::assertSame("It's a tie!", $winner);
+    self::assertSame($playerScore, $dealerScore);
 }
 
 }

@@ -85,7 +85,32 @@ För att skapa kluriga klasser kan man tänka på att följa SOLID-principerna, 
 För att skapa egen error hantering kan man använda verktyg som PHPStan som kan analysera koden för att hitta potentiella fel och problem. Man kan också skapa egna undantag (exceptions) som ger mer detaljerade felmeddelanden än de vanliga PHP-felen. Detta gör det enklare att felsöka och förbättra koden. Genom att skapa egna undantag kan man också bättre hantera fel som kan uppstå i en större applikation eller ramverk.Dock lekte jag inte mycket med detta
 
     <h4>Kmom04</h4
-    <p></p>
+
+    <p>
+    PHPUnit är en välkänd och respekterad PHP-testram som gör det möjligt för mig att testa min kod för att säkerställa att den fungerar korrekt. Några av fördelarna med att använda PHPUnit inkluderar att det hjälper mig att hitta buggar och problem i koden, ökar kvaliteten på koden och gör det lättare att underhålla och utveckla koden på lång sikt. Jag gillade hur det ser ut i mitt docs/coverage och kan enkelt hitta fel och det ser snyggt ut somsagt.
+    </p>
+    <br><br>
+
+    <p>
+    Fick till 75-80% vilken kan tyckas vara en ok start, men att ha en högre kodtäckning är alltid att föredra såklart. Det kan vara svårt att testa privata och skyddade funktioner vilket jag märkte samt saknade funktioner som kunde ta ut specifika fall eftersom jag använde min shuffle till korten osv,detta ledde till att jag inte kunde utan att fixa om/stoppa in flera funktioner(fick problem kring komplexitet i composer lint), fixen hade kunnat vara att fixa i card och eller blakjack en klass som hanterar att manuellt kunna skriva in kort en vill ha, detta kunde testa tie() samt annat som saknades till att nå 90% just nu avgör slumpen om tie() kommer triggas i min testning, men iaf , det är fortfarande möjligt att testa dem genom att använda reflektion och andra tekniker. 
+    </p>
+    <br><br>
+
+    <p>
+     Min kod var tillräckligt testbar men finns brister..
+     De faktorer som  påverkade koden som testbar eller inte: Min kod är för stor och komplicerad kan det vara svårt att testa allt. Det kan också finnas svårigheter med att testa en kod som har många beroenden eller som är beroende av externa faktorer. För att förbättra min kods testbarhet kunde jag ha skapat mer lättförståelig kod genom att skapa tydligare kaller med en enda ansvarsområde, följa SOLID-principerna och undvika hårdkodade värden osv samt se ovan.
+    </p>
+    <br><br>
+    <p>
+    Har tankar till att skriva till bryta ut klassen BlackjackGame och och fixa det lite mer tydligare, Har somsagt velat fixa en specefic deal(valt kort) funktion men kommer aldrig dit, hade underlättat testningen, dock kan jag se att det hade fungerat vid testning om jag endast hade haft den.
+    </p>
+    <p>
+    En vältestad kod är oftast ren och snygg. När du skriver enhetstester tvingas du att tänka på ditt kodkontrakt och hur dina metoder bör fungera. Detta leder till en mer organiserad kod som är lättare att underhålla och utveckla på lång sikt.
+     </p>
+    <br><br>
+    <p> Min TIL (Today I Learned) för detta kmom är att enhetstester och testdriven utveckling kan hjälpa till att förbättra kvaliteten på din kod och göra den lättare att underhålla och utveckla på lång sikt. Det är också viktigt att prioritera kodtäckning och att skapa testbar kod för att uppnå detta.
+    </p>
+
     <h4>Kmom05</h4
     <p></p>
     <h4>Kmom06</h4

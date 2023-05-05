@@ -43,7 +43,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Controller\\Card\\ScoreCalculator",
             "name": "ScoreCalculator",
-            "summary": "",
+            "summary": "A\u0020class\u0020for\u0020calculating\u0020the\u0020score\u0020of\u0020a\u0020given\u0020array\u0020of\u0020cards",
             "url": "classes/Controller-Card-ScoreCalculator.html"
         },                {
             "fqsen": "\\Controller\\Card\\ScoreCalculator\u003A\u003AcalculateScore\u0028\u0029",
@@ -53,107 +53,107 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame",
             "name": "BlackjackGame",
-            "summary": "",
+            "summary": "Class\u0020BlackjackGame\u0020represents\u0020a\u0020game\u0020of\u0020Blackjack.\u0020The\u0020class\u0020manages\u0020the\u0020game\u0020state,\u0020player\u0020and\u0020dealer\u0020hands,\u0020chips,\u0020bets,\u0020and\u0020scoring.",
             "url": "classes/Controller-Card-BlackjackGame.html"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AresetGame\u0028\u0029",
             "name": "resetGame",
-            "summary": "",
+            "summary": "Reset\u0020the\u0020game\u0020state,\u0020including\u0020player\u0020and\u0020dealer\u0020hands,\u0020the\u0020current\u0020turn,\u0020current\u0020bet,\u0020pot,\u0020winner,\u0020and\u0020game\u0020over\u0020flag.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_resetGame"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AgetPlayerCards\u0028\u0029",
             "name": "getPlayerCards",
-            "summary": "",
+            "summary": "Returns\u0020an\u0020array\u0020of\u0020player\u0027s\u0020cards.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_getPlayerCards"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AgetDealerCards\u0028\u0029",
             "name": "getDealerCards",
-            "summary": "",
+            "summary": "Returns\u0020an\u0020array\u0020of\u0020dealer\u0027s\u0020cards.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_getDealerCards"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AgetPlayerChips\u0028\u0029",
             "name": "getPlayerChips",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020number\u0020of\u0020chips\u0020the\u0020player\u0020has.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_getPlayerChips"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AgetDealerChips\u0028\u0029",
             "name": "getDealerChips",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020number\u0020of\u0020chips\u0020the\u0020dealer\u0020has.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_getDealerChips"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AgetCurrentBet\u0028\u0029",
             "name": "getCurrentBet",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020current\u0020bet\u0020amount.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_getCurrentBet"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor\u0020for\u0020the\u0020class.",
             "url": "classes/Controller-Card-BlackjackGame.html#method___construct"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AstartGame\u0028\u0029",
             "name": "startGame",
-            "summary": "",
+            "summary": "Starts\u0020the\u0020game\u0020by\u0020shuffling\u0020the\u0020deck\u0020and\u0020dealing\u0020cards\u0020to\u0020the\u0020player\u0020and\u0020dealer.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_startGame"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AgetPlayerScore\u0028\u0029",
             "name": "getPlayerScore",
-            "summary": "",
+            "summary": "Calculates\u0020and\u0020returns\u0020the\u0020score\u0020of\u0020the\u0020player\u0027s\u0020hand.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_getPlayerScore"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AgetDealerScore\u0028\u0029",
             "name": "getDealerScore",
-            "summary": "",
+            "summary": "Calculates\u0020and\u0020returns\u0020the\u0020score\u0020of\u0020the\u0020dealer\u0027s\u0020hand,\u0020showing\u0020only\u0020the\u0020first\u0020card.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_getDealerScore"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AisPlayerTurn\u0028\u0029",
             "name": "isPlayerTurn",
-            "summary": "",
+            "summary": "Determines\u0020if\u0020it\u0020is\u0020currently\u0020the\u0020player\u0027s\u0020turn.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_isPlayerTurn"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AisGameOver\u0028\u0029",
             "name": "isGameOver",
-            "summary": "",
+            "summary": "Determines\u0020if\u0020the\u0020game\u0020is\u0020over.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_isGameOver"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AplaceBet\u0028\u0029",
             "name": "placeBet",
-            "summary": "",
+            "summary": "Places\u0020a\u0020bet\u0020for\u0020the\u0020current\u0020round\u0020and\u0020updates\u0020the\u0020pot\u0020and\u0020player\/dealer\u0020chip\u0020counts.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_placeBet"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AplayerWins\u0028\u0029",
             "name": "playerWins",
-            "summary": "",
+            "summary": "Handles\u0020the\u0020case\u0020when\u0020the\u0020player\u0020wins.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_playerWins"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AdealerWins\u0028\u0029",
             "name": "dealerWins",
-            "summary": "",
+            "summary": "Handles\u0020the\u0020case\u0020when\u0020the\u0020dealer\u0020wins.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_dealerWins"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003Atie\u0028\u0029",
             "name": "tie",
-            "summary": "",
+            "summary": "Handles\u0020the\u0020case\u0020when\u0020there\u0020is\u0020a\u0020tie.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_tie"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AplayerHit\u0028\u0029",
             "name": "playerHit",
-            "summary": "",
+            "summary": "Handles\u0020the\u0020logic\u0020when\u0020the\u0020player\u0020chooses\u0020to\u0020hit.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_playerHit"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AplayerStand\u0028\u0029",
             "name": "playerStand",
-            "summary": "",
+            "summary": "Handles\u0020the\u0020logic\u0020when\u0020the\u0020player\u0020chooses\u0020to\u0020stand.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_playerStand"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AdealerPlay\u0028\u0029",
             "name": "dealerPlay",
-            "summary": "",
+            "summary": "Plays\u0020the\u0020dealer\u0027s\u0020turn.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_dealerPlay"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AgetWinner\u0028\u0029",
             "name": "getWinner",
-            "summary": "",
+            "summary": "Determines\u0020the\u0020winner\u0020of\u0020the\u0020game.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_getWinner"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003A\u0024deck",
@@ -228,22 +228,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Controller\\Card\\BaseCard\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Create\u0020a\u0020new\u0020instance\u0020of\u0020a\u0020card\u0020with\u0020a\u0020given\u0020value\u0020and\u0020suit.",
             "url": "classes/Controller-Card-BaseCard.html#method___construct"
         },                {
             "fqsen": "\\Controller\\Card\\BaseCard\u003A\u003AgetValue\u0028\u0029",
             "name": "getValue",
-            "summary": "",
+            "summary": "Get\u0020the\u0020numerical\u0020or\u0020string\u0020value\u0020of\u0020the\u0020card.",
             "url": "classes/Controller-Card-BaseCard.html#method_getValue"
         },                {
             "fqsen": "\\Controller\\Card\\BaseCard\u003A\u003AgetSuit\u0028\u0029",
             "name": "getSuit",
-            "summary": "",
+            "summary": "Get\u0020the\u0020suit\u0020of\u0020the\u0020card.",
             "url": "classes/Controller-Card-BaseCard.html#method_getSuit"
         },                {
             "fqsen": "\\Controller\\Card\\BaseCard\u003A\u003AgetImagePath\u0028\u0029",
             "name": "getImagePath",
-            "summary": "",
+            "summary": "Get\u0020the\u0020path\u0020to\u0020the\u0020image\u0020file\u0020for\u0020the\u0020card.",
             "url": "classes/Controller-Card-BaseCard.html#method_getImagePath"
         },                {
             "fqsen": "\\Controller\\Card\\BaseCard\u003A\u003A\u0024value",
@@ -263,28 +263,38 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Controller\\Card\\Deck\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Create\u0020a\u0020new\u0020deck\u0020of\u0020cards\u0020with\u0020all\u002052\u0020cards.",
             "url": "classes/Controller-Card-Deck.html#method___construct"
         },                {
             "fqsen": "\\Controller\\Card\\Deck\u003A\u003Ashuffle\u0028\u0029",
             "name": "shuffle",
-            "summary": "",
+            "summary": "Shuffle\u0020the\u0020deck\u0020of\u0020cards.",
             "url": "classes/Controller-Card-Deck.html#method_shuffle"
         },                {
             "fqsen": "\\Controller\\Card\\Deck\u003A\u003AdealCard\u0028\u0029",
             "name": "dealCard",
-            "summary": "",
+            "summary": "Deal\u0020a\u0020card\u0020from\u0020the\u0020top\u0020of\u0020the\u0020deck.",
             "url": "classes/Controller-Card-Deck.html#method_dealCard"
         },                {
             "fqsen": "\\Controller\\Card\\Deck\u003A\u003AgetAllCards\u0028\u0029",
             "name": "getAllCards",
-            "summary": "",
+            "summary": "Deal\u0020All\u0020cards\u0020from\u0020the\u0020deck",
             "url": "classes/Controller-Card-Deck.html#method_getAllCards"
         },                {
             "fqsen": "\\Controller\\Card\\Deck\u003A\u003AcountCards\u0028\u0029",
             "name": "countCards",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020number\u0020of\u0020cards\u0020in\u0020the\u0020deck.",
             "url": "classes/Controller-Card-Deck.html#method_countCards"
+        },                {
+            "fqsen": "\\Controller\\Card\\Deck\u003A\u003AdealCardManually\u0028\u0029",
+            "name": "dealCardManually",
+            "summary": "Deals\u0020a\u0020card\u0020from\u0020the\u0020deck\u0020at\u0020the\u0020specified\u0020index.",
+            "url": "classes/Controller-Card-Deck.html#method_dealCardManually"
+        },                {
+            "fqsen": "\\Controller\\Card\\Deck\u003A\u003AdealSpecificCard\u0028\u0029",
+            "name": "dealSpecificCard",
+            "summary": "Deals\u0020specific\u0020card.",
+            "url": "classes/Controller-Card-Deck.html#method_dealSpecificCard"
         },                {
             "fqsen": "\\Controller\\Card\\Deck\u003A\u003A\u0024cards",
             "name": "cards",
@@ -305,31 +315,6 @@ Search.appendIndex(
             "name": "getSuit",
             "summary": "",
             "url": "classes/Controller-Card-Card.html#method_getSuit"
-        },                {
-            "fqsen": "\\Controller\\Dice\\Dice",
-            "name": "Dice",
-            "summary": "",
-            "url": "classes/Controller-Dice-Dice.html"
-        },                {
-            "fqsen": "\\Controller\\Dice\\Dice\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/Controller-Dice-Dice.html#method___construct"
-        },                {
-            "fqsen": "\\Controller\\Dice\\Dice\u003A\u003Aroll\u0028\u0029",
-            "name": "roll",
-            "summary": "",
-            "url": "classes/Controller-Dice-Dice.html#method_roll"
-        },                {
-            "fqsen": "\\Controller\\Dice\\Dice\u003A\u003AgetAsString\u0028\u0029",
-            "name": "getAsString",
-            "summary": "",
-            "url": "classes/Controller-Dice-Dice.html#method_getAsString"
-        },                {
-            "fqsen": "\\Controller\\Dice\\Dice\u003A\u003A\u0024value",
-            "name": "value",
-            "summary": "",
-            "url": "classes/Controller-Dice-Dice.html#property_value"
         },                {
             "fqsen": "\\App\\Controller\\LuckyControllerTwig",
             "name": "LuckyControllerTwig",
@@ -586,6 +571,31 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Controller-Card-AIPlayer.html#property_cards"
         },                {
+            "fqsen": "\\App\\Dice\\Dice",
+            "name": "Dice",
+            "summary": "",
+            "url": "classes/App-Dice-Dice.html"
+        },                {
+            "fqsen": "\\App\\Dice\\Dice\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Dice-Dice.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Dice\\Dice\u003A\u003Aroll\u0028\u0029",
+            "name": "roll",
+            "summary": "",
+            "url": "classes/App-Dice-Dice.html#method_roll"
+        },                {
+            "fqsen": "\\App\\Dice\\Dice\u003A\u003AgetAsString\u0028\u0029",
+            "name": "getAsString",
+            "summary": "",
+            "url": "classes/App-Dice-Dice.html#method_getAsString"
+        },                {
+            "fqsen": "\\App\\Dice\\Dice\u003A\u003A\u0024value",
+            "name": "value",
+            "summary": "",
+            "url": "classes/App-Dice-Dice.html#property_value"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -611,9 +621,9 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/controller.html"
         },                {
-            "fqsen": "\\Controller\\Dice",
+            "fqsen": "\\App\\Dice",
             "name": "Dice",
             "summary": "",
-            "url": "namespaces/controller-dice.html"
+            "url": "namespaces/app-dice.html"
         }            ]
 );
