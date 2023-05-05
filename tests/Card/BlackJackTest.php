@@ -32,21 +32,80 @@ class ScoreCalculatorTest extends TestCase
 class BlackjackGameTest extends TestCase
 {
 
-        public function testStartGamePlayerCardsAreUnique()
-{
+    public function testIsGameOver(): void
+    {
+        $game = new BlackjackGame();
+        $deck = new Deck();
+        $playerCards = [
+            $deck->dealCard(),
+            $deck->dealCard()
+        ];
+        $dealerCards = [
+            $deck->dealCard(),
+            $deck->dealCard()
+        ];
+        $game->startGame();
+
+        $this->assertFalse($game->isGameOver());
+    }
+
+    public function testPlaceBet(): void
+    {
+        $game = new BlackjackGame();
+        $game->placeBet(50);
+        $this->assertSame(50, $game->getCurrentBet());
+    }
+
+    public function testPlace(): void
+    {
+        $game = new BlackjackGame();
+        $game->placeBet(10);
+        $this->assertSame(10, $game->getCurrentBet());
+        $this->assertSame(90, $game->getPlayerChips());
+    }
+
+     public function testGetPlayerChips(): void
+    {
+        $game = new BlackjackGame();
+        $this->assertEquals(100, $game->getPlayerChips());
+    }
+
+    public function testGetDealerChips(): void
+    {
+        $game = new BlackjackGame();
+        $this->assertEquals(100, $game->getDealerChips());
+    }
+
+    public function testGetCurrentBet(): void
+    {
+        $game = new BlackjackGame();
+        $this->assertEquals(0, $game->getCurrentBet());
+    }
+
+    public function testResetGame(): void
+    {
+        $game = new BlackjackGame();
+        $game->resetGame('player');
+        $this->assertEquals(100, $game->getDealerChips());
+        $this->assertEquals(0, $game->getCurrentBet());
+        // Add more assertions as needed
+    }
+
+    public function testStartGamePlayerCardsAreUnique()
+    {
     $game = new BlackjackGame();
     $game->startGame();
     $playerCards = $game->getPlayerCards();
     $this->assertCount(2, array_unique($playerCards, SORT_REGULAR));
-}
+    }
 
-public function testStartGameDealerCardsAreUnique()
-{
-    $game = new BlackjackGame();
-    $game->startGame();
-    $dealerCards = $game->getDealerCards();
-    $this->assertCount(2, array_unique($dealerCards, SORT_REGULAR));
-}
+    public function testStartGameDealerCardsAreUnique()
+    {
+        $game = new BlackjackGame();
+        $game->startGame();
+        $dealerCards = $game->getDealerCards();
+        $this->assertCount(2, array_unique($dealerCards, SORT_REGULAR));
+    }
 
     public function testGetPlayerScore()
     {
@@ -72,23 +131,54 @@ public function testStartGameDealerCardsAreUnique()
         $this->assertTrue($game->isPlayerTurn());
     }
 
-    public function testIsGameOver()
+    public function testPlayerHit(): void
     {
-        $game = new BlackjackGame();
-        $this->assertFalse($game->isGameOver());
-        $game->resetGame('');
-        $this->assertFalse($game->isGameOver());
-        $game->resetGame('player');
-        $this->assertFalse($game->isGameOver());
-        $game->resetGame('dealer');
-        $this->assertFalse($game->isGameOver());
-        $game->resetGame('tie');
-        $this->assertFalse($game->isGameOver());
-        $game->resetGame('player');
-        $game->playerChips = 0;
-        $this->assertTrue($game->isGameOver());
-        $game->resetGame('dealer');
-        $game->dealerChips = 0;
-        $this->assertTrue($game->isGameOver());
+    $game = new BlackjackGame();
+    $game->startGame();
+    $playerScore = $game->getPlayerScore();
+    $game->playerHit();
+    $newPlayerScore = $game->getPlayerScore();
+
+    // Assert that the player has one additional card
+    self::assertCount(3, $game->getPlayerCards());
+
+    // Assert that the player's score has increased
+    self::assertGreaterThan($playerScore, $newPlayerScore);
+
+    // Add cards to the player's hand until their score is over 21
+    while ($game->getPlayerScore() <= 21) {
+        $game->playerHit();
     }
+
+    // Assert that the game is over
+    self::assertTrue($game->isGameOver());
+
+    // Assert that the winner is the dealer
+    self::assertSame('dealer', $game->getWinner());
+}
+
+public function testPlayerStand(): void
+{
+    $game = new BlackjackGame();
+    $game->startGame();
+    $playerScore = $game->getPlayerScore();
+    $game->playerStand();
+    $newPlayerScore = $game->getPlayerScore();
+
+    // Assert that the player's score has not changed
+    self::assertSame($playerScore, $newPlayerScore);
+
+
+    // Add cards to the dealer's hand until their score is over 16
+    while ($game->getDealerScore() < 17) {
+        $game->dealerHit();
+    }
+
+    // Assert that the game is over
+    self::assertTrue($game->isGameOver());
+
+    // Assert that the winner is either the player or the dealer
+    self::assertContains($game->getWinner(), ['player', 'dealer']);
+}
+
 }

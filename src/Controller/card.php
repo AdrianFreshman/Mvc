@@ -101,6 +101,27 @@ class Deck
     {
         return count($this->cards);
     }
+
+    public function dealCardManually(int $index): ?BaseCard
+    {
+        if (empty($this->cards) || $index < 0 || $index >= count($this->cards)) {
+            return null; // If the deck is empty or the index is out of bounds, return null
+        }
+        return array_splice($this->cards, $index, 1)[0];
+    }
+
+    /**
+     * @param int|string $value The value of the card to search for
+     * @param string $suit The suit of the card to search for
+     * @return BaseCard|null The found card or null if not found
+     */
+    public function dealSpecificCard($value, string $suit): ?BaseCard
+    {
+        foreach ($this->cards as $index => $card) {
+            if ($card->getValue() === $value && $card->getSuit() === $suit) {
+                return $this->dealCardManually($index); // Use the existing function to deal the card
+            }
+        }
+        return null; // Card not found
+    }
 }
-
-

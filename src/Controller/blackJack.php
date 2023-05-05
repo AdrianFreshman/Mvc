@@ -96,6 +96,7 @@ class BlackjackGame
     {
         return $this->currentBet;
     }
+    
 
     public function __construct(int $startingChips = 100)
     {
@@ -152,6 +153,7 @@ class BlackjackGame
     {
         return $this->gameOver;
     }
+
 
     public function placeBet(int $amount)
     {

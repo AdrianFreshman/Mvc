@@ -85,4 +85,21 @@ public function testDealCardMethodReturnsNullWhenDeckIsEmpty(): void
         $deck->dealCard();
         $this->assertEquals(51, $deck->countCards());
     }
+
+   public function testDealSpecificCardMethodReturnsCorrectCard(): void
+    {
+        $deck = new Deck();
+        $deck->shuffle();
+
+        // Pick a random card in the deck
+        $randomCard = $deck->getAllCards()[rand(0, 51)];
+        $value = $randomCard->getValue();
+        $suit = $randomCard->getSuit();
+
+        $returnedCard = $deck->dealSpecificCard($value, $suit);
+
+        $this->assertInstanceOf(Card::class, $returnedCard);
+        $this->assertEquals($value, $returnedCard->getValue());
+        $this->assertEquals($suit, $returnedCard->getSuit());
+    }
 }
