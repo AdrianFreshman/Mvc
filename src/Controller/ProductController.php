@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\Product;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\ProductRepository;
@@ -45,7 +46,7 @@ class ProductController extends AbstractController
         $products = $productRepository
             ->findAll();
 
-    $response = $this->json($products);
+        $response = $this->json($products);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
@@ -62,11 +63,11 @@ class ProductController extends AbstractController
             ->find($id);
 
         $response = $this->json($product);
-            $response->setEncodingOptions(
-                $response->getEncodingOptions() | JSON_PRETTY_PRINT
-            );
-            return $response;
-}
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
 
     // #[Route('/product/delete/{id}', name: 'product_delete_by_id')]
     // public function deleteProductById(

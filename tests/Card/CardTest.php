@@ -86,20 +86,17 @@ public function testDealCardMethodReturnsNullWhenDeckIsEmpty(): void
         $this->assertEquals(51, $deck->countCards());
     }
 
-   public function testDealSpecificCardMethodReturnsCorrectCard(): void
+    public function testDealCardManuallyMethodRemovesCardFromDeckAtIndex(): void
     {
         $deck = new Deck();
-        $deck->shuffle();
+        $this->assertEquals(52, $deck->countCards());
 
-        // Pick a random card in the deck
-        $randomCard = $deck->getAllCards()[rand(0, 51)];
-        $value = $randomCard->getValue();
-        $suit = $randomCard->getSuit();
+        $card = $deck->dealCardManually(0);
+        $this->assertInstanceOf(Card::class, $card);
+        $this->assertEquals(51, $deck->countCards());
 
-        $returnedCard = $deck->dealSpecificCard($value, $suit);
-
-        $this->assertInstanceOf(Card::class, $returnedCard);
-        $this->assertEquals($value, $returnedCard->getValue());
-        $this->assertEquals($suit, $returnedCard->getSuit());
+        $card = $deck->dealCardManually(5);
+        $this->assertInstanceOf(Card::class, $card);
+        $this->assertEquals(50, $deck->countCards());
     }
 }

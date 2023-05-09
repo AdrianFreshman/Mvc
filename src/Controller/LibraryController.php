@@ -15,8 +15,21 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use App\Repository\LibraryRepository;
 
 
+/**
+ * Class LibraryController
+ *
+ * @package App\Controller
+ */
 class LibraryController extends AbstractController
 {
+
+    /**
+     * Renders the index page of the library.
+     *
+     * @return Response The rendered response.
+     *
+     * @Route('/library', name='app_library')
+     */
     #[Route('/library', name: 'app_library')]
     public function index(): Response
     {
@@ -25,6 +38,17 @@ class LibraryController extends AbstractController
         ]);
     }
 
+
+    /** Creates a new book in the library.
+     *
+     * @param Request                $request        The HTTP request.
+     * @param EntityManagerInterface $entityManager The entity manager.
+     * @param SluggerInterface       $slugger        The slugger service.
+     *
+     * @return Response The rendered response or a redirect response.
+     *
+     * @Route('/book/create', name='book_create', methods={'GET', 'POST'})
+     */
     #[Route('/book/create', name: 'book_create', methods: ['GET', 'POST'])]
     public function createBook(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
@@ -38,23 +62,23 @@ class LibraryController extends AbstractController
             $book->setISBN($isbn);
             $book->setAuthor($author);
 
-        $image = $request->files->get('image');
-        if ($image instanceof UploadedFile) {
-            $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-            $safeFilename = $slugger->slug($originalFilename);
-            $newFilename = $safeFilename . '.' . $image->guessExtension();
+            $image = $request->files->get('image');
+            if ($image instanceof UploadedFile) {
+                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '.' . $image->guessExtension();
 
-            try {
-                $image->move(
-                    $this->getParameter('upload_directory'),
-                    $newFilename
-                );
-            } catch (FileException $e) {
-                // Handle the exception if necessary
+                try {
+                    $image->move(
+                        $this->getParameter('upload_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // Handle the exception if necessary
+                }
+
+                $book->setImage($newFilename);
             }
-
-            $book->setImage($newFilename);
-        }
             // Handle image upload if applicable
 
             $entityManager->persist($book);
@@ -68,6 +92,15 @@ class LibraryController extends AbstractController
         return $this->render('create.html.twig');
     }
 
+    /**
+     * Shows all books in the library.
+     *
+     * @param LibraryRepository $libraryRepository The library repository.
+     *
+     * @return Response The rendered response.
+     *
+     * @Route('/book/show/all', name='book_show_all', methods={'GET'})
+     */
     #[Route('/book/show/all', name: 'book_show_all', methods: ['GET'])]
     public function showAllBooks(LibraryRepository $libraryRepository): Response
     {
@@ -77,6 +110,15 @@ class LibraryController extends AbstractController
         return $this->render('show_all.html.twig', ['books' => $books]);
     }
 
+    /**
+     * Shows details of a specific book.
+     *
+     * @param Library $book The book entity.
+     *
+     * @return Response The rendered response.
+     *
+     * @Route('/book/show/{id}', name='book_show', methods={'GET'})
+     */
     #[Route('/book/show/{id}', name: 'book_show', methods: ['GET'])]
     public function showBook(Library $book): Response
     {
@@ -84,7 +126,17 @@ class LibraryController extends AbstractController
         return $this->render('show.html.twig', ['book' => $book]);
     }
 
-
+    /**
+     * Deletes a book from the library by its ID.
+     *
+     * @param LibraryRepository      $libraryRepository The library repository.
+     * @param EntityManagerInterface $entityManager     The entity manager.
+     * @param int                    $id                 The book ID.
+     *
+     * @return Response The redirect response.
+     *
+     * @Route('/book/delete/{id}', name='book_delete')
+     */
     #[Route('/book/delete/{id}', name: 'book_delete')]
     public function deleteBookById(
         LibraryRepository $libraryRepository,
@@ -105,9 +157,21 @@ class LibraryController extends AbstractController
         return $this->redirectToRoute('book_show_all');
     }
 
-
+    /**
+     * Updates a book in the library.
+     *
+     * @param Request                $request           The HTTP request.
+     * @param EntityManagerInterface $entityManager    The entity manager.
+     * @param LibraryRepository      $libraryRepository The library repository.
+     * @param int                    $id                The book ID.
+     * @param SluggerInterface       $slugger           The slugger service.
+     *
+     * @return Response The rendered response or a redirect response.
+     *
+     * @Route('/book/update/{id}', name='book_update', methods={'GET', 'POST'})
+     */
     #[Route('/book/update/{id}', name: 'book_update', methods: ['GET', 'POST'])]
-    public function updateBook(Request $request, EntityManagerInterface $entityManager, LibraryRepository $libraryRepository, int $id,SluggerInterface $slugger): Response
+    public function updateBook(Request $request, EntityManagerInterface $entityManager, LibraryRepository $libraryRepository, int $id, SluggerInterface $slugger): Response
     {
         $book = $libraryRepository->find($id);
 
@@ -150,8 +214,18 @@ class LibraryController extends AbstractController
 
         // Render the book update form
         return $this->render('update.html.twig', ['book' => $book]);
-    }
+    }   
 
+
+    /**
+     * Resets the library database.
+     *
+     * @param EntityManagerInterface $entityManager The entity manager.
+     *
+     * @return Response The redirect response.
+     *
+     * @Route('/library/reset', name='library_reset')
+     */
     #[Route('/library/reset', name: 'library_reset')]
     public function resetDatabase(EntityManagerInterface $entityManager): Response
     {

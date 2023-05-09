@@ -16,7 +16,6 @@ use App\Entity\Library;
 
 class ApiController extends AbstractController
 {
-
     #[Route('/api/library/books', name: 'api_library_books')]
     public function getAllBooks(LibraryRepository $libraryRepository): JsonResponse
     {
