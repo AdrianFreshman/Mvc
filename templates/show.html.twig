@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Book Details{% endblock %}
+
+{% block body %}
+    <h1>{{ book.title }}</h1>
+    <p>ISBN: {{ book.isbn }}</p>
+    <p>Author: {{ book.author }}</p>
+    <img src="{{ asset('img/' ~ book.image) }}" alt="{{ book.title }}">
+
+    <a href="{{ path('book_show_all') }}">Back to Book List</a>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All Books{% endblock %}
+
+{% block body %}
+    <h1>All Books</h1>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>ISBN</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+        {% for book in books %}
+            <tr>
+                <td><a href="{{ path('book_show', {'id': book.id}) }}">{{ book.title }}</a></td>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.author }}</td>
+                 <td><img src="{{ asset('img/' ~ book.image) }}" alt="{{ book.title }}"></td>
+                <td>
+                    <a href="{{ path('book_delete', {'id': book.id}) }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
