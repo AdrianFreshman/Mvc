@@ -2,11 +2,40 @@
 
 {% block title %}Book Details{% endblock %}
 
-{% block body %}
-    <h1>{{ book.title }}</h1>
-    <p>ISBN: {{ book.isbn }}</p>
-    <p>Author: {{ book.author }}</p>
-    <img src="{{ asset('img/' ~ book.image) }}" alt="{{ book.title }}">
 
-    <a href="{{ path('book_show_all') }}">Back to Book List</a>
+{% block body %}
+<h1>Selected Book</h1>
+
+    <div class="navbar">
+        <a href="{{ path('book_show_all') }}" class="nav-link">All Books</a>
+        <a href="{{ path('book_create') }}" class="nav-link">Add Book</a>
+        <a href="{{ path('library_reset') }}" class="nav-link">Reset Database</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>ISBN</th>
+            <th>Author</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.author }}</td>
+            <td><img src="{{ asset('img/' ~ book.image) }}" alt="{{ book.title }}"></td>
+            <td>
+                <div>
+                    <a href="{{ path('book_update', {'id': book.id}) }}">Update Book Details</a>
+                </div>
+                <div>
+                        <a href="{{ path('book_delete', {'id': book.id}) }}">Delete</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div>
+    <a href="{{ path('book_show_all') }}" class="back-link">Back to Book List</a>
+    </div>
 {% endblock %}

@@ -11,9 +11,51 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\LibraryRepository;
+use App\Entity\Library;
 
 class ApiController extends AbstractController
 {
+
+    #[Route('/api/library/books', name: 'api_library_books')]
+    public function getAllBooks(LibraryRepository $libraryRepository): JsonResponse
+    {
+        $books = $libraryRepository->findAll();
+
+        $response = [];
+        foreach ($books as $book) {
+            $response[] = [
+                'id' => $book->getId(),
+                'title' => $book->getTitle(),
+                'isbn' => $book->getISBN(),
+                'author' => $book->getAuthor(),
+                'image' => $book->getImage(),
+            ];
+        }
+
+        return $this->json($response);
+    }
+
+    #[Route('/api/library/book/{isbn}', name: 'api_library_isbn')]
+    public function getBookByISBN(string $isbn, LibraryRepository $libraryRepository): JsonResponse
+    {
+        $book = $libraryRepository->findOneBy(['isbn' => $isbn]);
+
+        if (!$book) {
+            throw $this->createNotFoundException('Book not found.');
+        }
+
+        $response = [
+            'id' => $book->getId(),
+            'title' => $book->getTitle(),
+            'isbn' => $book->getISBN(),
+            'author' => $book->getAuthor(),
+            'image' => $book->getImage(),
+        ];
+
+        return $this->json($response);
+    }
+
     #[Route("/api", name: "api_landing")]
     public function apiLanding(): Response
     {
@@ -45,6 +87,14 @@ class ApiController extends AbstractController
             'game_state' => [
                 'url' => '/api/game',
                 'description' => 'Returns game state of blackjack'
+            ],
+            'api_library_books' => [
+            'url' => '/api/library/books',
+            'description' => 'Returns all books in the library in JSON format.'
+            ],
+            'api_library_isbn' => [
+                'url' => '/api/library/book/{isbn}',
+                'description' => 'Returns a book from the library based on its ISBN number.',
             ]
         ];
 

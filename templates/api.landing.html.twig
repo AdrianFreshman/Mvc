@@ -11,6 +11,8 @@
             '{{ path(name, {'players': 0, 'cards': 0}) }}'
         {% elseif name == 'draw_multiple' %}
             '{{ path(name, {'number': 1}) }}'
+        {% elseif name == 'api_library_isbn' %}
+        '{{ path(name, {'isbn': '345555'}) }}'
         {% else %}
             '{{ path(name) }}'
         {% endif %}">

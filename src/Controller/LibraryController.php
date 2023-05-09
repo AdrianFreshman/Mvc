@@ -104,4 +104,64 @@ class LibraryController extends AbstractController
 
         return $this->redirectToRoute('book_show_all');
     }
+
+
+    #[Route('/book/update/{id}', name: 'book_update', methods: ['GET', 'POST'])]
+    public function updateBook(Request $request, EntityManagerInterface $entityManager, LibraryRepository $libraryRepository, int $id,SluggerInterface $slugger): Response
+    {
+        $book = $libraryRepository->find($id);
+
+        if (!$book) {
+            throw $this->createNotFoundException('No book found for id '.$id);
+        }
+
+        if ($request->isMethod('POST')) {
+            $title = $request->request->get('title');
+            $isbn = $request->request->get('isbn');
+            $author = $request->request->get('author');
+
+            $book->setTitle($title);
+            $book->setISBN($isbn);
+            $book->setAuthor($author);
+
+            $image = $request->files->get('image');
+            if ($image instanceof UploadedFile) {
+                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '.' . $image->guessExtension();
+
+                try {
+                    $image->move(
+                        $this->getParameter('upload_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // Handle the exception if necessary
+                }
+
+                $book->setImage($newFilename);
+            }
+
+            $entityManager->flush();
+
+            // Redirect to book details page or display success message
+            return $this->redirectToRoute('book_show', ['id' => $book->getId()]);
+        }
+
+        // Render the book update form
+        return $this->render('update.html.twig', ['book' => $book]);
+    }
+
+    #[Route('/library/reset', name: 'library_reset')]
+    public function resetDatabase(EntityManagerInterface $entityManager): Response
+    {
+        $connection = $entityManager->getConnection();
+        $platform = $connection->getDatabasePlatform();
+
+        $connection->executeStatement($platform->getTruncateTableSQL('library', true /* whether to cascade */));
+
+        // Add code to reset other tables if needed
+
+        return $this->redirectToRoute('book_show_all');
+    }
 }

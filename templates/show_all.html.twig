@@ -5,11 +5,18 @@
 {% block body %}
     <h1>All Books</h1>
 
+    <div class="navbar">
+        <a href="{{ path('book_show_all') }}" class="nav-link">All Books</a>
+        <a href="{{ path('book_create') }}" class="nav-link">Add Book</a>
+        <a href="{{ path('library_reset') }}" class="nav-link">Reset Database</a>
+    </div>
+
     <table>
         <tr>
-            <th>Title</th>
+            <th>Title(Click for details)</th>
             <th>ISBN</th>
             <th>Author</th>
+            <th>Image</th>
             <th>Actions</th>
         </tr>
         {% for book in books %}
@@ -19,7 +26,12 @@
                 <td>{{ book.author }}</td>
                  <td><img src="{{ asset('img/' ~ book.image) }}" alt="{{ book.title }}"></td>
                 <td>
-                    <a href="{{ path('book_delete', {'id': book.id}) }}">Delete</a>
+                     <div>
+                        <a href="{{ path('book_update', {'id': book.id}) }}">Update Book Details</a>
+                    </div>
+                    <div>
+                        <a href="{{ path('book_delete', {'id': book.id}) }}">Delete</a>
+                    </div>
                 </td>
             </tr>
         {% endfor %}

@@ -17,4 +17,12 @@
         <li>Your template at <code><a href="{{ '/home/adriandedorson/dbwebb-kurser/mvc/me/report/templates/library/index.html.twig'|file_link(0) }}">templates/library/index.html.twig</a></code></li>
     </ul>
 </div>
+<h1>Here you can choose of these option to enter the Library navigation experience </h1>
+ <div class="navbar">
+        <a href="{{ path('book_show_all') }}" class="nav-link">All Books</a>
+        <a href="{{ path('book_create') }}" class="nav-link">Add Book</a>
+        <a href="{{ path('library_reset') }}" class="nav-link">Reset Database</a>
+    </div>
+
+
 {% endblock %}
