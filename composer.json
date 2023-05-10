@@ -99,6 +99,7 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
+        "phpmetrics": "tools/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json",
         "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
         "phpdoc": "tools/phpdoc/phpdoc",
         "csfix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src",
