@@ -24,8 +24,9 @@
     </testsuites>
 
     <coverage processUncoveredFiles="true">
-        <include>
-            <directory suffix=".php">src/Controller</directory>
+          <include>
+        <file>src/Controller/card.php</file>
+        <file>src/Controller/blackJack.php</file>
         </include>
 
         <report>
