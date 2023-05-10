@@ -9,16 +9,15 @@ build:
         my-tests:
             environment:
                 php:
-                    version: 8.1
+                    version: 8.2.5
         analysis:
             tests:
                 override:
                     - php-scrutinizer-run
     tests:
         override:
-            -
-                # command: "composer phpunit"
-                command: "XDEBUG_MODE=coverage vendor/bin/phpunit"
-                coverage:
-                    file: "build/coverage.clover"
-                    format: "php-clover"
+            - # command: "composer phpunit"
+              command: "XDEBUG_MODE=coverage vendor/bin/phpunit"
+              coverage:
+                  file: "build/coverage.clover"
+                  format: "php-clover"
