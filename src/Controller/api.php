@@ -172,7 +172,6 @@ public function getGameState(SessionInterface $session): JsonResponse
             if ($card) {
                 $cards[] = $card;
             }
-            break;
         }
 
         $session->set('deck', $deck);

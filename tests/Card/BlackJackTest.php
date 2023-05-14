@@ -148,12 +148,6 @@ public function testPlayerHit(): void
 
         // Assert that the winner is the dealer
         self::assertSame('dealer', $game->getWinner());
-    } else {
-        // Otherwise, add cards to the dealer's hand until their score is greater than or equal to the player's score
-        while ($game->getDealerScore() < $game->getPlayerScore()) {
-            $game->dealerHit();
-        }
-
         // If the dealer's score is over 21, player wins
         if ($game->getDealerScore() > 21) {
             // Assert that the game is over

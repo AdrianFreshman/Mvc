@@ -47,7 +47,7 @@ class LibraryController extends AbstractController
             $image = $request->files->get('image');
             if ($image instanceof UploadedFile) {
                 $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
+                $safeFilename = $slugger->slug((string) $originalFilename);
                 $newFilename = $safeFilename . '.' . $image->guessExtension();
 
                 try {
