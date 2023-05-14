@@ -18,10 +18,10 @@ class ScoreCalculator
         $aceCount = 0;
         foreach ($cards as $card) {
             $value = $card->getValue();
-            if ($value === Card::KING || $value === Card::QUEEN || $value === Card::KNIGHT) {
+            if ($value === 'King' || $value === 'Queen' || $value === 'Knight') {
                 $score += 10;
             }
-            if ($value === Card::ACE) {
+            if ($value === 'Ace') {
                 $score += 11;
                 $aceCount++;
             }
@@ -29,6 +29,7 @@ class ScoreCalculator
                 $score += $value;
             }
         }
+        // Handle the case where there are aces and the score is over 21
         while ($score > 21 && $aceCount > 0) {
             $score -= 10;
             $aceCount--;
