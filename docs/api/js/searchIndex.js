@@ -18,8 +18,28 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AresetGame\u0028\u0029",
             "name": "resetGame",
-            "summary": "Reset\u0020the\u0020game\u0020state,\u0020including\u0020player\u0020and\u0020dealer\u0020hands,\u0020the\u0020current\u0020turn,\u0020current\u0020bet,\u0020pot,\u0020winner,\u0020and\u0020game\u0020over\u0020flag.",
+            "summary": "Resets\u0020the\u0020game\u0020state\u0020after\u0020each\u0020round.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_resetGame"
+        },                {
+            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AupdateChipCounts\u0028\u0029",
+            "name": "updateChipCounts",
+            "summary": "Updates\u0020the\u0020chip\u0020counts\u0020based\u0020on\u0020the\u0020winner\u0020of\u0020the\u0020round.",
+            "url": "classes/Controller-Card-BlackjackGame.html#method_updateChipCounts"
+        },                {
+            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AresetGameState\u0028\u0029",
+            "name": "resetGameState",
+            "summary": "Resets\u0020the\u0020game\u0020state\u0020for\u0020a\u0020new\u0020round.",
+            "url": "classes/Controller-Card-BlackjackGame.html#method_resetGameState"
+        },                {
+            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AresetGameSettings\u0028\u0029",
+            "name": "resetGameSettings",
+            "summary": "Resets\u0020the\u0020game\u0020settings\u0020after\u0020reaching\u0020the\u0020maximum\u0020number\u0020of\u0020rounds.",
+            "url": "classes/Controller-Card-BlackjackGame.html#method_resetGameSettings"
+        },                {
+            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AcheckGameOver\u0028\u0029",
+            "name": "checkGameOver",
+            "summary": "",
+            "url": "classes/Controller-Card-BlackjackGame.html#method_checkGameOver"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AgetPlayerCards\u0028\u0029",
             "name": "getPlayerCards",
@@ -416,6 +436,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-LuckyControllerTwig.html#method_playBlackjack"
         },                {
+            "fqsen": "\\App\\Controller\\LuckyControllerTwig\u003A\u003Ametrics\u0028\u0029",
+            "name": "metrics",
+            "summary": "",
+            "url": "classes/App-Controller-LuckyControllerTwig.html#method_metrics"
+        },                {
             "fqsen": "\\App\\Controller\\PageController",
             "name": "PageController",
             "summary": "",
@@ -661,16 +686,6 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html"
         },                {
-            "fqsen": "\\Controller\\Card",
-            "name": "Card",
-            "summary": "",
-            "url": "namespaces/controller-card.html"
-        },                {
-            "fqsen": "\\Controller",
-            "name": "Controller",
-            "summary": "",
-            "url": "namespaces/controller.html"
-        },                {
             "fqsen": "\\App\\Controller",
             "name": "Controller",
             "summary": "",
@@ -680,5 +695,15 @@ Search.appendIndex(
             "name": "App",
             "summary": "",
             "url": "namespaces/app.html"
+        },                {
+            "fqsen": "\\Controller\\Card",
+            "name": "Card",
+            "summary": "",
+            "url": "namespaces/controller-card.html"
+        },                {
+            "fqsen": "\\Controller",
+            "name": "Controller",
+            "summary": "",
+            "url": "namespaces/controller.html"
         }            ]
 );

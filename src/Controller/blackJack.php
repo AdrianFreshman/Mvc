@@ -18,10 +18,10 @@ class ScoreCalculator
         $aceCount = 0;
         foreach ($cards as $card) {
             $value = $card->getValue();
-            if ($value === 'King' || $value === 'Queen' || $value === 'Knight') {
+            if ($value === Card::KING || $value === Card::QUEEN || $value === Card::KNIGHT) {
                 $score += 10;
             }
-            if ($value === 'Ace') {
+            if ($value === Card::ACE) {
                 $score += 11;
                 $aceCount++;
             }
@@ -29,7 +29,6 @@ class ScoreCalculator
                 $score += $value;
             }
         }
-        // Handle the case where there are aces and the score is over 21
         while ($score > 21 && $aceCount > 0) {
             $score -= 10;
             $aceCount--;
@@ -37,8 +36,6 @@ class ScoreCalculator
         return $score;
     }
 }
-
-
 /**
 
 *Class BlackjackGame represents a game of Blackjack. The class manages the game state, player and dealer hands, chips, bets, and scoring.
@@ -84,32 +81,67 @@ class BlackjackGame
     private int $pot = 0; // The amount of chips that have been bet by both the player and the dealer
     private $winner;
     private ScoreCalculator $scoreCalculator;
+
+
     /**
-     * Reset the game state, including player and dealer hands, the current turn, current bet, pot, winner, and game over flag.
-     * The method also updates the player and dealer chip count based on the winner of the last round, and resets the game if the maximum number of rounds have been played.
-     * @param string $winner The winner of the last round, either 'player', 'dealer', or '' if there was a tie.
+     * Resets the game state after each round.
+     *
+     * @param string $winner The winner of the previous round ('player', 'dealer', or '').
      * @return void
-    */
+     */
     public function resetGame(string $winner): void
     {
+        $this->updateChipCounts($winner);
+        $this->resetGameState();
+        $this->roundsPlayed++;
+        if ($this->roundsPlayed >= $this->maxRounds) {
+            $this->resetGameSettings();
+        }
+        $this->checkGameOver();
+    }
 
+    /**
+     * Updates the chip counts based on the winner of the round.
+     *
+     * @param string $winner The winner of the round ('player', 'dealer', or '').
+     * @return void
+     */
+    private function updateChipCounts(string $winner): void
+    {
         $this->playerChips += ($winner === 'player') ? $this->pot : (($winner === 'dealer') ? 0 : $this->pot / 2);
         $this->dealerChips += ($winner === 'dealer') ? $this->pot : (($winner === 'player') ? 0 : $this->pot / 2);
+    }
 
+    /**
+     * Resets the game state for a new round.
+     *
+     * @return void
+     */
+    private function resetGameState(): void
+    {
         $this->playerCards = [];
         $this->dealerCards = [];
         $this->playerTurn = true;
         $this->gameOver = false;
         $this->currentBet = 0;
         $this->pot = 0;
-        $this->roundsPlayed++;
-        if ($this->roundsPlayed >= $this->maxRounds) {
-            $this->playerChips = 100;
-            $this->dealerChips = 100;
-            $this->roundsPlayed = 0;
-        }
-        $this->winner = ''; // Reset the winner property
+        $this->winner = '';
+    }
 
+    /**
+     * Resets the game settings after reaching the maximum number of rounds.
+     *
+     * @return void
+     */
+    private function resetGameSettings(): void
+    {
+        $this->playerChips = 100;
+        $this->dealerChips = 100;
+        $this->roundsPlayed = 0;
+    }
+
+    private function checkGameOver(): void
+    {
         if ($this->playerChips == 0 || $this->dealerChips == 0 || $this->dealerChips < 0) {
             $this->gameOver = true;
         }
