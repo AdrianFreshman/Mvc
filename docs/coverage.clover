@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1683747343">
-  <project timestamp="1683747343">
+<coverage generated="1684064995">
+  <project timestamp="1684064995">
     <file name="/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/blackJack.php">
       <class name="Controller\Card\ScoreCalculator" namespace="global">
         <metrics complexity="9" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="13" elements="16" coveredelements="13"/>
       </class>
       <class name="Controller\Card\BlackjackGame" namespace="global">
-        <metrics complexity="48" methods="20" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="98" coveredstatements="77" elements="118" coveredelements="90"/>
+        <metrics complexity="48" methods="20" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="98" coveredstatements="73" elements="118" coveredelements="85"/>
       </class>
       <line num="15" type="method" name="calculateScore" visibility="public" complexity="9" crap="9.19" count="10"/>
       <line num="17" type="stmt" count="10"/>
@@ -19,7 +19,7 @@
       <line num="25" type="stmt" count="3"/>
       <line num="26" type="stmt" count="3"/>
       <line num="28" type="stmt" count="9"/>
-      <line num="29" type="stmt" count="7"/>
+      <line num="29" type="stmt" count="8"/>
       <line num="33" type="stmt" count="10"/>
       <line num="34" type="stmt" count="0"/>
       <line num="35" type="stmt" count="0"/>
@@ -61,17 +61,17 @@
       <line num="174" type="stmt" count="16"/>
       <line num="175" type="stmt" count="16"/>
       <line num="176" type="stmt" count="16"/>
-      <line num="184" type="method" name="startGame" visibility="public" complexity="2" crap="2" count="8"/>
+      <line num="184" type="method" name="startGame" visibility="public" complexity="2" crap="2.11" count="8"/>
       <line num="188" type="stmt" count="8"/>
       <line num="189" type="stmt" count="8"/>
       <line num="190" type="stmt" count="8"/>
       <line num="191" type="stmt" count="8"/>
       <line num="192" type="stmt" count="8"/>
       <line num="195" type="stmt" count="8"/>
-      <line num="196" type="stmt" count="1"/>
-      <line num="197" type="stmt" count="1"/>
-      <line num="198" type="stmt" count="1"/>
-      <line num="202" type="stmt" count="7"/>
+      <line num="196" type="stmt" count="0"/>
+      <line num="197" type="stmt" count="0"/>
+      <line num="198" type="stmt" count="0"/>
+      <line num="202" type="stmt" count="8"/>
       <line num="210" type="method" name="getPlayerScore" visibility="public" complexity="1" crap="1" count="9"/>
       <line num="212" type="stmt" count="9"/>
       <line num="220" type="method" name="getDealerScore" visibility="public" complexity="1" crap="1" count="5"/>
@@ -121,28 +121,28 @@
       <line num="358" type="stmt" count="1"/>
       <line num="359" type="stmt" count="1"/>
       <line num="362" type="stmt" count="1"/>
-      <line num="363" type="stmt" count="1"/>
-      <line num="364" type="stmt" count="1"/>
-      <line num="365" type="stmt" count="1"/>
-      <line num="368" type="stmt" count="0"/>
-      <line num="369" type="stmt" count="0"/>
+      <line num="363" type="stmt" count="0"/>
+      <line num="364" type="stmt" count="0"/>
+      <line num="365" type="stmt" count="0"/>
+      <line num="368" type="stmt" count="1"/>
+      <line num="369" type="stmt" count="1"/>
       <line num="370" type="stmt" count="0"/>
-      <line num="372" type="stmt" count="0"/>
-      <line num="380" type="method" name="getWinner" visibility="public" complexity="6" crap="6.13" count="4"/>
+      <line num="372" type="stmt" count="1"/>
+      <line num="380" type="method" name="getWinner" visibility="public" complexity="6" crap="6.44" count="4"/>
       <line num="386" type="stmt" count="4"/>
       <line num="387" type="stmt" count="4"/>
       <line num="389" type="stmt" count="4"/>
       <line num="390" type="stmt" count="1"/>
       <line num="393" type="stmt" count="3"/>
-      <line num="394" type="stmt" count="1"/>
-      <line num="397" type="stmt" count="2"/>
+      <line num="394" type="stmt" count="0"/>
+      <line num="397" type="stmt" count="3"/>
       <line num="398" type="stmt" count="0"/>
-      <line num="401" type="stmt" count="2"/>
+      <line num="401" type="stmt" count="3"/>
       <line num="402" type="stmt" count="0"/>
-      <line num="405" type="stmt" count="2"/>
-      <line num="406" type="stmt" count="1"/>
+      <line num="405" type="stmt" count="3"/>
+      <line num="406" type="stmt" count="2"/>
       <line num="408" type="stmt" count="1"/>
-      <metrics loc="411" ncloc="262" classes="2" methods="21" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="113" coveredstatements="90" elements="134" coveredelements="103"/>
+      <metrics loc="411" ncloc="262" classes="2" methods="21" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="113" coveredstatements="86" elements="134" coveredelements="98"/>
     </file>
     <file name="/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/card.php">
       <class name="Controller\Card\BaseCard" namespace="global">
@@ -197,6 +197,6 @@
       <line num="169" type="stmt" count="0"/>
       <metrics loc="172" ncloc="104" classes="2" methods="11" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="33" coveredstatements="28" elements="44" coveredelements="37"/>
     </file>
-    <metrics files="2" loc="583" ncloc="366" classes="4" methods="32" coveredmethods="22" conditionals="0" coveredconditionals="0" statements="146" coveredstatements="118" elements="178" coveredelements="140"/>
+    <metrics files="2" loc="583" ncloc="366" classes="4" methods="32" coveredmethods="21" conditionals="0" coveredconditionals="0" statements="146" coveredstatements="114" elements="178" coveredelements="135"/>
   </project>
 </coverage>

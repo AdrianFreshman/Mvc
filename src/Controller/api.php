@@ -127,15 +127,15 @@ public function getGameState(SessionInterface $session): JsonResponse
 
     // Get the current game state
     $state = [
-       'playerScore' => $game->getPlayerScore(),
-       'dealerScore' => $game->getDealerScore(),
-       'playerCards' => $game->getPlayerCards(),
-       'dealerCards' => $game->getDealerCards(),
-       'playerTurn' => $game->isPlayerTurn(),
-       'gameOver' => $game->isGameOver(),
-       'winner' => $game->getWinner(),
-       'playerChips' => $game->getPlayerChips(),
-       'dealerChips' => $game->getDealerChips(),
+        'playerScore' => $game->getPlayerScore(),
+        'dealerScore' => $game->getDealerScore(),
+        'playerCards' => $game->getPlayerCards(),
+        'dealerCards' => $game->getDealerCards(),
+        'playerTurn' => $game->isPlayerTurn(),
+        'gameOver' => $game->isGameOver(),
+        'winner' => $game->getWinner(),
+        'playerChips' => $game->getPlayerChips(),
+        'dealerChips' => $game->getDealerChips(),
     ];
 
     return $this->json($state);

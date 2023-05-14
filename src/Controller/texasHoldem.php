@@ -58,8 +58,8 @@ class TexasHoldem
             $card1 = $this->deck->dealCard();
             $card2 = $this->deck->dealCard();
             $player->addCards($card1, $card2);
-            $card1ImagePath = $card1->getImagePath();
-            $card2ImagePath = $card2->getImagePath();
+            // $card1ImagePath = $card1->getImagePath();
+            // $card2ImagePath = $card2->getImagePath();
         }
 
         // Set the small blind

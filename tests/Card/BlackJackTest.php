@@ -35,15 +35,6 @@ class BlackjackGameTest extends TestCase
     public function testIsGameOver(): void
     {
         $game = new BlackjackGame();
-        $deck = new Deck();
-        $playerCards = [
-            $deck->dealCard(),
-            $deck->dealCard()
-        ];
-        $dealerCards = [
-            $deck->dealCard(),
-            $deck->dealCard()
-        ];
         $game->startGame();
 
         $this->assertFalse($game->isGameOver());

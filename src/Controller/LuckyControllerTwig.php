@@ -81,8 +81,10 @@ class LuckyControllerTwig extends AbstractController
     {
         $deck = $session->get('deck');
 
-        $deck = new Deck();
-        $session->set('deck', $deck);
+        if (!$deck) {
+            $deck = new Deck();
+            $session->set('deck', $deck);
+        }
 
         return $this->render('card.deck.html.twig', [
             'cards' => $deck->getAllCards(),
@@ -237,5 +239,11 @@ public function playBlackjack(SessionInterface $session, Request $request): Resp
     ];
 
     return $this->render('blackjack.html.twig', $data);
+}
+
+#[Route("/metrics", name: "metrics")]
+public function metrics(): Response
+{
+    return $this->render('metrics.html.twig');
 }
 }

@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2023-05-10 14:18:33        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2023-05-12 18:07:06        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -278,28 +278,16 @@
         "relations": []
     },
     {
-        "name": "\\Controller\\Card\\TexasHoldem",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\Player",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\AIPlayer",
-        "size": 3000,
-        "relations": [
-            "\\Controller\\Card\\Player"
-        ]
-    },
-    {
-        "name": "\\App\\Controller\\PageController",
+        "name": "\\App\\Controller\\LibraryController",
         "size": 3000,
         "relations": [
             "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
-            "\\Symfony\\Component\\HttpFoundation\\Response"
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\Doctrine\\ORM\\EntityManagerInterface",
+            "\\Symfony\\Component\\String\\Slugger\\SluggerInterface",
+            "\\App\\Entity\\Library",
+            "\\App\\Repository\\LibraryRepository"
         ]
     },
     {
@@ -313,21 +301,22 @@
         "relations": []
     },
     {
-        "name": "\\App\\Controller\\ApiController",
+        "name": "\\Symfony\\Component\\HttpFoundation\\Request",
         "size": 3000,
-        "relations": [
-            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
-            "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
-            "\\App\\Repository\\LibraryRepository",
-            "\\Symfony\\Component\\HttpFoundation\\Response",
-            "\\Controller\\Card\\Deck",
-            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
-            "\\Controller\\Card\\BlackjackGame",
-            "\\Symfony\\Component\\HttpFoundation\\Request"
-        ]
+        "relations": []
     },
     {
-        "name": "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
+        "name": "\\Doctrine\\ORM\\EntityManagerInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\String\\Slugger\\SluggerInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\Library",
         "size": 3000,
         "relations": []
     },
@@ -341,16 +330,6 @@
         ]
     },
     {
-        "name": "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Symfony\\Component\\HttpFoundation\\Request",
-        "size": 3000,
-        "relations": []
-    },
-    {
         "name": "\\App\\Controller\\LuckyControllerTwig",
         "size": 3000,
         "relations": [
@@ -361,6 +340,28 @@
             "\\Controller\\Card\\TexasHoldem",
             "\\Symfony\\Component\\HttpFoundation\\Request",
             "\\Controller\\Card\\BlackjackGame"
+        ]
+    },
+    {
+        "name": "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Controller\\Card\\TexasHoldem",
+        "size": 3000,
+        "relations": [
+            "\\Controller\\Card\\Player",
+            "\\Controller\\Card\\AIPlayer",
+            "\\Controller\\Card\\Deck"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\PageController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response"
         ]
     },
     {
@@ -394,30 +395,33 @@
         ]
     },
     {
-        "name": "\\App\\Controller\\LibraryController",
+        "name": "\\Controller\\Card\\Player",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Controller\\Card\\AIPlayer",
         "size": 3000,
         "relations": [
-            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
-            "\\Symfony\\Component\\HttpFoundation\\Response",
-            "\\Symfony\\Component\\HttpFoundation\\Request",
-            "\\Doctrine\\ORM\\EntityManagerInterface",
-            "\\Symfony\\Component\\String\\Slugger\\SluggerInterface",
-            "\\App\\Entity\\Library",
-            "\\App\\Repository\\LibraryRepository"
+            "\\Controller\\Card\\Player"
         ]
     },
     {
-        "name": "\\Doctrine\\ORM\\EntityManagerInterface",
+        "name": "\\App\\Controller\\ApiController",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
+            "\\App\\Repository\\LibraryRepository",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Controller\\Card\\Deck",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Controller\\Card\\BlackjackGame",
+            "\\Symfony\\Component\\HttpFoundation\\Request"
+        ]
     },
     {
-        "name": "\\Symfony\\Component\\String\\Slugger\\SluggerInterface",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Entity\\Library",
+        "name": "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
         "size": 3000,
         "relations": []
     },

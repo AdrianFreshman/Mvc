@@ -1,0 +1,186 @@
+{% extends "base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+
+<h1>Codestyle</h1>
+<p><strong>Codestyle:</strong> Codestyle refers to the conventions and guidelines followed when writing code. It includes aspects such as indentation, variable naming, spacing, and overall formatting. Following a consistent codestyle helps improve code readability and maintainability.</p>
+<p><strong>Result: The code follows a standardized codestyle, ensuring consistent formatting and readability.</strong></p>
+
+<h1>Coverage</h1>
+<p><strong>Coverage:</strong> Coverage measures the extent to which your code is tested by your test suite. It represents the percentage of code that is executed during tests. Higher code coverage indicates that more parts of your codebase are being tested, reducing the risk of undiscovered bugs.</p>
+<p><strong>Result: The code has a test coverage of 81%, indicating that a significant portion of the codebase is being tested.</strong></p>
+
+<h1>Complexity</h1>
+<p><strong>Complexity:</strong> Complexity measures the intricacy and difficulty of understanding code. It takes into account factors like the number of branches, loops, and conditionals within a codebase. Lower complexity leads to code that is easier to comprehend, debug, and maintain.</p>
+<p><strong>Result: The average cyclomatic complexity by class is 6.29, indicating moderate complexity and relatively easy maintainability.</strong></p>
+
+<h1>Cohesion</h1>
+<p><strong>Cohesion:</strong> Cohesion describes how closely the responsibilities of a module or class align with its purpose. High cohesion means that a module or class focuses on a single, well-defined task. It promotes code organization, reusability, and reduces the impact of changes in one part of the code on other parts.</p>
+<p><strong>Result: The classes in the codebase exhibit varying levels of cohesion, with some classes having higher cohesion than others. This indicates the need for further analysis and potential refactoring to improve code organization and maintainability.</strong></p>
+
+<h1>Coupling</h1>
+<p><strong>Coupling:</strong> Coupling refers to the level of interdependence between different modules or classes in a codebase. Low coupling indicates loose connections, where changes in one module have minimal impact on others. On the other hand, high coupling leads to tight dependencies, making the code more difficult to modify and maintain.</p>
+<p><strong>Result: The level of coupling between classes in the codebase is not specified in the provided information. It would require further analysis and examination to determine the level of coupling and its impact on code quality.</strong></p>
+
+<h1>CRAP</h1>
+<p><strong>CRAP:</strong> CRAP stands for Change Risk Anti-Patterns. It is a metric that evaluates the quality and maintainability of code based on its complexity and test coverage. A higher CRAP score indicates a higher risk of bugs and a need for refactoring to improve the code's maintainability.</p>
+<p><strong>Result: The average bugs by class is 0.18, indicating a relatively low CRAP score and a good level of maintainability.</strong></p>
+
+<h1>Phpmetrics Analysis</h1>
+
+<p>During the analysis of the "Phpmetrics" report for my code, I uncovered several noteworthy findings. The objective was to identify bottlenecks and weak points in the code, with a focus on areas that have the potential for improvement. To make the insights more visual, I have included representative images from the report.</p>
+
+<p>Here's a summary of the key findings:</p>
+
+<h2>Class Issues:</h2>
+
+<p>
+  <strong>Controller\Card\BlackjackGame</strong> - <em>Probably bugged (warning)</em><br>
+  This component is estimated to contain 0.52 bugs based on calculations involving the number of operators, operands, and cyclomatic complexity. I should check the unit tests for this class to ensure its reliability.
+</p>
+<a href="{{ asset('img/bug1.png') }}"><img src="{{ asset('img/bug1.png') }}" alt="bug1" style="width: 900px; display: block; margin: 10px auto 10px 20px;"></a>
+
+<p>
+  <strong>App\Controller\ApiController</strong> - <em>Blob / God object (error)</em><br>
+  This class violates the Single Responsibility Principle, with numerous public methods and a high lack of cohesion of methods (LCOM=3). I need to refactor it by reducing the number of methods and splitting it into sub-objects.
+</p>
+<a href="{{ asset('img/bug4.png') }}"><img src="{{ asset('img/bug4.png') }}" alt="bug2" style="width: 900px; display: block; margin: 10px auto 10px 20px;"></a>
+
+<p>
+  <strong>App\Controller\LuckyControllerTwig</strong> - <em>Probably bugged (warning)</em><br>
+  This component is estimated to contain 0.63 bugs. I should review the unit tests for this class to ensure its correctness.
+</p>
+<a href="{{ asset('img/bug3.png') }}"><img src="{{ asset('img/bug3.png') }}" alt="bug3" style="width: 900px; display: block; margin: 10px auto 10px 20px;"></a>
+
+<p>
+  <strong>App\Controller\LibraryController</strong> - <em>Probably bugged (warning)</em><br>
+  This component is estimated to contain 0.4 bugs. I should also check the unit tests for this class to ensure its reliability.
+</p>
+<a href="{{ asset('img/bug2.png') }}"><img src="{{ asset('img/bug2.png') }}" alt="bug4" style="width: 900px; display: block; margin: 10px auto 10px 20px;"></a>
+
+<h2>Package Violations:</h2>
+
+<p>
+  <strong>Controller\Card</strong> - <em>Stable Abstractions Principle (warning)</em><br>
+  This package violates the Stable Abstractions Principle by being instable and abstract. I should review and refine this package to adhere to coding principles.
+</p>
+<a href="{{ asset('img/bugmetricsUse.png') }}"><img src="{{ asset('img/bugmetricsUse.png') }}" alt="bugmetricsUse" style="width: 900px; display: block; margin: 10px auto 10px 20px;"></a>
+  
+<p>
+  <strong>App\Entity</strong> - <em>Stable Abstractions Principle (warning)</em><br>
+  This package also violates the Stable Abstractions Principle by being instable
+
+
+
+  <h1>Scrutinizer Analysis</h1>
+<p>During the analysis of the code using Scrutinizer, I obtained valuable insights regarding code quality and identified several issues. Here is a summary of the findings:</p>
+<p>
+  Test Coverage: The test coverage has increased to 81%, indicating improved code testing practices.
+</p>
+<p>
+  Code Rating: The code received a rating of 9.62, which is considered very good. This rating reflects the overall quality and maintainability of the codebase.
+</p>
+<p>
+  Issues: A total of 11 issues were found in the codebase, heres most of them:
+</p>
+<h2>Issues:</h2>
+<p>
+  <strong>src/Controller/api.php</strong> - <em>Unused Code</em><br>
+  This file contains unused code that can be safely removed.
+
+  <p>This code snippet suggests that the variable <code>$cards</code> is declared but never used. The Scrutinizer analysis flags it as unused code, indicating potential dead code that can be safely removed. This issue is categorized as <em>Major</em>.</p>
+<img src="{{ asset('img/majorbug.png') }}" alt="Major Bug Screenshot" width="900" style="display: block; margin-left: auto; margin-right: auto;">
+
+</p>
+<p>
+  <strong>src/Controller/LibraryController.php</strong> - <em>Bug</em><br>
+  There is a bug present in this file that needs to be addressed.
+</p>
+<p>
+  <strong>src/Controller/LuckyControllerTwig.php</strong> - <em>Unused Code</em><br>
+  This file contains unused code that can be safely removed.
+
+  <img src="{{ asset('img/unusedcode.png') }}" alt="Unused Code Screenshot" width="500" style="display: block; margin-left: auto; margin-right: auto;">
+</p>
+
+<p>
+  <strong>src/Controller/texasHoldem.php</strong> - <em>Unused Code</em><br>
+  This file contains unused code that can be safely removed.
+</p>
+
+<p>
+  <strong>tests/Card/BlackJackTest.php</strong> - <em>Bug, Unused Code</em><br>
+  This test file has both a bug and unused code that need to be addressed.
+
+    This code snippet suggests that there is a method call <code>dealerHit()</code> that does not exist in the <code>Controller\Card\BlackjackGame</code> class. The suggestion is to check if you meant to use the <code>dealerWins()</code> method instead. This bug is classified as a <em>Major</em> issue.
+</p>
+<img src="{{ asset('img/majorbug2.png') }}" alt="Major Bug Screenshot" width="900" style="display: block; margin-left: auto; margin-right: auto;">
+
+
+
+
+<h1>6Cs and Key findings</h1>
+
+<h1>Codestyle</h1>
+<p><strong>Codestyle:</strong> Codestyle refers to the conventions and guidelines followed when writing code. It includes aspects such as indentation, variable naming, spacing, and overall formatting. Following a consistent codestyle helps improve code readability and maintainability.</p>
+<p><strong>Result: The code follows a standardized codestyle, ensuring consistent formatting and readability.</strong></p>
+<h1>Coverage</h1>
+<p><strong>Coverage:</strong> Coverage measures the extent to which your code is tested by your test suite. It represents the percentage of code that is executed during tests. Higher code coverage indicates that more parts of your codebase are being tested, reducing the risk of undiscovered bugs.</p>
+<p><strong>Result: The code has a test coverage of 81%, indicating that a significant portion of the codebase is being tested.</strong></p>
+<h1>Complexity</h1>
+<p><strong>Complexity:</strong> Complexity measures the intricacy and difficulty of understanding code. It takes into account factors like the number of branches, loops, and conditionals within a codebase. Lower complexity leads to code that is easier to comprehend, debug, and maintain.</p>
+<p><strong>Result: The analysis identified some classes with moderate complexity. The <code>Controller\Card\BlackjackGame</code> class is estimated to contain 0.52 bugs based on calculations involving the number of operators, operands, and cyclomatic complexity. The <code>App\Controller\ApiController</code> class violates the Single Responsibility Principle and has a high lack of cohesion of methods (LCOM=3). These classes may require refactoring to reduce complexity and improve maintainability.</strong></p>
+<p><strong>Additional Metric: Average Cyclomatic Complexity by Class: 6.29</strong></p>
+<p>This metric provides an average measure of complexity per class. A value of 6.29 indicates moderate complexity, suggesting that the codebase is relatively comprehensible. However, it is important to keep an eye on individual classes with higher complexity to ensure they are manageable.</p>
+<h1>Cohesion</h1>
+<p><strong>Cohesion:</strong> Cohesion describes how closely the responsibilities of a module or class align with its purpose. High cohesion means that a module or class focuses on a single, well-defined task. It promotes code organization, reusability, and reduces the impact of changes in one part of the code on other parts.</p>
+<p><strong>Result: The analysis identified some classes with low cohesion. The <code>App\Controller\ApiController</code> class violates the Single Responsibility Principle and should be refactored by reducing the number of methods and splitting it into sub-objects. Refactoring is recommended to improve code organization and ensure each class has a clear and well-defined responsibility.</strong></p>
+<h1>Coupling</h1>
+<p><strong>Coupling:</strong> Coupling refers to the level of interdependence between different modules or classes in a codebase. Low coupling indicates loose connections, where changes in one module have minimal impact on others. On the other hand, high coupling leads to tight dependencies, making the code more difficult to modify and maintain.</p>
+<p><strong>Result: The level of coupling between classes in the codebase is not specified in the provided information. It would require further analysis and examination to determine the level of coupling and its impact on code quality.</strong></p>
+<h1>CRAP</h1>
+<p><strong>CRAP:</strong> CRAP stands for Change Risk Anti-Patterns. It is a metric that evaluates the quality and maintainability of code based on its complexity and test coverage. A higher CRAP score indicates a higher risk of bugs and a need for refactoring to improve the code's maintainability.</p>
+<p><strong>Result: The analysis identified some classes with potentially high CRAP scores. The <code>Controller\Card\BlackjackGame</code> class has a CRAP score of 30.5, indicating a higher risk of bugs and a need for refactoring to improve its maintainability.</strong></p>
+<p><strong>Additional Metric: Average CRAP Score by Class: 22.6</strong></p>
+<p>This metric provides an average measure of the CRAP score per class. A value of 22.6 indicates the overall maintainability of the codebase. It suggests that some classes may have higher risk levels and would benefit from refactoring to reduce complexity and improve maintainability.</p>
+<h1>Consistency</h1>
+<p><strong>Consistency:</strong> Consistency refers to the uniformity and coherence in code style, naming conventions, and overall structure across the codebase. A consistent codebase enhances readability and makes it easier for developers to understand and work collaboratively on the code.</p>
+<p><strong>Result: The code exhibits a consistent style and follows the defined coding conventions, contributing to better readability and maintainability.</strong></p>
+<h1>Comprehensibility</h1>
+<p><strong>Comprehensibility:</strong> Comprehensibility assesses how easily the code can be understood by developers, including its structure, naming, and documentation. Code that is comprehensible reduces the time required for new developers to onboard and minimizes the risk of misinterpretation and errors.</p>
+<p><strong>Result: The code analysis did not provide specific metrics related to comprehensibility. However, the standardized coding style, low complexity, and clear responsibilities of classes contribute to improved comprehensibility.</strong></p>
+
+<h1> Solutions <h1>
+
+<h1>Fixing Unused Code Errors</h1>
+<p><strong>Unused Code:</strong> Unused code refers to sections of code that are not utilized or executed during the program's runtime. These unused code segments can clutter the codebase and negatively impact its readability and maintainability. It is essential to identify and remove unused code to ensure a clean and efficient codebase.</p>
+<p><strong>Resolution: I will carefully review the identified files, such as "src/Controller/api.php," "src/Controller/LuckyControllerTwig.php," "src/Controller/texasHoldem.php," and "tests/Card/BlackJackTest.php," and remove the unused code segments. This action will enhance the codebase by eliminating unnecessary code and improving its overall quality.</strong></p>
+<h1>Codestyle</h1>
+<p><strong>Codestyle:</strong> Codestyle refers to the conventions and guidelines followed when writing code. It encompasses aspects such as indentation, variable naming, spacing, and overall formatting. Adhering to a consistent codestyle enhances code readability, maintainability, and collaboration with other developers.</p>
+<p><strong>Resolution: I will review the entire codebase and ensure that it follows a standardized codestyle. This involves addressing issues related to indentation, variable naming, spacing, and formatting discrepancies. By enforcing a consistent codestyle, the code will become more readable and easier to maintain.</strong></p>
+<h1>Coverage</h1>
+<p><strong>Coverage:</strong> Coverage measures the extent to which the code is tested by the test suite. It indicates the percentage of code executed during tests, enabling the detection of potential bugs and reducing the risk of undiscovered issues.</p>
+<p><strong>Resolution: While the current test coverage stands at 81%, I will aim to further increase it by identifying areas with low or no coverage. By writing additional tests for these areas, I will ensure comprehensive testing of the codebase, leading to improved code quality and reliability.</strong></p>
+<h1>Complexity</h1>
+<p><strong>Complexity:</strong> Complexity refers to the intricacy and difficulty of understanding code. It considers factors such as the number of branches, loops, and conditionals within the codebase. Reducing complexity enhances code comprehensibility, debuggability, and maintainability.</p>
+<p><strong>Resolution: I will analyze classes and methods with higher complexity, such as the <code>Controller\Card\BlackjackGame</code> class. By refactoring these classes, breaking down larger methods into smaller ones, and applying appropriate design patterns, I will reduce complexity and improve the code's maintainability and readability.</strong></p>
+<h1>Cohesion</h1>
+<p><strong>Cohesion:</strong> Cohesion describes how closely the responsibilities of a module or class align with its purpose. High cohesion means that a module or class focuses on a single, well-defined task. Improving cohesion promotes better code organization, reusability, and reduces the impact of changes on other parts of the codebase.</p>
+<p><strong>Resolution: I will identify classes or components with low cohesion, such as the <code>App\Controller\ApiController</code> class. By refactoring these classes and adhering to the Single Responsibility Principle, I will enhance their cohesion. This can involve splitting them into sub-objects or smaller classes, each with clear and distinct responsibilities.</strong></p>
+</p>
+
+
+<h1>My First Priorities: Fixing Unused Code, Increasing Coverage, and Resolving Package Errors</h1>
+<p>As I delve into the code, my immediate focus will be on tackling a few crucial areas that require attention. These areas include fixing unused code errors, increasing code coverage, and resolving package errors.</p>
+<p><strong>Fixing Unused Code Errors:</strong> The presence of unused code can clutter the codebase, making it difficult to maintain and comprehend. By identifying and removing unused code, we can significantly enhance the readability and overall quality of the code.</p>
+<p><strong>Increasing Code Coverage:</strong> One of my top priorities will be to expand the existing test suite and improve code coverage. By targeting areas with low coverage, we can identify potential bugs and ensure better code quality. This step will contribute to overall reliability and stability in the long run.</p>
+<p><strong>Resolving Package Errors:</strong> Addressing package errors is essential to ensure that the required dependencies are correctly installed and configured. By resolving these issues promptly, we can prevent any unforeseen errors or compatibility problems from arising. This proactive approach will help us maintain a stable and error-free codebase.</p>
+<p>While these areas will be my initial focus, I understand that larger-scale issues may emerge as I progress through the code. Rest assured that I will address those issues as they arise and prioritize them accordingly. By starting with these key areas, we will establish a solid foundation for further improvements and optimizations.</p>
+
+
+
+
+
+{% endblock %}

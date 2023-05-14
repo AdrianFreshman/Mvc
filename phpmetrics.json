@@ -1,10 +1,6 @@
 {
-    "includes": [
-        "src"
-    ],
-    "exclude": [
-      "test[s]?"
-    ],
+    "includes": ["src"],
+    "exclude": ["test[s]?"],
     "report": {
         "html": "docs/metrics"
     },
