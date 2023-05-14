@@ -37,6 +37,67 @@ class ScoreCalculator
         return $score;
     }
 }
+
+
+/**
+ * Class PlayerWinHandler
+ * Handles the case when the player wins.
+ */
+class PlayerWinHandler
+{
+    /**
+     * Handles the case when the player wins.
+     *
+     * @param BlackjackGame $game The Blackjack game instance.
+     * @return void
+     */
+    public function handle(BlackjackGame $game): void
+    {
+        $playerChips = $game->getPlayerChips();
+        $playerChips += $game->getCurrentBet() * 2;
+
+        $game->setGameOver(true);
+    }
+}
+
+/**
+ * Class DealerWinHandler
+ * Handles the case when the dealer wins.
+ */
+class DealerWinHandler
+{
+    /**
+     * Handles the case when the dealer wins.
+     *
+     * @param BlackjackGame $game The Blackjack game instance.
+     * @return void
+     */
+    public function handle(BlackjackGame $game): void
+    {
+        $dealerChips = $game->getDealerChips();
+        $dealerChips += $game->getCurrentBet() * 2;
+        $game->setGameOver(true);
+    }
+}
+
+/**
+ * Class TieHandler
+ * Handles the case when there is a tie.
+ */
+class TieHandler
+{
+    /**
+     * Handles the case when there is a tie.
+     *
+     * @param BlackjackGame $game The Blackjack game instance.
+     * @return void
+     */
+    public function handle(BlackjackGame $game): void
+    {
+        $game->setGameOver(true);
+    }
+}
+
 /**
 
 *Class BlackjackGame represents a game of Blackjack. The class manages the game state, player and dealer hands, chips, bets, and scoring.
@@ -82,71 +143,46 @@ class BlackjackGame
     private int $pot = 0; // The amount of chips that have been bet by both the player and the dealer
     private $winner;
     private ScoreCalculator $scoreCalculator;
-
-
+    private PlayerWinHandler $playerWinsHandler;
+    private DealerWinHandler $dealerWinsHandler;
+    private TieHandler $tieHandler;
     /**
-     * Resets the game state after each round.
-     *
-     * @param string $winner The winner of the previous round ('player', 'dealer', or '').
+     * Reset the game state, including player and dealer hands, the current turn, current bet, pot, winner, and game over flag.
+     * The method also updates the player and dealer chip count based on the winner of the last round, and resets the game if the maximum number of rounds have been played.
+     * @param string $winner The winner of the last round, either 'player', 'dealer', or '' if there was a tie.
      * @return void
-     */
+    */
     public function resetGame(string $winner): void
     {
-        $this->updateChipCounts($winner);
-        $this->resetGameState();
-        $this->roundsPlayed++;
-        if ($this->roundsPlayed >= $this->maxRounds) {
-            $this->resetGameSettings();
-        }
-        $this->checkGameOver();
-    }
 
-    /**
-     * Updates the chip counts based on the winner of the round.
-     *
-     * @param string $winner The winner of the round ('player', 'dealer', or '').
-     * @return void
-     */
-    private function updateChipCounts(string $winner): void
-    {
         $this->playerChips += ($winner === 'player') ? $this->pot : (($winner === 'dealer') ? 0 : $this->pot / 2);
         $this->dealerChips += ($winner === 'dealer') ? $this->pot : (($winner === 'player') ? 0 : $this->pot / 2);
-    }
 
-    /**
-     * Resets the game state for a new round.
-     *
-     * @return void
-     */
-    private function resetGameState(): void
-    {
         $this->playerCards = [];
         $this->dealerCards = [];
         $this->playerTurn = true;
         $this->gameOver = false;
         $this->currentBet = 0;
         $this->pot = 0;
-        $this->winner = '';
-    }
+        $this->roundsPlayed++;
+        if ($this->roundsPlayed >= $this->maxRounds) {
+            $this->playerChips = 100;
+            $this->dealerChips = 100;
+            $this->roundsPlayed = 0;
+        }
+        $this->winner = ''; // Reset the winner property
 
-    /**
-     * Resets the game settings after reaching the maximum number of rounds.
-     *
-     * @return void
-     */
-    private function resetGameSettings(): void
-    {
-        $this->playerChips = 100;
-        $this->dealerChips = 100;
-        $this->roundsPlayed = 0;
-    }
-
-    private function checkGameOver(): void
-    {
         if ($this->playerChips == 0 || $this->dealerChips == 0 || $this->dealerChips < 0) {
             $this->gameOver = true;
         }
     }
+
+    public function setGameOver(bool $gameOver): void
+    {
+        $this->gameOver = $gameOver;
+    }
+
+
     /**
      * Returns an array of player's cards.
      * @return array The player's cards.
@@ -207,6 +243,9 @@ class BlackjackGame
         $this->dealerChips = $startingChips;
         $this->currentBet = 0;
         $this->scoreCalculator = new ScoreCalculator();
+        $this->playerWinsHandler = new PlayerWinHandler();
+        $this->dealerWinsHandler = new DealerWinHandler();
+        $this->tieHandler = new TieHandler();
     }
 
     /**
@@ -293,63 +332,28 @@ class BlackjackGame
     }
 
     /**
-     * Handles the case when the player wins.
-     *
-     * @return void
-     */
-    private function playerWins(): void
-    {
-        $this->playerChips += $this->currentBet * 2; // Add the current bet to the player's chips
-        $this->gameOver = true;
-
-    }
-
-    /**
-     * Handles the case when the dealer wins.
-     *
-     * @return void
-     */
-    private function dealerWins(): void
-    {
-        $this->dealerChips += $this->currentBet * 2; // Add the current bet to the dealer's chips
-        $this->gameOver = true;
-
-    }
-
-    /**
-     * Handles the case when there is a tie.
-     *
-     * @return void
-     */
-    private function tie(): void
-    {
-        $this->gameOver = true;
-
-    }
-
-    /**
      * Handles the logic when the player chooses to hit.
      *
      * @return void
      */
     public function playerHit(): void
-    {
-        if (!$this->playerTurn || $this->gameOver) {
-            return;
-        }
+        {
+            if (!$this->playerTurn || $this->gameOver) {
+                return;
+            }
 
-        $this->playerCards[] = $this->deck->dealCard();
-        if ($this->getPlayerScore() > 21) {
-            $this->dealerWins();
-        }
+            $this->playerCards[] = $this->deck->dealCard();
+            if ($this->getPlayerScore() > 21) {
+                $this->dealerWinsHandler->handle($this);
+            }
 
-        // Check if the player has a blackjack and declare the winner if they do
-        if ($this->getPlayerScore() === 21) {
-            $this->gameOver = true;
-            $this->winner = 'player';
-            return;
+            // Check if the player has a blackjack and declare the winner if they do
+            if ($this->getPlayerScore() === 21) {
+                $this->gameOver = true;
+                $this->winner = 'player';
+                return;
+            }
         }
-    }
 
     /**
      * Handles the logic when the player chooses to stand.
@@ -369,16 +373,16 @@ class BlackjackGame
         }
 
         if ($this->getDealerScore() > 21 || $this->getDealerScore() < $this->getPlayerScore()) {
-            $this->playerWins();
+            $this->playerWinsHandler->handle($this);
             return;
         }
 
         if ($this->getDealerScore() > $this->getPlayerScore()) {
-            $this->dealerWins();
+            $this->dealerWinsHandler->handle($this);
             return;
         }
 
-        $this->tie();
+        $this->tieHandler->handle($this);
     }
 
     /**

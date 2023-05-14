@@ -11,6 +11,36 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Controller-Card-ScoreCalculator.html#method_calculateScore"
         },                {
+            "fqsen": "\\Controller\\Card\\PlayerWinHandler",
+            "name": "PlayerWinHandler",
+            "summary": "Class\u0020PlayerWinHandler\nHandles\u0020the\u0020case\u0020when\u0020the\u0020player\u0020wins.",
+            "url": "classes/Controller-Card-PlayerWinHandler.html"
+        },                {
+            "fqsen": "\\Controller\\Card\\PlayerWinHandler\u003A\u003Ahandle\u0028\u0029",
+            "name": "handle",
+            "summary": "Handles\u0020the\u0020case\u0020when\u0020the\u0020player\u0020wins.",
+            "url": "classes/Controller-Card-PlayerWinHandler.html#method_handle"
+        },                {
+            "fqsen": "\\Controller\\Card\\DealerWinHandler",
+            "name": "DealerWinHandler",
+            "summary": "Class\u0020DealerWinHandler\nHandles\u0020the\u0020case\u0020when\u0020the\u0020dealer\u0020wins.",
+            "url": "classes/Controller-Card-DealerWinHandler.html"
+        },                {
+            "fqsen": "\\Controller\\Card\\DealerWinHandler\u003A\u003Ahandle\u0028\u0029",
+            "name": "handle",
+            "summary": "Handles\u0020the\u0020case\u0020when\u0020the\u0020dealer\u0020wins.",
+            "url": "classes/Controller-Card-DealerWinHandler.html#method_handle"
+        },                {
+            "fqsen": "\\Controller\\Card\\TieHandler",
+            "name": "TieHandler",
+            "summary": "Class\u0020TieHandler\nHandles\u0020the\u0020case\u0020when\u0020there\u0020is\u0020a\u0020tie.",
+            "url": "classes/Controller-Card-TieHandler.html"
+        },                {
+            "fqsen": "\\Controller\\Card\\TieHandler\u003A\u003Ahandle\u0028\u0029",
+            "name": "handle",
+            "summary": "Handles\u0020the\u0020case\u0020when\u0020there\u0020is\u0020a\u0020tie.",
+            "url": "classes/Controller-Card-TieHandler.html#method_handle"
+        },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame",
             "name": "BlackjackGame",
             "summary": "Class\u0020BlackjackGame\u0020represents\u0020a\u0020game\u0020of\u0020Blackjack.\u0020The\u0020class\u0020manages\u0020the\u0020game\u0020state,\u0020player\u0020and\u0020dealer\u0020hands,\u0020chips,\u0020bets,\u0020and\u0020scoring.",
@@ -18,28 +48,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AresetGame\u0028\u0029",
             "name": "resetGame",
-            "summary": "Resets\u0020the\u0020game\u0020state\u0020after\u0020each\u0020round.",
+            "summary": "Reset\u0020the\u0020game\u0020state,\u0020including\u0020player\u0020and\u0020dealer\u0020hands,\u0020the\u0020current\u0020turn,\u0020current\u0020bet,\u0020pot,\u0020winner,\u0020and\u0020game\u0020over\u0020flag.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_resetGame"
         },                {
-            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AupdateChipCounts\u0028\u0029",
-            "name": "updateChipCounts",
-            "summary": "Updates\u0020the\u0020chip\u0020counts\u0020based\u0020on\u0020the\u0020winner\u0020of\u0020the\u0020round.",
-            "url": "classes/Controller-Card-BlackjackGame.html#method_updateChipCounts"
-        },                {
-            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AresetGameState\u0028\u0029",
-            "name": "resetGameState",
-            "summary": "Resets\u0020the\u0020game\u0020state\u0020for\u0020a\u0020new\u0020round.",
-            "url": "classes/Controller-Card-BlackjackGame.html#method_resetGameState"
-        },                {
-            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AresetGameSettings\u0028\u0029",
-            "name": "resetGameSettings",
-            "summary": "Resets\u0020the\u0020game\u0020settings\u0020after\u0020reaching\u0020the\u0020maximum\u0020number\u0020of\u0020rounds.",
-            "url": "classes/Controller-Card-BlackjackGame.html#method_resetGameSettings"
-        },                {
-            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AcheckGameOver\u0028\u0029",
-            "name": "checkGameOver",
+            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AsetGameOver\u0028\u0029",
+            "name": "setGameOver",
             "summary": "",
-            "url": "classes/Controller-Card-BlackjackGame.html#method_checkGameOver"
+            "url": "classes/Controller-Card-BlackjackGame.html#method_setGameOver"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AgetPlayerCards\u0028\u0029",
             "name": "getPlayerCards",
@@ -100,21 +115,6 @@ Search.appendIndex(
             "name": "placeBet",
             "summary": "Places\u0020a\u0020bet\u0020for\u0020the\u0020current\u0020round\u0020and\u0020updates\u0020the\u0020pot\u0020and\u0020player\/dealer\u0020chip\u0020counts.",
             "url": "classes/Controller-Card-BlackjackGame.html#method_placeBet"
-        },                {
-            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AplayerWins\u0028\u0029",
-            "name": "playerWins",
-            "summary": "Handles\u0020the\u0020case\u0020when\u0020the\u0020player\u0020wins.",
-            "url": "classes/Controller-Card-BlackjackGame.html#method_playerWins"
-        },                {
-            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AdealerWins\u0028\u0029",
-            "name": "dealerWins",
-            "summary": "Handles\u0020the\u0020case\u0020when\u0020the\u0020dealer\u0020wins.",
-            "url": "classes/Controller-Card-BlackjackGame.html#method_dealerWins"
-        },                {
-            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003Atie\u0028\u0029",
-            "name": "tie",
-            "summary": "Handles\u0020the\u0020case\u0020when\u0020there\u0020is\u0020a\u0020tie.",
-            "url": "classes/Controller-Card-BlackjackGame.html#method_tie"
         },                {
             "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003AplayerHit\u0028\u0029",
             "name": "playerHit",
@@ -200,6 +200,21 @@ Search.appendIndex(
             "name": "scoreCalculator",
             "summary": "",
             "url": "classes/Controller-Card-BlackjackGame.html#property_scoreCalculator"
+        },                {
+            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003A\u0024playerWinsHandler",
+            "name": "playerWinsHandler",
+            "summary": "",
+            "url": "classes/Controller-Card-BlackjackGame.html#property_playerWinsHandler"
+        },                {
+            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003A\u0024dealerWinsHandler",
+            "name": "dealerWinsHandler",
+            "summary": "",
+            "url": "classes/Controller-Card-BlackjackGame.html#property_dealerWinsHandler"
+        },                {
+            "fqsen": "\\Controller\\Card\\BlackjackGame\u003A\u003A\u0024tieHandler",
+            "name": "tieHandler",
+            "summary": "",
+            "url": "classes/Controller-Card-BlackjackGame.html#property_tieHandler"
         },                {
             "fqsen": "\\Controller\\Card\\BaseCard",
             "name": "BaseCard",
