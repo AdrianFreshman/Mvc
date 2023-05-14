@@ -360,29 +360,32 @@ class BlackjackGame
      * @return void
      */
     public function playerStand(): void
-    {
-        if (!$this->playerTurn || $this->gameOver) {
-            return;
-        }
-
-        $this->playerTurn = false;
-
-        while ($this->getDealerScore() < 17) {
-            $this->dealerCards[] = $this->deck->dealCard();
-        }
-
-        if ($this->getDealerScore() > 21 || $this->getDealerScore() < $this->getPlayerScore()) {
-            $this->playerWinsHandler->handle($this);
-            return;
-        }
-
-        if ($this->getDealerScore() > $this->getPlayerScore()) {
-            $this->dealerWinsHandler->handle($this);
-            return;
-        }
-
-        $this->tieHandler->handle($this);
+{
+    if (!$this->playerTurn || $this->gameOver) {
+        return;
     }
+
+    $this->playerTurn = false;
+
+    while ($this->getDealerScore() < 17) {
+        $this->dealerCards[] = $this->deck->dealCard();
+    }
+
+    $dealerScore = $this->getDealerScore();
+    $playerScore = $this->getPlayerScore();
+
+    if ($dealerScore > 21 || $playerScore > $dealerScore) {
+        $this->playerWinsHandler->handle($this);
+        return;
+    }
+
+    if ($dealerScore > $playerScore) {
+        $this->dealerWinsHandler->handle($this);
+        return;
+    }
+
+    $this->tieHandler->handle($this);
+}
 
 
 
