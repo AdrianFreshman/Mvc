@@ -200,6 +200,7 @@ public function playBlackjack(SessionInterface $session, Request $request): Resp
     if (!$game) {
         $game = new BlackjackGame();
         $session->set('blackjack_game', $game);
+        
     }
 
     switch ($action) {
