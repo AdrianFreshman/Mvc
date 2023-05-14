@@ -194,6 +194,57 @@ public function testPlayerStand(): void
     self::assertContains($winner, ['player', 'dealer',"It's a tie!"]);
 }
 
+public function testPlayerStand2(): void
+{
+    $game = new BlackjackGame();
+    $game->startGame();
+    $playerScore = $game->getPlayerScore();
+    $game->playerStand();
+    $newPlayerScore = $game->getPlayerScore();
+
+    // Assert that the player's score has not changed
+    self::assertSame($playerScore, $newPlayerScore);
+
+    // Assert that the game is over
+    self::assertTrue($game->isGameOver());
+
+    // Assert that the winner is either the player, the dealer, or a tie
+    $winner = $game->getWinner();
+    self::assertContains($winner, ['player', 'dealer', "It's a tie!"]);
+
+    // If the winner is the dealer, assert that the dealer score is greater than the player score
+    if ($winner === 'dealer') {
+        self::assertGreaterThan($game->getPlayerScore(), $game->getDealerScore());
+    }
+}
+
+public function testPlayerStand3(): void
+{
+    $game = new BlackjackGame();
+    $game->startGame();
+    $playerScore = $game->getPlayerScore();
+    $game->playerStand();
+    $newPlayerScore = $game->getPlayerScore();
+
+    // Assert that the player's score has not changed
+    self::assertSame($playerScore, $newPlayerScore);
+
+    // Assert that the game is over
+    self::assertTrue($game->isGameOver());
+
+    // Assert that the winner is either the player, the dealer, or a tie
+    $winner = $game->getWinner();
+    self::assertContains($winner, ['player', 'dealer', "It's a tie!"]);
+
+    // If the winner is the dealer, assert that the dealer score is less than or equal to 21
+    if ($winner === 'dealer') {
+        self::assertLessThanOrEqual(21, $game->getDealerScore());
+    } elseif ($winner === 'player') {
+        // If the winner is the player, assert that the player score is greater than the dealer score
+        self::assertGreaterThan($game->getDealerScore(), $game->getPlayerScore());
+    }
+}
+
 public function testDealerPlay(): void
 {
     // Create a new game and deck

@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2023-05-14 13:20:39        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2023-05-14 17:56:39        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -253,46 +253,6 @@
 
     var relations = [
     {
-        "name": "\\Controller\\Card\\BaseCard",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\Card",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\Deck",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\ScoreCalculator",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\PlayerWinHandler",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\BlackjackGame",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\DealerWinHandler",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\TieHandler",
-        "size": 3000,
-        "relations": []
-    },
-    {
         "name": "\\App\\Controller\\LibraryController",
         "size": 3000,
         "relations": [
@@ -363,12 +323,30 @@
         "relations": []
     },
     {
+        "name": "\\Controller\\Card\\Deck",
+        "size": 3000,
+        "relations": [
+            "\\Controller\\Card\\BaseCard"
+        ]
+    },
+    {
         "name": "\\Controller\\Card\\TexasHoldem",
         "size": 3000,
         "relations": [
             "\\Controller\\Card\\Player",
             "\\Controller\\Card\\AIPlayer",
             "\\Controller\\Card\\Deck"
+        ]
+    },
+    {
+        "name": "\\Controller\\Card\\BlackjackGame",
+        "size": 3000,
+        "relations": [
+            "\\Controller\\Card\\Deck",
+            "\\Controller\\Card\\ScoreCalculator",
+            "\\Controller\\Card\\PlayerWinHandler",
+            "\\Controller\\Card\\DealerWinHandler",
+            "\\Controller\\Card\\TieHandler"
         ]
     },
     {
@@ -422,12 +400,17 @@
         ]
     },
     {
+        "name": "\\Controller\\Card\\BaseCard",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\App\\Controller\\ApiController",
         "size": 3000,
         "relations": [
             "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
-            "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
             "\\App\\Repository\\LibraryRepository",
+            "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
             "\\Symfony\\Component\\HttpFoundation\\Response",
             "\\Controller\\Card\\Deck",
             "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
@@ -437,6 +420,31 @@
     },
     {
         "name": "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Controller\\Card\\ScoreCalculator",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Controller\\Card\\PlayerWinHandler",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Controller\\Card\\DealerWinHandler",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Controller\\Card\\TieHandler",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Controller\\Card\\Card",
         "size": 3000,
         "relations": []
     },

@@ -16,10 +16,17 @@ use App\Entity\Library;
 
 class ApiController extends AbstractController
 {
-    #[Route('/api/library/books', name: 'api_library_books')]
-    public function getAllBooks(LibraryRepository $libraryRepository): JsonResponse
+    private $libraryRepository;
+
+    public function __construct(LibraryRepository $libraryRepository)
     {
-        $books = $libraryRepository->findAll();
+        $this->libraryRepository = $libraryRepository;
+    }
+
+    #[Route('/api/library/books', name: 'api_library_books')]
+    public function getAllBooks(): JsonResponse
+    {
+        $books = $this->libraryRepository->findAll();
 
         $response = [];
         foreach ($books as $book) {
@@ -35,25 +42,25 @@ class ApiController extends AbstractController
         return $this->json($response);
     }
 
-    #[Route('/api/library/book/{isbn}', name: 'api_library_isbn')]
-    public function getBookByISBN(string $isbn, LibraryRepository $libraryRepository): JsonResponse
-    {
-        $book = $libraryRepository->findOneBy(['isbn' => $isbn]);
+        #[Route('/api/library/book/{isbn}', name: 'api_library_isbn')]
+        public function getBookByISBN(string $isbn): JsonResponse
+        {
+            $book = $this->libraryRepository->findOneBy(['isbn' => $isbn]);
 
-        if (!$book) {
-            throw $this->createNotFoundException('Book not found.');
+            if (!$book) {
+                throw $this->createNotFoundException('Book not found.');
+            }
+
+            $response = [
+                'id' => $book->getId(),
+                'title' => $book->getTitle(),
+                'isbn' => $book->getISBN(),
+                'author' => $book->getAuthor(),
+                'image' => $book->getImage(),
+            ];
+
+            return $this->json($response);
         }
-
-        $response = [
-            'id' => $book->getId(),
-            'title' => $book->getTitle(),
-            'isbn' => $book->getISBN(),
-            'author' => $book->getAuthor(),
-            'image' => $book->getImage(),
-        ];
-
-        return $this->json($response);
-    }
 
     #[Route("/api", name: "api_landing")]
     public function apiLanding(): Response
