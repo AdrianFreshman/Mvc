@@ -87,6 +87,13 @@ npm run build
 
 ```
 
+Have php 8.2.4 installed and then run
+
+```
+ php -S localhost:8888 -t public
+
+```
+
 ### php-cs-fixer
 
 ```
