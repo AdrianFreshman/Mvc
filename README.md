@@ -155,13 +155,7 @@ composer require phpmetrics/phpmetrics --dev
 
 ## Add to Scrutinizer
 
-There is an exercise showing you the details.
-
--   [Scrutinizer](https://github.com/dbwebb-se/mvc/tree/main/example/scrutinizer)
-
-Here is the fast track.
-
-Add the [config file](https://github.com/dbwebb-se/mvc/blob/main/example/scrutinizer/.scrutinizer.yml).
+Edit in the scrutinizer.yml what files to include
 
 ```
 curl -s https://raw.githubusercontent.com/dbwebb-se/mvc/main/example/scrutinizer/.scrutinizer.yml > .scrutinizer.yml
