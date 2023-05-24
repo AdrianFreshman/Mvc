@@ -79,6 +79,14 @@ npm install
 
 ```
 
+We need to run the build and its dependencies
+
+```
+
+npm run build
+
+```
+
 ### php-cs-fixer
 
 ```

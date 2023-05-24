@@ -178,7 +178,129 @@ För att skapa egen error hantering kan man använda verktyg som PHPStan som kan
 
     <h1>Krav 1,2,3,4</h1>
 
-    <p></p>
+    <p>För att uppfylla krav 1 har jag skapat en landningssida ("/proj") som syns i navbaren på report-sidan. Jag har också skapat en separat navbar för projektet som innehåller länkarna för projektet.<br><br>
+
+    För att uppfylla krav 2 har jag implementerat mitt projekt på webbplatsen under "/proj". Jag har valt ett fokus för mitt projekt och har skapat en sida ("/proj/about") som ger en kort introduktion till projektet och vad det handlar om.<br><br>
+
+    För att uppfylla krav 3 har jag modifierat utseendet på webbplatsen för att skilja det från report-sidan. Jag har skapat en "ny" stylesheet eller modifierat den befintliga för att ändra färg, typsnitt och utseende på header och footer.
+    <br><br>
+
+    För att uppfylla krav 4 har jag skapat ett JSON API till mitt projekt och presenterat det på sidan "/proj/api". API:et har 5 olika JSON routes, varav minst en är en POST route. Jag har också lagt till länkar/knappar på sidan för att testa API:et.<br><br>
+
+    I min kod har jag använt Symfony-komponenter och doctrine för att hantera routing, databasåtkomst och rendera sidor. Jag har också skapat olika controller-metoder för varje sida och har använt olika repository-klasser för att hämta och hantera data från databasen. Dessutom har jag skapat hjälparklasser för att formatera och manipulera data för visualisering. Jag har använt Twig-templatemotor för att rendera HTML-sidor och har skickat data till dessa sidor via render-metoden.
+
+    Sammanfattningsvis har jag implementerat en webbplats som uppfyller de angivna kraven genom att skapa landningssida, implementera projektet, modifiera utseendet, och skapa ett JSON API.</p>
+
+
+
+    <p> Jag kommer att gå igenom koden och förklara vad varje del gör.
+
+    Kontrollern är definierad som projectController och ärver från AbstractController i Symfony. Detta ger kontrollern tillgång till olika hjälpfunktioner och egenskaper som förenklar hanteringen av HTTP-anrop och renderingen av mallar.
+
+    I konstruktorn för projectController injiceras flera beroenden via beroendeinjektion (dependency injection), inklusive EntityManagerInterface och några hjälpklasser som EffektAvCovid19Helper, HelperBoende och UnemployementHelper. Dessa beroenden används senare i kontrollerns metoder.
+
+    Kontrollern har tre rutter definierade med #[Route]-attributet: project, projectApi och about.
+
+    Metoden project hanterar GET-anropet till /proj-routen och renderar en mall (vizualizer.landing.html.twig) som tar emot en array med länkar ($links) som data. Dessa länkar används för att skapa navigeringslänkar i mallen.
+
+    Metoden projectApi hanterar GET-anropet till /proj/api-routen och renderar en annan mall (vizualizer.landing2.html.twig) som tar emot en liknande array med länkar ($links) som data. Dessa länkar används för att visa olika API-endpoints.
+
+    Metoden about hanterar GET-anropet till /proj/about-routen och renderar en tredje mall (about.project.html.twig).
+
+    Det finns ytterligare tre rutter som hanterar olika visualiseringar av data: vizualizer, boendevizualizer och boendevizualizersecond.
+
+    Metoden vizualizer hanterar GET-anropet till /proj/vizualizer-routen och tar emot ett argument av typen EffektAvCovid19Repository. Inuti metoden rensar den befintliga datatabellen (EffektAvCovid19) och skapar en ny post i tabellen med hjälp av EffektAvCovid19Helper-klassen. Därefter hämtar den alla poster från tabellen och formatterar datan med hjälp av EffektAvCovid19Helper. Den renderar sedan en mall (show_all.statistics.html.twig) med den formaterade datan.
+
+    Metoderna boendevizualizer och boendevizualizersecond fungerar på liknande sätt som vizualizer, men de arbetar med BoendeRepository och HelperBoende för att hantera boendedata och rendera andra mallar (show_all.statistics2.html.twig).
+    
+    
+    Route: '/proj/unemployement'
+
+    Metod: GET
+    Funktion: Hämtar statistik om arbetslöshet från databasen och visar den i en HTML-mall.
+    Åtgärder:
+    Raderar alla befintliga poster i tabellen 'Unemployement' i databasen.
+    Skapar en array med arbetslöshetsdata.
+    Skapar en instans av hjälparklassen 'UnemployementHelper'.
+    Loopar igenom arbetslöshetsdatan och skapar och sparar nya 'Unemployement'-entiteter i databasen.
+    Hämtar data från databasen.
+    Formaterar datan med hjälp av hjälparklassen 'UnemployementHelper'.
+    Skickar tillbaka formatterad data till klienten och renderar den i en HTML-mall.
+    Route: '/proj/api/effekt_av_covid19'
+
+    Metod: GET
+    Funktion: Hämtar data om effekterna av Covid-19 från databasen och returnerar den som en JSON-respons.
+    Åtgärder:
+    Raderar alla befintliga poster i tabellen 'EffektAvCovid19' i databasen.
+    Skapar en ny 'EffektAvCovid19'-entitet och sparar den i databasen.
+    Hämtar data från databasen.
+    Formaterar datan med hjälp av en hjälparklass.
+    Skickar formatterad data som JSON-respons till klienten.
+    Route: '/proj/api/boende'
+
+    Metod: GET
+    Funktion: Hämtar boendedata från databasen och returnerar den som en JSON-respons.
+    Åtgärder:
+    Skapar en instans av hjälparklassen 'HelperBoende'.
+    Anropar en annan metod 'boendevizualizersecond' för att fylla tabellen med data.
+    Hämtar data från databasen.
+    Formaterar datan med hjälp av hjälparklassen 'HelperBoende'.
+    Skickar formatterad data som JSON-respons till klienten.
+    Route: '/proj/api/unemployment'
+
+    Metod: GET
+    Funktion: Hämtar arbetslöshetsdata från databasen och returnerar den som en JSON-respons.
+    Åtgärder:
+    Skapar en instans av hjälparklassen 'UnemployementHelper'.
+    Anropar en annan metod 'unemployementizualizersecond' för att fylla tabellen med data.
+    Hämtar data från databasen.
+    Formaterar datan med hjälp av hjälparklassen 'UnemployementHelper'.
+    Skickar formatterad data som JSON-respons till klienten.
+    Route: '/proj/api/covid19/{total_deaths}'
+
+    Metod: GET
+    Funktion: Hämtar data om Covid-19-dödsfall baserat på det totala antalet dödsfall och returnerar det som en JSON-respons.
+    Åtgärder:
+    Raderar alla befintliga poster i tabellen 'EffektAvCovid19' i databasen.
+    Skapar en ny 'EffektAvCovid19'-entitet och sparar den i databasen.
+    Hämtar data från databasen baserat på det totala antalet dödsfall.
+    Skapar en JSON-respons med information om antalet dödsfall och skickar tillbaka den till klienten.
+    Route: '/proj/api/covid19Female/{female_deaths}'
+
+    Metod: GET
+    Funktion: Hämtar data om Covid-19-dödsfall bland kvinnor baserat på antalet kvinnliga dödsfall och returnerar det som en JSON-respons.
+    Åtgärder:
+    Raderar alla befintliga poster i tabellen 'EffektAvCovid19' i databasen.
+    Skapar en ny 'EffektAvCovid19'-entitet och sparar den i databasen.
+    Hämtar data från databasen baserat på antalet kvinnliga dödsfall.
+    Skapar en JSON-respons med information om antalet dödsfall bland kvinnor och skickar tillbaka den till klienten.
+    Route: '/proj/api/boende/{Vecka}'
+
+    Metod: GET
+    Funktion: Hämtar boendedata från databasen baserat på en specifik vecka och returnerar det som en JSON-respons.
+    Åtgärder:
+    Skapar en instans av hjälparklassen 'HelperBoende'.
+    Anropar en annan metod 'boendevizualizersecond' för att fylla tabellen med data.
+    Hämtar data från databasen baserat på en specifik vecka.
+    Skapar en JSON-respons med boendedata för den specifika veckan och skickar tillbaka den till klienten.
+    Route: '/proj/api/boendeAgeRange/{ageRange}'
+
+    Metod: GET
+    Funktion: Hämtar arbetslöshetsdata från databasen baserat på en specifik åldersgrupp och returnerar det som en JSON-respons.
+    Åtgärder:
+    Skapar en instans av hjälparklassen 'UnemployementHelper'.
+    Anropar en annan metod 'unemployementizualizersecond' för att fylla tabellen med data.
+    Hämtar data från databasen baserat på en specifik åldersgrupp.
+    Skapar en JSON-respons med arbetslöshetsdata för den specifika åldersgruppen och skickar tillbaka den till klienten.
+    Route: '/proj/reset'
+
+    Metod: GET
+    Funktion: Återställer databasen genom att ta bort alla poster i tabellerna 'EffektAvCovid19', 'Boende' och 'Unemployement'.
+    Åtgärder:
+    Skapar en anslutning till databasen och erhåller databasplattformen.
+    Använder databasplattformen för att utföra SQL-kommandon för att rensa tabellerna 'EffektAvCovid19', 'Boende' och 'Unemployement'.
+    Returnerar en omdirigering till huvudsidan 'proj'.
+    Dessa rutter används för att hantera olika begäranden och svar inom en webbapplikation som tycks vara relaterade till statistik om arbetslöshet, boende och Covid-19-effekter. Det finns också åtgärder som hanterar rensning och återställning av databasen. Notera att det är svårt att ge en heltäckande förklaring utan ytterligare information om andra hjälparklasser och eventuella relationer till databasen och andra delar av koden.</p>
 
 
 {% endblock %}
