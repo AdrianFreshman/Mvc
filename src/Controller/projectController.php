@@ -463,6 +463,21 @@ public function getUnemployementApiBy(string $ageRange, UnemploymentRepository $
     return $this->json($response);
 }
 
+#[Route('/proj/reset', name: 'proj_reset')]
+    public function resetDatabase(EntityManagerInterface $entityManager): Response
+    {
+        $connection = $entityManager->getConnection();
+        $platform = $connection->getDatabasePlatform();
+
+        $connection->executeStatement($platform->getTruncateTableSQL(' effekt_av_covid19', true /* whether to cascade */));
+        $connection->executeStatement($platform->getTruncateTableSQL(' boende', true /* whether to cascade */));
+        $connection->executeStatement($platform->getTruncateTableSQL(' unemployement', true /* whether to cascade */));
+
+        // Add code to reset other tables if needed
+
+        return $this->redirectToRoute('proj');
+    }
+
 }
 
 
