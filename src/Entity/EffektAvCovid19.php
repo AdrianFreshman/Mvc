@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: EffektAvCovid19Repository::class)]
 class EffektAvCovid19
 {
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -110,9 +109,9 @@ class EffektAvCovid19
     }
 
     public function getTotal_deaths(): ?int
-{
-    return $this->total_deaths;
-}
+    {
+        return $this->total_deaths;
+    }
 
     public function setTotalDeaths(int $total_deaths): self
     {

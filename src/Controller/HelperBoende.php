@@ -9,7 +9,7 @@ use App\Entity\Boende;
  * @package App\Controller
  */
 class HelperBoende
-{   
+{
     /**
      * Sets data to the Boende entity.
      *

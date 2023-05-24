@@ -21,7 +21,6 @@ use App\Controller\UnemployementHelper;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class projectController extends AbstractController
-
 {
     private $entityManager;
     private $effektAvCovid19Helper;
@@ -29,7 +28,7 @@ class projectController extends AbstractController
     private $unemploymentHelper;
     // private $effektAvCovid19Repository;
 
-    public function __construct(EntityManagerInterface $entityManager, EffektAvCovid19Helper $effektAvCovid19Helper,HelperBoende $helperBoende,UnemployementHelper $unemploymentHelper,)
+    public function __construct(EntityManagerInterface $entityManager, EffektAvCovid19Helper $effektAvCovid19Helper, HelperBoende $helperBoende, UnemployementHelper $unemploymentHelper)
     {
         $this->entityManager = $entityManager;
         $this->effektAvCovid19Helper = $effektAvCovid19Helper;
@@ -62,8 +61,8 @@ class projectController extends AbstractController
 
             ];
 
-            return $this->render('vizualizer.landing.html.twig', [
-            'links' => $links,
+        return $this->render('vizualizer.landing.html.twig', [
+        'links' => $links,
     ]);
     }
 
@@ -142,7 +141,7 @@ class projectController extends AbstractController
 public function boendevizualizer(BoendeRepository $boendeRepository): Response
 {
     $this->entityManager->createQuery('DELETE FROM App\Entity\Boende')->execute();
-         // Set the data
+    // Set the data
     $data = [
         [1, 765.9, 982.8, 883.0, 768.9, 729.4],
         [2, 820.4, 923.7, 849.8, 743.6, 797.2],
@@ -199,7 +198,7 @@ public function boendevizualizer(BoendeRepository $boendeRepository): Response
         [53, 0, 0, 0, 0, 0],
     ];
 
-$helper = new HelperBoende(); // Create an instance of the HelperBoende class
+    $helper = new HelperBoende(); // Create an instance of the HelperBoende class
 
     foreach ($data as $item) {
         $entity = new Boende();
@@ -228,7 +227,7 @@ $helper = new HelperBoende(); // Create an instance of the HelperBoende class
 public function boendevizualizersecond(BoendeRepository $boendeRepository): Response
 {
     $this->entityManager->createQuery('DELETE FROM App\Entity\Boende')->execute();
-    
+
     // Set the data
     $data = [
     [1, 111.3, 118.5, 103.9, 131.7, 101.2],
@@ -286,7 +285,7 @@ public function boendevizualizersecond(BoendeRepository $boendeRepository): Resp
     [53, 0, 0, 0, 0, 0],
 ];
 
-$helper = new HelperBoende(); // Create an instance of the HelperBoende class
+    $helper = new HelperBoende(); // Create an instance of the HelperBoende class
 
     foreach ($data as $item) {
         $entity = new Boende();
@@ -315,7 +314,7 @@ $helper = new HelperBoende(); // Create an instance of the HelperBoende class
 public function unemployementizualizersecond(UnemploymentRepository $unenployementRepository): Response
 {
     $this->entityManager->createQuery('DELETE FROM App\Entity\Unemployement')->execute();
-    
+
     // Set the data
     $data = [
     ['15-19 år', 34.7, 37.1, 48.1],
@@ -390,7 +389,7 @@ public function getUnemploymentApi(UnemploymentRepository $unemploymentRepositor
 }
 
 #[Route("/proj/api/covid19/{total_deaths}", name: "api_total_deaths")]
-public function getEffektAvCovid19DataByTotalDeaths(int $total_deaths,EffektAvCovid19Repository $effektAvCovid19Repository): JsonResponse
+public function getEffektAvCovid19DataByTotalDeaths(int $total_deaths, EffektAvCovid19Repository $effektAvCovid19Repository): JsonResponse
 {
     $post = $effektAvCovid19Repository->findOneBy(['total_deaths' => $total_deaths]);
 
@@ -401,8 +400,8 @@ public function getEffektAvCovid19DataByTotalDeaths(int $total_deaths,EffektAvCo
     $response = [
                 'deaths' => $post->getTotal_deaths(),
             ];
-            return $this->json($response);
-        }
+    return $this->json($response);
+}
 
 
 
@@ -418,8 +417,8 @@ public function getEffektAvCovid19Datafemale_deaths(int $female_deaths, EffektAv
     $response = [
                 'deaths' => $post->getFemale_Deaths(),
             ];
-            return $this->json($response);
-        }
+    return $this->json($response);
+}
 
 #[Route("/proj/api/boende/{Vecka}", name: "api_boende_deaths_v")]
 public function getBoendeApiBy(int $Vecka, BoendeRepository $boendeRepository): JsonResponse
@@ -479,6 +478,3 @@ public function getUnemployementApiBy(string $ageRange, UnemploymentRepository $
     }
 
 }
-
-
-

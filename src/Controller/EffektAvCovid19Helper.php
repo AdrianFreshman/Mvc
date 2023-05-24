@@ -9,8 +9,7 @@ use App\Entity\EffektAvCovid19;
  * @package App\Controller
  */
 class EffektAvCovid19Helper
-{   
-
+{
     /**
      * Sets data to the EffektAvCovid19 entity.
      *
@@ -87,5 +86,3 @@ class EffektAvCovid19Helper
         return $formattedData;
     }
 }
-
-

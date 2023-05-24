@@ -9,7 +9,7 @@ use App\Entity\Unemployement;
  * @package App\Controller
  */
 class UnemployementHelper
-{   
+{
     /**
      * Sets data to the Unemployement entity.
      *
@@ -21,7 +21,7 @@ class UnemployementHelper
         $entity->setAgeRange($data[0]);
         $entity->setAge2018($data[1]);
         $entity->setAge2019($data[2]);
-        $entity->setAge2020($data[3]);        
+        $entity->setAge2020($data[3]);
     }
 
     /**
@@ -41,5 +41,3 @@ class UnemployementHelper
 
     }
 }
-
-

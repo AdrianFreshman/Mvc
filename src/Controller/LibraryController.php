@@ -65,7 +65,7 @@ class LibraryController extends AbstractController
             $entityManager->flush();
 
             // Redirect to book details page or display success message
-            return $this->redirectToRoute('book_show', ['id' => $book->getId()]);
+            return $this->redirectToRoute('book_show_all', ['id' => $book->getId()]);
         }
 
         // Render the book creation form

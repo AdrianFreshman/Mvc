@@ -5,109 +5,110 @@ namespace App\Controller;
 use Controller\Card\Card;
 use Controller\Card\Deck;
 use App\Controller\BlackjackGame;
-use App\Controller\ScoreCalculator;
-use App\Controller\PlayerWinHandler;
-use App\Controller\DealerWinHandler;
-use App\Controller\TieHandler;
 
-/**
-*
-*A class for calculating the score of a given array of cards
-*
-*Calculates the score of a given array of cards based on the blackjack game rules
-*@param array $cards An array of cards to calculate the score for
-*@return int The total score of the given array of cards
-*/
+// use App\Controller\ScoreCalculator;
+// use App\Controller\PlayerWinHandler;
+// use App\Controller\DealerWinHandler;
+// use App\Controller\TieHandler;
 
-
-class ScoreCalculator
-{
-    public function calculateScore(array $cards): int
-    {
-        $score = 0;
-        $aceCount = 0;
-        foreach ($cards as $card) {
-            $value = $card->getValue();
-            if ($value === 'King' || $value === 'Queen' || $value === 'Knight') {
-                $score += 10;
-            }
-            if ($value === 'Ace') {
-                $score += 11;
-                $aceCount++;
-            }
-            if (is_numeric($value)) {
-                $score += $value;
-            }
-        }
-        // Handle the case where there are aces and the score is over 21
-        while ($score > 21 && $aceCount > 0) {
-            $score -= 10;
-            $aceCount--;
-        }
-        return $score;
-    }
-}
+// /**
+// *
+// *A class for calculating the score of a given array of cards
+// *
+// *Calculates the score of a given array of cards based on the blackjack game rules
+// *@param array $cards An array of cards to calculate the score for
+// *@return int The total score of the given array of cards
+// */
 
 
-/**
- * Class PlayerWinHandler
- * Handles the case when the player wins.
- */
-class PlayerWinHandler
-{
-    /**
-     * Handles the case when the player wins.
-     *
-     * @param BlackjackGame $game The Blackjack game instance.
-     * @return void
-     */
-    public function handle(BlackjackGame $game): void
-    {
-        $playerChips = $game->getPlayerChips();
-        $playerChips += $game->getCurrentBet() * 2;
-
-        $game->setGameOver(true);
-    }
-}
-
-/**
- * Class DealerWinHandler
- * Handles the case when the dealer wins.
- */
-class DealerWinHandler
-{
-    /**
-     * Handles the case when the dealer wins.
-     *
-     * @param BlackjackGame $game The Blackjack game instance.
-     * @return void
-     */
-    public function handle(BlackjackGame $game): void
-    {
-        $dealerChips = $game->getDealerChips();
-        $dealerChips += $game->getCurrentBet() * 2;
-        $game->setGameOver(true);
-    }
-}
+// class ScoreCalculator
+// {
+//     public function calculateScore(array $cards): int
+//     {
+//         $score = 0;
+//         $aceCount = 0;
+//         foreach ($cards as $card) {
+//             $value = $card->getValue();
+//             if ($value === 'King' || $value === 'Queen' || $value === 'Knight') {
+//                 $score += 10;
+//             }
+//             if ($value === 'Ace') {
+//                 $score += 11;
+//                 $aceCount++;
+//             }
+//             if (is_numeric($value)) {
+//                 $score += $value;
+//             }
+//         }
+//         // Handle the case where there are aces and the score is over 21
+//         while ($score > 21 && $aceCount > 0) {
+//             $score -= 10;
+//             $aceCount--;
+//         }
+//         return $score;
+//     }
+// }
 
 
-/**
- * Class TieHandler
- * Handles the case when there is a tie.
- */
-class TieHandler
-{
-    /**
-     * Handles the case when there is a tie.
-     *
-     * @param BlackjackGame $game The Blackjack game instance.
-     * @return void
-     */
-    public function handle(BlackjackGame $game): void
-    {
-        $game->setGameOver(true);
-    }
-}
+// /**
+//  * Class PlayerWinHandler
+//  * Handles the case when the player wins.
+//  */
+// class PlayerWinHandler
+// {
+//     /**
+//      * Handles the case when the player wins.
+//      *
+//      * @param BlackjackGame $game The Blackjack game instance.
+//      * @return void
+//      */
+//     public function handle(BlackjackGame $game): void
+//     {
+//         $playerChips = $game->getPlayerChips();
+//         $playerChips += $game->getCurrentBet() * 2;
+
+//         $game->setGameOver(true);
+//     }
+// }
+
+// /**
+//  * Class DealerWinHandler
+//  * Handles the case when the dealer wins.
+//  */
+// class DealerWinHandler
+// {
+//     /**
+//      * Handles the case when the dealer wins.
+//      *
+//      * @param BlackjackGame $game The Blackjack game instance.
+//      * @return void
+//      */
+//     public function handle(BlackjackGame $game): void
+//     {
+//         $dealerChips = $game->getDealerChips();
+//         $dealerChips += $game->getCurrentBet() * 2;
+//         $game->setGameOver(true);
+//     }
+// }
+
+
+// /**
+//  * Class TieHandler
+//  * Handles the case when there is a tie.
+//  */
+// class TieHandler
+// {
+//     /**
+//      * Handles the case when there is a tie.
+//      *
+//      * @param BlackjackGame $game The Blackjack game instance.
+//      * @return void
+//      */
+//     public function handle(BlackjackGame $game): void
+//     {
+//         $game->setGameOver(true);
+//     }
+// }
 
 /**
 
