@@ -53,10 +53,6 @@ composer install
 ```
 
 
-composer install
-
-```
-
 We need to install the npm and its dependencies
 
 ```
