@@ -351,7 +351,7 @@ public function unemployementizualizersecond(UnemploymentRepository $unenployeme
 
 #[Route("/proj/api/effekt_av_covid19", name: "api_effekt_av_covid19")]
     public function getEffektAvCovid19Data(EffektAvCovid19Repository $effektAvCovid19Repository): JsonResponse
-    {
+    {   
 
         $this->entityManager->createQuery('DELETE FROM App\Entity\EffektAvCovid19')->execute();
 
@@ -372,7 +372,7 @@ public function unemployementizualizersecond(UnemploymentRepository $unenployeme
 public function getBoendeApi(BoendeRepository $boendeRepository): JsonResponse
 {
     $helper = new HelperBoende();
-    $this->boendevizualizersecond($boendeRepository, $helper); // Call the method to populate the table
+    $this->boendevizualizer($boendeRepository, $helper); // Call the method to populate the table
 
     $data = $boendeRepository->findAll();
     $formattedData = [];
@@ -387,7 +387,7 @@ public function getBoendeApi(BoendeRepository $boendeRepository): JsonResponse
 
 #[Route('/proj/api/unemployment', name: 'api_unemployment')]
 public function getUnemploymentApi(UnemploymentRepository $unemploymentRepository): JsonResponse
-{
+{   
     $helper = new UnemployementHelper();
     $this->unemployementizualizersecond($unemploymentRepository, $helper); // Call the method to populate the table
 
@@ -430,7 +430,7 @@ public function getEffektAvCovid19DataByTotalDeaths(int $total_deaths, EffektAvC
 
 #[Route("/proj/api/covid19Female/{female_deaths}", name: "api_female_deaths")]
 public function getEffektAvCovid19Datafemale_deaths(int $female_deaths, EffektAvCovid19Repository $effektAvCovid19Repository): JsonResponse
-{
+{   
 
     $this->entityManager->createQuery('DELETE FROM App\Entity\EffektAvCovid19')->execute();
 
@@ -481,7 +481,7 @@ public function getBoendeApiBy(int $Vecka, BoendeRepository $boendeRepository): 
 
 #[Route("/proj/api/boendeAgeRange/{ageRange}", name: "api_unemployement_age")]
 public function getUnemployementApiBy(string $ageRange, UnemploymentRepository $unemploymentRepository): JsonResponse
-{
+{   
     $helper = new UnemployementHelper();
     $this->unemployementizualizersecond($unemploymentRepository, $helper); // Call the method to populate the table
 

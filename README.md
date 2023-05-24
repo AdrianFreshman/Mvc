@@ -11,17 +11,17 @@ Links for docs and metrics.
 -   [docs](https://www.student.bth.se/~adde22/dbwebb-kurser/mvc/me/report/docs/api/packages/App-Controller.html)
 -   [metrics](https://www.student.bth.se/~adde22/dbwebb-kurser/mvc/me/report/docs/metrics/)
 
-This repo is used to test and verify that it can be integrated with external tools for continous integration, automated test and statical code analysis for code quality.
+This repo is used for various tasks during the course MVC at BTH university, it used symfony,javascript, doctrine ,composer and npm and other various tools
 
 The repo is part of course material for the [dbwebb mvc-course](https://github.com/dbwebb-se/mvc). The repo is a Symfony app.
 
 # My Repository
 
-This repository contains my project files for [project name].
+This repository contains my project files for [MVV].
 
 # Mvc Repository
 
-This repository contains the source code for the Mvc project.
+This repository contains the source code for the Mvc project.Check src/Controller and tests/Proj for the code used
 
 ## Cloning the Repository
 
