@@ -52,7 +52,6 @@ composer install
 
 ```
 
-
 We need to install the npm and its dependencies
 
 ```
@@ -66,6 +65,22 @@ We need to run the build and its dependencies
 ```
 
 npm run build
+
+```
+
+We need to run the doctrine and its dependencies
+
+```
+
+composer require symfony/orm-pack
+composer require --dev symfony/maker-bundle
+
+```
+
+We need to run the schema to set up tables
+
+```
+php bin/console doctrine:schema:update --force
 
 ```
 
