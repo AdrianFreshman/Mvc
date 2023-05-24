@@ -30,6 +30,71 @@ Add the [configuration file](https://github.com/dbwebb-se/mvc/blob/main/example/
 
 ```
 curl -s https://raw.githubusercontent.com/dbwebb-se/mvc/main/example/symfony-codestyle/.php-cs-fixer.dist.php > .php-cs-fixer.dist.php
+
+```
+
+# My Repository
+
+This repository contains my project files for [project name].
+
+# Mvc Repository
+
+This repository contains the source code for the Mvc project.
+
+## Cloning the Repository
+
+To clone and download the repository, follow these steps:
+
+1. Open a terminal or command prompt on your local machine.
+2. Navigate to the directory where you want to clone the repository.
+3. Run the following command to clone the repository:
+
+```
+
+git clone https://github.com/AdrianFreshman/Mvc.git
+
+```
+
+```
+
+cd Mvc
+
+```
+
+## Before we start
+
+We need to install the dependencies to the application and install the modules needed for the unit tests. Composer and php solves that for us.
+
+```
+composer install
+
+```
+
+This will set up the autoloader in composer so that all source files can be found.
+
+You can inspect the `composer.json` how it setup the autoloader and how it includes phpunit.
+
+You can always restart and begin from the beginning.
+
+```
+
+composer clean-all
+composer install
+
+```
+
+```
+
+composer install
+
+```
+
+We need to install the npm and its dependencies
+
+```
+
+npm install
+
 ```
 
 This is the script part that you add to `composer.json`.
@@ -81,72 +146,6 @@ Add the [config file](https://github.com/dbwebb-se/mvc/blob/main/example/php-lin
 curl -s https://raw.githubusercontent.com/dbwebb-se/mvc/main/example/php-linter-and-mess-detection/phpstan.neon > phpstan.neon
 
 
-# My Repository
-
-This repository contains my project files for [project name].
-
-# Mvc Repository
-
-This repository contains the source code for the Mvc project.
-
-## Cloning the Repository
-
-To clone and download the repository, follow these steps:
-
-1. Open a terminal or command prompt on your local machine.
-2. Navigate to the directory where you want to clone the repository.
-3. Run the following command to clone the repository:
-
-```
-
-git clone https://github.com/AdrianFreshman/Mvc.git
-
-```
-
-```
-
-cd Mvc
-
-```
-
-
-
-Before we start
------------------------------------
-
-We need to install the dependencies to the application and install the modules needed for the unit tests. Composer and php solves that for us.
-
-````
-
-composer install
-
-```
-
-This will set up the autoloader in composer so that all source files can be found.
-
-You can inspect the `composer.json` how it setup the autoloader and how it includes phpunit.
-
-You can always restart and begin from the beginning.
-
-```
-
-composer clean-all
-composer install
-
-```
-
-```
-
-composer install
-
-```
-We need to install the npm and its dependencies
-
-```
-
-npm install
-
-````
 
 This is the script part that you add to `composer.json`.
 
