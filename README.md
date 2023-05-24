@@ -17,7 +17,7 @@ The repo is part of course material for the [dbwebb mvc-course](https://github.c
 
 # My Repository
 
-This repository contains my project files for [MVV].
+This repository contains my project files for [KMOM10/Report].
 
 # Mvc Repository
 

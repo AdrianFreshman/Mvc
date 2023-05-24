@@ -173,10 +173,10 @@ För att skapa egen error hantering kan man använda verktyg som PHPStan som kan
 
 
 
-    <h4>Kmom010</h4
+    <h1>Kmom010</h1>
 
 
-    <h1>Krav 1,2,3,4</h1>
+    <h1>Krav 1 2 3 4</h1>
 
     <p>För att uppfylla krav 1 har jag skapat en landningssida ("/proj") som syns i navbaren på report-sidan. Jag har också skapat en separat navbar för projektet som innehåller länkarna för projektet.<br><br>
 
@@ -193,28 +193,23 @@ För att skapa egen error hantering kan man använda verktyg som PHPStan som kan
 
 
 
-    <p> Jag kommer att gå igenom koden och förklara vad varje del gör.
+    <h1>Går igenom koden och förklara vad varje del gör i mer detalj.</h1>
+    <br><br>
 
-    Kontrollern är definierad som projectController och ärver från AbstractController i Symfony. Detta ger kontrollern tillgång till olika hjälpfunktioner och egenskaper som förenklar hanteringen av HTTP-anrop och renderingen av mallar.
+    Kontrollern är definierad som projectController och ärver från AbstractController i Symfony. Detta ger kontrollern tillgång till olika hjälpfunktioner och egenskaper som förenklar hanteringen av HTTP-anrop och renderingen av mallar.<br><br>
 
-    I konstruktorn för projectController injiceras flera beroenden via beroendeinjektion (dependency injection), inklusive EntityManagerInterface och några hjälpklasser som EffektAvCovid19Helper, HelperBoende och UnemployementHelper. Dessa beroenden används senare i kontrollerns metoder.
-
-    Kontrollern har tre rutter definierade med #[Route]-attributet: project, projectApi och about.
-
-    Metoden project hanterar GET-anropet till /proj-routen och renderar en mall (vizualizer.landing.html.twig) som tar emot en array med länkar ($links) som data. Dessa länkar används för att skapa navigeringslänkar i mallen.
-
-    Metoden projectApi hanterar GET-anropet till /proj/api-routen och renderar en annan mall (vizualizer.landing2.html.twig) som tar emot en liknande array med länkar ($links) som data. Dessa länkar används för att visa olika API-endpoints.
-
-    Metoden about hanterar GET-anropet till /proj/about-routen och renderar en tredje mall (about.project.html.twig).
-
-    Det finns ytterligare tre rutter som hanterar olika visualiseringar av data: vizualizer, boendevizualizer och boendevizualizersecond.
+    I konstruktorn för projectController injiceras flera beroenden via beroendeinjektion (dependency injection), inklusive EntityManagerInterface och några hjälpklasser som EffektAvCovid19Helper, HelperBoende och UnemployementHelper. Dessa beroenden används senare i kontrollerns metoder.<br><br>
 
     Metoden vizualizer hanterar GET-anropet till /proj/vizualizer-routen och tar emot ett argument av typen EffektAvCovid19Repository. Inuti metoden rensar den befintliga datatabellen (EffektAvCovid19) och skapar en ny post i tabellen med hjälp av EffektAvCovid19Helper-klassen. Därefter hämtar den alla poster från tabellen och formatterar datan med hjälp av EffektAvCovid19Helper. Den renderar sedan en mall (show_all.statistics.html.twig) med den formaterade datan.
 
     Metoderna boendevizualizer och boendevizualizersecond fungerar på liknande sätt som vizualizer, men de arbetar med BoendeRepository och HelperBoende för att hantera boendedata och rendera andra mallar (show_all.statistics2.html.twig).
+    <br><br>
     
+    <h1>Mer kortfattat teknisk beskrivning om resten om projController:</h1>
+    <br><br>
     
     Route: '/proj/unemployement'
+    <br><br>
 
     Metod: GET
     Funktion: Hämtar statistik om arbetslöshet från databasen och visar den i en HTML-mall.
@@ -226,8 +221,10 @@ För att skapa egen error hantering kan man använda verktyg som PHPStan som kan
     Hämtar data från databasen.
     Formaterar datan med hjälp av hjälparklassen 'UnemployementHelper'.
     Skickar tillbaka formatterad data till klienten och renderar den i en HTML-mall.
-    Route: '/proj/api/effekt_av_covid19'
+    <br><br>
 
+    Route: '/proj/api/effekt_av_covid19'
+    <br><br>
     Metod: GET
     Funktion: Hämtar data om effekterna av Covid-19 från databasen och returnerar den som en JSON-respons.
     Åtgärder:
@@ -236,8 +233,9 @@ För att skapa egen error hantering kan man använda verktyg som PHPStan som kan
     Hämtar data från databasen.
     Formaterar datan med hjälp av en hjälparklass.
     Skickar formatterad data som JSON-respons till klienten.
+    <br><br>
     Route: '/proj/api/boende'
-
+    <br><br>
     Metod: GET
     Funktion: Hämtar boendedata från databasen och returnerar den som en JSON-respons.
     Åtgärder:
@@ -246,8 +244,10 @@ För att skapa egen error hantering kan man använda verktyg som PHPStan som kan
     Hämtar data från databasen.
     Formaterar datan med hjälp av hjälparklassen 'HelperBoende'.
     Skickar formatterad data som JSON-respons till klienten.
-    Route: '/proj/api/unemployment'
 
+    <br><br>
+    Route: '/proj/api/unemployment'
+    <br><br>
     Metod: GET
     Funktion: Hämtar arbetslöshetsdata från databasen och returnerar den som en JSON-respons.
     Åtgärder:
@@ -256,8 +256,9 @@ För att skapa egen error hantering kan man använda verktyg som PHPStan som kan
     Hämtar data från databasen.
     Formaterar datan med hjälp av hjälparklassen 'UnemployementHelper'.
     Skickar formatterad data som JSON-respons till klienten.
+    <br><br>
     Route: '/proj/api/covid19/{total_deaths}'
-
+    <br><br>
     Metod: GET
     Funktion: Hämtar data om Covid-19-dödsfall baserat på det totala antalet dödsfall och returnerar det som en JSON-respons.
     Åtgärder:
@@ -265,8 +266,9 @@ För att skapa egen error hantering kan man använda verktyg som PHPStan som kan
     Skapar en ny 'EffektAvCovid19'-entitet och sparar den i databasen.
     Hämtar data från databasen baserat på det totala antalet dödsfall.
     Skapar en JSON-respons med information om antalet dödsfall och skickar tillbaka den till klienten.
+     <br><br>
     Route: '/proj/api/covid19Female/{female_deaths}'
-
+    <br><br>
     Metod: GET
     Funktion: Hämtar data om Covid-19-dödsfall bland kvinnor baserat på antalet kvinnliga dödsfall och returnerar det som en JSON-respons.
     Åtgärder:
@@ -274,8 +276,9 @@ För att skapa egen error hantering kan man använda verktyg som PHPStan som kan
     Skapar en ny 'EffektAvCovid19'-entitet och sparar den i databasen.
     Hämtar data från databasen baserat på antalet kvinnliga dödsfall.
     Skapar en JSON-respons med information om antalet dödsfall bland kvinnor och skickar tillbaka den till klienten.
+    <br><br>
     Route: '/proj/api/boende/{Vecka}'
-
+    <br><br>
     Metod: GET
     Funktion: Hämtar boendedata från databasen baserat på en specifik vecka och returnerar det som en JSON-respons.
     Åtgärder:
@@ -283,8 +286,9 @@ För att skapa egen error hantering kan man använda verktyg som PHPStan som kan
     Anropar en annan metod 'boendevizualizersecond' för att fylla tabellen med data.
     Hämtar data från databasen baserat på en specifik vecka.
     Skapar en JSON-respons med boendedata för den specifika veckan och skickar tillbaka den till klienten.
+    <br><br>
     Route: '/proj/api/boendeAgeRange/{ageRange}'
-
+    <br><br>
     Metod: GET
     Funktion: Hämtar arbetslöshetsdata från databasen baserat på en specifik åldersgrupp och returnerar det som en JSON-respons.
     Åtgärder:
@@ -292,8 +296,9 @@ För att skapa egen error hantering kan man använda verktyg som PHPStan som kan
     Anropar en annan metod 'unemployementizualizersecond' för att fylla tabellen med data.
     Hämtar data från databasen baserat på en specifik åldersgrupp.
     Skapar en JSON-respons med arbetslöshetsdata för den specifika åldersgruppen och skickar tillbaka den till klienten.
+    <br><br>
     Route: '/proj/reset'
-
+    <br><br>
     Metod: GET
     Funktion: Återställer databasen genom att ta bort alla poster i tabellerna 'EffektAvCovid19', 'Boende' och 'Unemployement'.
     Åtgärder:
@@ -301,6 +306,51 @@ För att skapa egen error hantering kan man använda verktyg som PHPStan som kan
     Använder databasplattformen för att utföra SQL-kommandon för att rensa tabellerna 'EffektAvCovid19', 'Boende' och 'Unemployement'.
     Returnerar en omdirigering till huvudsidan 'proj'.
     Dessa rutter används för att hantera olika begäranden och svar inom en webbapplikation som tycks vara relaterade till statistik om arbetslöshet, boende och Covid-19-effekter. Det finns också åtgärder som hanterar rensning och återställning av databasen. Notera att det är svårt att ge en heltäckande förklaring utan ytterligare information om andra hjälparklasser och eventuella relationer till databasen och andra delar av koden.</p>
+
+    <br><br>
+
+    <h1>Twig och presentation, visualisering</h1>
+    <br><br>
+
+    
+    <p>Inom de olika twigsen skriver jag en del "findings" och lite av mina "conlussions" kring datan jag hittade samt citerar till stasticmyndigheten och har links till oringal excell filerna.
+    <br><br>
+    
+    Den formaterade datan visas sedan i ett rutnätsformat med hjälp av en loop över data-variabeln. Varje objekt representerar ett fält och fälten visas med sina motsvarande data.
+    I javascripts-blocket är JavaScript-koden inkapslad. Data hämtas från servern med hjälp av Twig och fyller data- och label-arrayerna. Sedan skapas en linjediagram med hjälp av Chart.js-biblioteket. Diagrammet visar data för varje år och använder olika färger för varje dataset.
+    <br><br>
+    Genom att presentera data med hjälp av ORM (Object-Relational Mapping) och utnyttja Chart.js för visualisering får du följande fördelar:
+
+    Datahantering: Genom att använda ORM kan du enkelt hämta och manipulera data från databasen, vilket underlättar att extrahera och presentera den önskade informationen.
+
+    Strukturerad presentation: Genom att organisera datan i ett rutnätsformat och använda HTML och CSS kan du presentera informationen på ett strukturerat och visuellt tilltalande sätt.
+
+    Interaktiva visualiseringar: Chart.js erbjuder interaktiva och anpassningsbara diagram som förbättrar upplevelsen av att visualisera data. Användare kan interagera med diagrammet, zooma in/ut och svepa över datapunkter för att se ytterligare detaljer.
+
+    Sammanhållen webbutveckling: Genom att kombinera olika tekniker som ORM, HTML/CSS och JavaScript-bibliot</p>
+
+    <h1>Om projektet i helhet samt avslutande text</h1>
+    <br><br>
+    <p>
+    Att arbeta med statistik och integrera flera tekniker samtidigt i projektet var definitivt klurigt, men samtidigt mycket givande och intressant. Att presentera data på ett visuellt sätt och analysera statistik personligen var en utmaning som krävde noggrannhet och precision. Genom att kombinera olika tekniker som PHP,ORM, HTML/CSS och JavaScript, fick jag möjlighet att utforska och lära mig nya sätt att hantera och visualisera data.<br><br> 
+    <br><br> 
+    Extra glad var jag med
+    Klassen HelperBoende som användes för att sätta och hämta data i en Boende-entitet. Den har två huvudmetoder: setData() och getData().
+    Metoden setData() tar emot en array med data och en instans av Boende-entiteten. Den sätter sedan data i entitetens olika attribut baserat på arrayens innehåll. Till exempel sätts veckonummer i attributet 'Vecka', 2016 års data i attributet 'Twthousandsixteen', och så vidare.
+    Metoden getData() tar emot en instans av Boende-entiteten och returnerar en array med data. Denna metod hämtar värdet från varje attribut i entiteten och placerar det i en associerad array där nycklarna representerar olika år.<br><br> 
+
+    Det var fördelaktigt att använda denna klass för både Boende-data och Boende-data utan speciellt boende istället för att skapa två separata tabeller med olika klasser. Det sparade tid och minskade komplexiteten i koden. Genom att använda HelperBoende-klassen kunde jag enkelt hantera och manipulera data i Boende-entiteten på ett strukturerat sätt.
+
+    Sammanfattningsvis var HelperBoende en bra och användbar komponent i projektet. Den underlättade datahanteringen och bidrog till en mer effektiv och läsbar kodbas.
+    <br><br> 
+    Under projektets gång stötte jag på vissa hinder och strul. En utmaning var att anpassa CSS-stilen och skapa en separat mapp för att lagra och använda egna stilfiler istället för att förlita mig på inbyggda tillgångar. Dessutom, när jag körde "npm run build" för att slå samman mina separata filer till en, ställdes jag inför svårigheten att skapa nya klasser för att matcha projektets design och layout. Annat var att fixa till i diverse config filer till att fixa till phpunit och metrics etc men lyckades tillslut med, Clona repository var med lite struligt men var mycket givande i slutet att lyckas starta en kopia via live servern!<br><br>
+
+    Även om projektet var utmanande och krävde tid och ansträngning för att lösa dessa problem, var det en givande upplevelse. Jag fick möjlighet att utveckla mina färdigheter inom webbutveckling och tillämpa dem på ett verkligt scenario. Trots vissa hinder gick projektet relativt smidigt, och jag kunde slutföra det inom rimlig tid samt var tydligt att jag kunde ta kunskap utefter tidigare moment!.<br><br>
+
+    Jag anser att detta projekt var en bra och rimlig uppgift för kursen. Det gav mig möjlighet att tillämpa de kunskaper och tekniker jag lärt mig under kursens gång och utmana mig själv i att skapa en dynamisk och interaktiv webbapplikation. Det var också en bra övning i att hantera och presentera statistik på ett meningsfullt sätt.<br><br>
+
+    När det gäller kursen i sin helhet är jag överlag nöjd. Materialet var välstrukturerat och förklarade koncepten på ett tydligt sätt. Handledningen var till hjälp och svarade på mina frågor. Jag skulle rekommendera kursen till mina vänner och kollegor som är intresserade av att lära sig webbutveckling med fokus på MVC-arkitekturen. På en skala från 1 till 10 skulle jag ge kursen betyget 8. Det fanns utrymme för förbättringar, särskilt i att tillhandahålla mer beksrivning och praktiska exempel kring configuering,fler design alternativ,cloning av git, men övergripande sett var det en givande och lärorik kurs</p><br><br>
+    
 
 
 {% endblock %}
