@@ -52,20 +52,6 @@ composer install
 
 ```
 
-This will set up the autoloader in composer so that all source files can be found.
-
-You can inspect the `composer.json` how it setup the autoloader and how it includes phpunit.
-
-You can always restart and begin from the beginning.
-
-```
-
-composer clean-all
-composer install
-
-```
-
-```
 
 composer install
 
