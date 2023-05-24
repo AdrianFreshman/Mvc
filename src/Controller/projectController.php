@@ -423,6 +423,10 @@ public function getEffektAvCovid19Datafemale_deaths(int $female_deaths, EffektAv
 #[Route("/proj/api/boende/{Vecka}", name: "api_boende_deaths_v")]
 public function getBoendeApiBy(int $Vecka, BoendeRepository $boendeRepository): JsonResponse
 {
+
+    $helper = new HelperBoende();
+    $this->boendevizualizersecond($boendeRepository, $helper); // Call the method to populate the table
+
     $post = $boendeRepository->findOneBy(['Vecka' => $Vecka]);
 
     if (!$post) {
@@ -445,7 +449,10 @@ public function getBoendeApiBy(int $Vecka, BoendeRepository $boendeRepository): 
 
 #[Route("/proj/api/boendeAgeRange/{ageRange}", name: "api_unemployement_age")]
 public function getUnemployementApiBy(string $ageRange, UnemploymentRepository $unemploymentRepository): JsonResponse
-{
+{   
+    $helper = new UnemployementHelper();
+    $this->unemployementizualizersecond($unemploymentRepository, $helper); // Call the method to populate the table
+
     $post = $unemploymentRepository->findOneBy(['ageRange' => $ageRange]);
 
     if (!$post) {
