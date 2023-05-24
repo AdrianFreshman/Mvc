@@ -195,14 +195,14 @@ För att skapa egen error hantering kan man använda verktyg som PHPStan som kan
 
     <h1>Går igenom koden och förklara vad varje del gör i mer detalj.</h1>
     <br><br>
-
+    <p>
     Kontrollern är definierad som projectController och ärver från AbstractController i Symfony. Detta ger kontrollern tillgång till olika hjälpfunktioner och egenskaper som förenklar hanteringen av HTTP-anrop och renderingen av mallar.<br><br>
 
     I konstruktorn för projectController injiceras flera beroenden via beroendeinjektion (dependency injection), inklusive EntityManagerInterface och några hjälpklasser som EffektAvCovid19Helper, HelperBoende och UnemployementHelper. Dessa beroenden används senare i kontrollerns metoder.<br><br>
 
     Metoden vizualizer hanterar GET-anropet till /proj/vizualizer-routen och tar emot ett argument av typen EffektAvCovid19Repository. Inuti metoden rensar den befintliga datatabellen (EffektAvCovid19) och skapar en ny post i tabellen med hjälp av EffektAvCovid19Helper-klassen. Därefter hämtar den alla poster från tabellen och formatterar datan med hjälp av EffektAvCovid19Helper. Den renderar sedan en mall (show_all.statistics.html.twig) med den formaterade datan.
 
-    Metoderna boendevizualizer och boendevizualizersecond fungerar på liknande sätt som vizualizer, men de arbetar med BoendeRepository och HelperBoende för att hantera boendedata och rendera andra mallar (show_all.statistics2.html.twig).
+    Metoderna boendevizualizer och boendevizualizersecond fungerar på liknande sätt som vizualizer, men de arbetar med BoendeRepository och HelperBoende för att hantera boendedata och rendera andra mallar (show_all.statistics2.html.twig).</p>
     <br><br>
     
     <h1>Mer kortfattat teknisk beskrivning om resten om projController:</h1>
