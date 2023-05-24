@@ -5,7 +5,6 @@
 [![Build Status](https://scrutinizer-ci.com/g/AdrianFreshman/Mvc/badges/build.png?b=main)](https://scrutinizer-ci.com/g/AdrianFreshman/Mvc/build-status/main)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AdrianFreshman/Mvc/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/AdrianFreshman/Mvc/?branch=main)
 [![Code Coverage](https://scrutinizer-ci.com/g/AdrianFreshman/Mvc/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/AdrianFreshman/Mvc/?branch=main)
-[![Code Coverage](https://scrutinizer-ci.com/g/AdrianFreshman/Mvc/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/AdrianFreshman/Mvc/?branch=main)
 
 Links for docs and metrics.
 
