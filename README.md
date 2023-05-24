@@ -9,7 +9,7 @@
 Links for docs and metrics.
 
 -   [docs](https://www.student.bth.se/~adde22/dbwebb-kurser/mvc/me/report/docs/api/packages/App-Controller.html)
--   [mectrics](https://www.student.bth.se/~adde22/dbwebb-kurser/mvc/me/report/docs/metrics/)
+-   [metrics](https://www.student.bth.se/~adde22/dbwebb-kurser/mvc/me/report/docs/metrics/)
 
 This repo is used to test and verify that it can be integrated with external tools for continous integration, automated test and statical code analysis for code quality.
 
