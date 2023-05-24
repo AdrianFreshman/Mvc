@@ -352,6 +352,15 @@ public function unemployementizualizersecond(UnemploymentRepository $unenployeme
 #[Route("/proj/api/effekt_av_covid19", name: "api_effekt_av_covid19")]
     public function getEffektAvCovid19Data(EffektAvCovid19Repository $effektAvCovid19Repository): JsonResponse
     {
+
+        $this->entityManager->createQuery('DELETE FROM App\Entity\EffektAvCovid19')->execute();
+
+        $entity = new EffektAvCovid19();
+        $this->effektAvCovid19Helper->setEffektAvCovid19Data($entity);
+
+        $this->entityManager->persist($entity);
+        $this->entityManager->flush();
+
         $data = $effektAvCovid19Repository->findAll();
         $formattedData = $this->effektAvCovid19Helper->formatEffektAvCovid19Data($data);
 
@@ -359,9 +368,12 @@ public function unemployementizualizersecond(UnemploymentRepository $unenployeme
     }
 
 
-    #[Route('/proj/api/boende', name: 'api_boende')]
+#[Route('/proj/api/boende', name: 'api_boende')]
 public function getBoendeApi(BoendeRepository $boendeRepository): JsonResponse
 {
+    $helper = new HelperBoende();
+    $this->boendevizualizersecond($boendeRepository, $helper); // Call the method to populate the table
+
     $data = $boendeRepository->findAll();
     $formattedData = [];
     $helper = new HelperBoende();
@@ -376,6 +388,9 @@ public function getBoendeApi(BoendeRepository $boendeRepository): JsonResponse
 #[Route('/proj/api/unemployment', name: 'api_unemployment')]
 public function getUnemploymentApi(UnemploymentRepository $unemploymentRepository): JsonResponse
 {
+    $helper = new UnemployementHelper();
+    $this->unemployementizualizersecond($unemploymentRepository, $helper); // Call the method to populate the table
+
     $data = $unemploymentRepository->findAll();
     $formattedData = [];
     $helper = new UnemployementHelper();
@@ -391,6 +406,14 @@ public function getUnemploymentApi(UnemploymentRepository $unemploymentRepositor
 #[Route("/proj/api/covid19/{total_deaths}", name: "api_total_deaths")]
 public function getEffektAvCovid19DataByTotalDeaths(int $total_deaths, EffektAvCovid19Repository $effektAvCovid19Repository): JsonResponse
 {
+    $this->entityManager->createQuery('DELETE FROM App\Entity\EffektAvCovid19')->execute();
+
+    $entity = new EffektAvCovid19();
+    $this->effektAvCovid19Helper->setEffektAvCovid19Data($entity);
+
+    $this->entityManager->persist($entity);
+    $this->entityManager->flush();
+
     $post = $effektAvCovid19Repository->findOneBy(['total_deaths' => $total_deaths]);
 
     if (!$post) {
@@ -408,6 +431,15 @@ public function getEffektAvCovid19DataByTotalDeaths(int $total_deaths, EffektAvC
 #[Route("/proj/api/covid19Female/{female_deaths}", name: "api_female_deaths")]
 public function getEffektAvCovid19Datafemale_deaths(int $female_deaths, EffektAvCovid19Repository $effektAvCovid19Repository): JsonResponse
 {
+
+    $this->entityManager->createQuery('DELETE FROM App\Entity\EffektAvCovid19')->execute();
+
+    $entity = new EffektAvCovid19();
+    $this->effektAvCovid19Helper->setEffektAvCovid19Data($entity);
+
+    $this->entityManager->persist($entity);
+    $this->entityManager->flush();
+
     $post = $effektAvCovid19Repository->findOneBy(['female_deaths' => $female_deaths]);
 
     if (!$post) {
@@ -449,7 +481,7 @@ public function getBoendeApiBy(int $Vecka, BoendeRepository $boendeRepository): 
 
 #[Route("/proj/api/boendeAgeRange/{ageRange}", name: "api_unemployement_age")]
 public function getUnemployementApiBy(string $ageRange, UnemploymentRepository $unemploymentRepository): JsonResponse
-{   
+{
     $helper = new UnemployementHelper();
     $this->unemployementizualizersecond($unemploymentRepository, $helper); // Call the method to populate the table
 
