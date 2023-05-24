@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use App\Repository\LibraryRepository;
 
-
 /**
  * Class LibraryController
  *
@@ -22,7 +21,6 @@ use App\Repository\LibraryRepository;
  */
 class LibraryController extends AbstractController
 {
-
     #[Route('/library', name: 'app_library')]
     public function index(): Response
     {
@@ -154,7 +152,7 @@ class LibraryController extends AbstractController
 
         // Render the book update form
         return $this->render('update.html.twig', ['book' => $book]);
-    }   
+    }
 
     #[Route('/library/reset', name: 'library_reset')]
     public function resetDatabase(EntityManagerInterface $entityManager): Response

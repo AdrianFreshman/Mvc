@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2023-05-14 18:26:06        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2023-05-23 16:08:25        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -93,7 +93,7 @@
                             <path d="M0 0h24v24H0z" fill="none">
                             <path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z">
                         </svg>
-                        Violations (7)
+                        Violations (1)
                     </a>
                 </li>
                                     <li>
@@ -253,30 +253,25 @@
 
     var relations = [
     {
-        "name": "\\App\\Controller\\LibraryController",
+        "name": "\\App\\Controller\\projectController",
         "size": 3000,
         "relations": [
             "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
-            "\\Symfony\\Component\\HttpFoundation\\Response",
-            "\\Symfony\\Component\\HttpFoundation\\Request",
             "\\Doctrine\\ORM\\EntityManagerInterface",
-            "\\Symfony\\Component\\String\\Slugger\\SluggerInterface",
-            "\\App\\Entity\\Library",
-            "\\App\\Repository\\LibraryRepository"
+            "\\App\\Controller\\EffektAvCovid19Helper",
+            "\\App\\Controller\\HelperBoende",
+            "\\App\\Controller\\UnemployementHelper",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\App\\Repository\\EffektAvCovid19Repository",
+            "\\App\\Entity\\EffektAvCovid19",
+            "\\App\\Repository\\BoendeRepository",
+            "\\App\\Entity\\Boende",
+            "\\App\\Repository\\UnemploymentRepository",
+            "\\App\\Entity\\Unemployement"
         ]
     },
     {
         "name": "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Symfony\\Component\\HttpFoundation\\Response",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Symfony\\Component\\HttpFoundation\\Request",
         "size": 3000,
         "relations": []
     },
@@ -286,184 +281,86 @@
         "relations": []
     },
     {
-        "name": "\\Symfony\\Component\\String\\Slugger\\SluggerInterface",
+        "name": "\\App\\Controller\\EffektAvCovid19Helper",
         "size": 3000,
         "relations": []
     },
     {
-        "name": "\\App\\Entity\\Library",
+        "name": "\\App\\Controller\\HelperBoende",
         "size": 3000,
         "relations": []
     },
     {
-        "name": "\\App\\Repository\\LibraryRepository",
+        "name": "\\App\\Controller\\UnemployementHelper",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\HttpFoundation\\Response",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\EffektAvCovid19Repository",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\EffektAvCovid19",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\BoendeRepository",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\Boende",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\UnemploymentRepository",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\Unemployement",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Controller\\EffektAvCovid19HelperTest",
         "size": 3000,
         "relations": [
-            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
-            "\\Doctrine\\Persistence\\ManagerRegistry",
-            "\\App\\Entity\\Library"
+            "\\PHPUnit\\Framework\\TestCase",
+            "\\App\\Controller\\EffektAvCovid19Helper",
+            "\\App\\Entity\\EffektAvCovid19"
         ]
     },
     {
-        "name": "\\App\\Controller\\LuckyControllerTwig",
+        "name": "\\PHPUnit\\Framework\\TestCase",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Controller\\HelperBoendeTest",
         "size": 3000,
         "relations": [
-            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
-            "\\Symfony\\Component\\HttpFoundation\\Response",
-            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
-            "\\Controller\\Card\\Deck",
-            "\\Controller\\Card\\TexasHoldem",
-            "\\Symfony\\Component\\HttpFoundation\\Request",
-            "\\Controller\\Card\\BlackjackGame"
+            "\\PHPUnit\\Framework\\TestCase",
+            "\\App\\Controller\\HelperBoende",
+            "\\App\\Entity\\Boende"
         ]
     },
     {
-        "name": "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\Deck",
+        "name": "\\App\\Controller\\UnemployementHelperTest",
         "size": 3000,
         "relations": [
-            "\\Controller\\Card\\BaseCard"
+            "\\PHPUnit\\Framework\\TestCase",
+            "\\App\\Controller\\UnemployementHelper",
+            "\\App\\Entity\\Unemployement"
         ]
-    },
-    {
-        "name": "\\Controller\\Card\\TexasHoldem",
-        "size": 3000,
-        "relations": [
-            "\\Controller\\Card\\Player",
-            "\\Controller\\Card\\AIPlayer",
-            "\\Controller\\Card\\Deck"
-        ]
-    },
-    {
-        "name": "\\Controller\\Card\\BlackjackGame",
-        "size": 3000,
-        "relations": [
-            "\\Controller\\Card\\Deck",
-            "\\Controller\\Card\\ScoreCalculator",
-            "\\Controller\\Card\\PlayerWinHandler",
-            "\\Controller\\Card\\DealerWinHandler",
-            "\\Controller\\Card\\TieHandler"
-        ]
-    },
-    {
-        "name": "\\App\\Controller\\PageController",
-        "size": 3000,
-        "relations": [
-            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
-            "\\Symfony\\Component\\HttpFoundation\\Response"
-        ]
-    },
-    {
-        "name": "\\App\\Controller\\ProductController",
-        "size": 3000,
-        "relations": [
-            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
-            "\\Symfony\\Component\\HttpFoundation\\Response",
-            "\\Doctrine\\Persistence\\ManagerRegistry",
-            "\\App\\Entity\\Product",
-            "\\App\\Repository\\ProductRepository"
-        ]
-    },
-    {
-        "name": "\\Doctrine\\Persistence\\ManagerRegistry",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Entity\\Product",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Repository\\ProductRepository",
-        "size": 3000,
-        "relations": [
-            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
-            "\\Doctrine\\Persistence\\ManagerRegistry",
-            "\\App\\Entity\\Product"
-        ]
-    },
-    {
-        "name": "\\Controller\\Card\\Player",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\AIPlayer",
-        "size": 3000,
-        "relations": [
-            "\\Controller\\Card\\Player"
-        ]
-    },
-    {
-        "name": "\\Controller\\Card\\BaseCard",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Controller\\ApiController",
-        "size": 3000,
-        "relations": [
-            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
-            "\\App\\Repository\\LibraryRepository",
-            "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
-            "\\Symfony\\Component\\HttpFoundation\\Response",
-            "\\Controller\\Card\\Deck",
-            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
-            "\\Controller\\Card\\BlackjackGame",
-            "\\Symfony\\Component\\HttpFoundation\\Request"
-        ]
-    },
-    {
-        "name": "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\ScoreCalculator",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\PlayerWinHandler",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\DealerWinHandler",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\TieHandler",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Controller\\Card\\Card",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\App\\Kernel",
-        "size": 3000,
-        "relations": [
-            "\\Symfony\\Component\\HttpKernel\\Kernel"
-        ]
-    },
-    {
-        "name": "\\Symfony\\Component\\HttpKernel\\Kernel",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
-        "size": 3000,
-        "relations": []
     }
 ];
 

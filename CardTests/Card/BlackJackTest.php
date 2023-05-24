@@ -1,9 +1,9 @@
 <?php
 
-namespace Controller\Card;
+namespace App\Controller;
 
-require_once __DIR__ . '/../../src/Controller/blackJack.php';
-require_once __DIR__ . '/../../src/Controller/card.php';
+require_once __DIR__ . '/../../src/Controller/BlackjackGame.php';
+require_once __DIR__ . '/../../src/Controller/Card.php';
 
 
 use PHPUnit\Framework\TestCase;

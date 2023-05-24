@@ -1,0 +1,334 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}COVID-19 Statistics{% endblock %}
+
+{% block body %}
+    <h1>Swedish COVID-19 death Statistics</h1>
+
+    <div class="grid">
+        <div>
+            <h1>Total Deaths</h1>
+            <p>{{ formattedData[0].total_deaths }}</p>
+        </div>
+
+        <div>
+            <h1>Male Deaths</h1>
+            <p>{{ formattedData[0].male_deaths }}</p>
+        </div>
+
+        <div>
+            <h1>Female Deaths</h1>
+            <p>{{ formattedData[0].female_deaths }}</p>
+        </div>
+
+        <div>
+            <h1>Under 50</h1>
+            <p>{{ formattedData[0].under_50 }}</p>
+        </div>
+
+        <div>
+            <h1>Age 50-59</h1>
+            <p>{{ formattedData[0].age_50_59 }}</p>
+        </div>
+
+        <div>
+            <h1>Age 60-69</h1>
+            <p>{{ formattedData[0].age_60_69 }}</p>
+        </div>
+
+        <div>
+            <h1>Under 70</h1>
+            <p>{{ formattedData[0].under_70 }}</p>
+        </div>
+
+        <div>
+            <h1>Age 70-74</h1>
+            <p>{{ formattedData[0].age_70_74 }}</p>
+        </div>
+
+        <div>
+            <h1>Age 75-79</h1>
+            <p>{{ formattedData[0].age_75_79 }}</p>
+        </div>
+
+        <div>
+            <h1>Age 80-84</h1>
+            <p>{{ formattedData[0].age_80_84 }}</p>
+        </div>
+
+        <div>
+            <h1>Age 85-89</h1>
+            <p>{{ formattedData[0].age_85_89 }}</p>
+        </div>
+
+        <div>
+            <h1>Age 85+</h1>
+            <p>{{ formattedData[0].age_85_plus }}</p>
+        </div>
+
+        <div>
+            <h1>Age 90+</h1>
+            <p>{{ formattedData[0].age_90_plus }}</p>
+        </div>
+
+        <div>
+            <h1>Cardiovascular Disease</h1>
+            <p>{{ formattedData[0].cardiovascular_disease }}</p>
+        </div>
+
+        <div>
+            <h1>High Blood Pressure</h1>
+            <p>{{ formattedData[0].high_blood_pressure }}</p>
+        </div>
+
+        <div>
+            <h1>Diabetes</h1>
+            <p>{{ formattedData[0].diabetes }}</p>
+        </div>
+
+        <div>
+            <h1>Lung Disease</h1>
+            <p>{{ formattedData[0].lung_disease }}</p>
+        </div>
+
+        <div>
+            <h1>No Disease Group</h1>
+            <p>{{ formattedData[0].no_disease_group }}</p>
+        </div>
+
+        <div>
+            <h1>One Disease Group</h1>
+            <p>{{ formattedData[0].one_disease_group }}</p>
+        </div>
+
+        <div>
+            <h1>Multiple Disease Groups</h1>
+            <p>{{ formattedData[0].multiple_disease_groups }}</p>
+        </div>
+
+        <div>
+            <h1>Special Housing</h1>
+            <p>{{ formattedData[0].special_housing }}</p>
+        </div>
+
+        <div>
+            <h1>Home Care</h1>
+            <p>{{ formattedData[0].home_care }}</p>
+        </div>
+
+        <div>
+            <h1>Hospital Deaths</h1>
+            <p>{{ formattedData[0].hospital_deaths }}</p>
+        </div>
+
+        <div>
+            <h1>Special Housing Deaths</h1>
+            <p>{{ formattedData[0].special_housing_deaths }}</p>
+        </div>
+
+        <div>
+            <h1>Ordinary Housing Deaths</h1>
+            <p>{{ formattedData[0].ordinary_housing_deaths }}</p>
+        </div>
+
+    </div>
+
+    <div>
+    <div class="grid2">
+    <div>
+
+        <div class="chart-container">
+            <canvas id="chart1"></canvas>
+        </div>
+    </div>
+
+    <div>
+
+        <div class="chart-container">
+            <canvas id="chart2"></canvas>
+        </div>
+    </div>
+
+    <div>
+
+        <div class="chart-container">
+            <canvas id="chart3"></canvas>
+        </div>
+    </div>
+
+    <div>
+
+        <div class="chart-container">
+            <canvas id="chart4"></canvas>
+        </div>
+    </div>
+</div>
+        </div>
+
+
+<h1 class="summary">Biggest Death Groups</h1>
+<p class="summary">Based on the data analysis, the biggest death groups by age are as follows:</p>
+<p class="summary"><strong>Age 85 and older:</strong> 2,868 deaths</p>
+<p class="summary"><strong>Age 80-84:</strong> 1,103 deaths</p>
+<p class="summary"><strong>Age 90 and older:</strong> 1,529 deaths</p>
+<p class="summary">When considering the most significant death groups by disease, the following findings emerge:</p>
+<p class="summary"><strong>Multiple Disease Groups:</strong> 3,337 deaths</p>
+<p class="summary"><strong>Cardiovascular Disease:</strong> 2,849 deaths</p>
+<p class="summary"><strong>High Blood Pressure:</strong> 4,519 deaths</p>
+<p class="summary"><strong>Diabetes:</strong> 1,598 deaths</p>
+<p class="summary"><strong>Lung Disease:</strong> 811 deaths</p>
+<p class="summary">Regarding housing conditions and their correlation with deaths, the data suggests the following:</p>
+<p class="summary"><strong>Special Housing:</strong> 2,682 deaths</p>
+<p class="summary"><strong>Home Care:</strong> 1,535 deaths</p>
+<p class="summary"><strong>Hospital Deaths:</strong> 2,782 deaths</p>
+<p class="summary"><strong>Special Housing Deaths:</strong> 2,625 deaths</p>
+<p class="summary"><strong>Ordinary Housing Deaths:</strong> 223 deaths</p>
+<p class="summary">These conclusions are based on the available data and provide insights into the significant factors contributing to mortality rates within specific age groups, diseases, and housing conditions.</p>
+<p class="summary">In terms of age groups, it is noteworthy that the highest number of deaths occurred in the age group of 85 and older, with a staggering 2,868 deaths. This emphasizes the vulnerability of the elderly population to adverse health outcomes, particularly during a pandemic. On the other hand, the age group of 80-84 reported 1,103 deaths, which is comparatively lower but still significant. Additionally, the age group of 90 and older had 1,529 deaths, indicating a substantial impact on this particular age bracket.</p>
+<p class="summary">Moving on to disease categories, the analysis identifies multiple disease groups as having the highest number of deaths, reaching 3,337. This highlights the complexity and challenges associated with managing multiple health conditions simultaneously, which can increase the risk of severe outcomes. Cardiovascular disease emerges as the second-highest cause of death, with 2,849 deaths, underscoring its significant impact on mortality rates. Surprisingly, lung disease reports a comparatively lower number of deaths, standing at 811. This finding challenges the common perception that COVID-19 primarily affects individuals with pre-existing lung conditions and prompts further exploration into the interplay between COVID-19 and different disease groups.</p>
+<p class="summary">Considering housing conditions, the group with the highest number of deaths is associated with special housing, reaching 2,682. This finding suggests that individuals residing in specialized housing facilities may face increased vulnerability to the virus due to various factors, such as close living quarters and shared spaces. Home care reports 1,535 deaths, indicating the challenges faced by individuals receiving care at home during the pandemic. Interestingly, ordinary housing records the lowest number of deaths, with only 223 reported cases. This observation highlights the potential influence of housing conditions on the spread and severity of COVID-19, with specialized housing environments posing higher risks.</p>
+<p class="summary">These significant variations in numbers among age groups, disease categories, and housing conditions provide valuable insights into the complex dynamics of COVID-19's impact on different segments of the population. They underline the need for targeted interventions and support systems for vulnerable groups, as well as ongoing research to better understand the underlying factors driving these patterns. By examining the extremes within each group, we gain a deeper understanding of the diverse impacts of the pandemic, enabling us to develop more effective strategies to mitigate its effects and protect those at highest risk.</p>
+<p class="summary"><strong>Source:</strong> cause of death certificate, the patient register, the medication register, and the register of interventions according to the Social Services Act for the elderly and persons with disabilities, National Board of Health and Welfare</p>
+<p class="summary"><a href="https://www.scb.se/contentassets/c9a909d7121b4968ad0324c20abe1d4f/effekter-av-covid-19-pandemin.xlsx">Link to Data</a></p>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // Retrieve the data from the server using Twig
+    const totalDeaths = {{ formattedData[0].total_deaths }};
+    const maleDeaths = {{ formattedData[0].male_deaths }};
+    const femaleDeaths = {{ formattedData[0].female_deaths }};
+    // Retrieve data for other charts, e.g., chart2Data, chart3Data, chart4Data
+
+    // Chart 1: Total, Male, and Female Deaths
+    const chart1Canvas = document.getElementById('chart1');
+    const chart1Ctx = chart1Canvas.getContext('2d');
+    new Chart(chart1Ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Total Deaths', 'Male Deaths', 'Female Deaths'],
+            datasets: [{
+                label: 'Number of Deaths by sex',
+                data: [totalDeaths, maleDeaths, femaleDeaths],
+                backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(75, 192, 192, 0.5)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Retrieve the data from the server using Twig
+    const under50 = {{ formattedData[0].under_50 }};
+    const age50to59 = {{ formattedData[0].age_50_59 }};
+    const age60to69 = {{ formattedData[0].age_60_69 }};
+    const under70 = {{ formattedData[0].under_70 }};
+    const age70to74 = {{ formattedData[0].age_70_74 }};
+    const age75to79 = {{ formattedData[0].age_75_79 }};
+    const age80to84 = {{ formattedData[0].age_80_84 }};
+    const age85to89 = {{ formattedData[0].age_85_89 }};
+    const age85plus = {{ formattedData[0].age_85_plus }};
+    const age90plus = {{ formattedData[0].age_90_plus }};
+    
+    // Chart 2: Total Deaths and Age Groups
+    const chart2Canvas = document.getElementById('chart2');
+    const chart2Ctx = chart2Canvas.getContext('2d');
+    new Chart(chart2Ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Total Deaths', 'Under 50', 'Age 50-59', 'Age 60-69', 'Under 70', 'Age 70-74', 'Age 75-79', 'Age 80-84', 'Age 85-89', 'Age 85+', 'Age 90+'],
+            datasets: [{
+                label: 'Number of Deaths by age',
+                data: [totalDeaths, under50, age50to59, age60to69, under70, age70to74, age75to79, age80to84, age85to89, age85plus, age90plus],
+                backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(75, 192, 192, 0.5)', 'rgba(255, 206, 86, 0.5)', 'rgba(153, 102, 255, 0.5)', 'rgba(255, 159, 64, 0.5)', 'rgba(102, 204, 255, 0.5)', 'rgba(255, 159, 164, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 99, 132, 0.5)', 'rgba(75, 192, 192, 0.5)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)', 'rgba(255, 206, 86, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)', 'rgba(102, 204, 255, 1)', 'rgba(255, 159, 164, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)', 'rgba(75, 192, 192, 1)'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const cardiovascularDisease = {{ formattedData[0].cardiovascular_disease }};
+    const highBloodPressure = {{ formattedData[0].high_blood_pressure }};
+    const diabetes = {{ formattedData[0].diabetes }};
+    const lungDisease = {{ formattedData[0].lung_disease }};
+    const noDiseaseGroup = {{ formattedData[0].no_disease_group }};
+    const oneDiseaseGroup = {{ formattedData[0].one_disease_group }};
+    const multipleDiseaseGroups = {{ formattedData[0].multiple_disease_groups }};
+    
+    // Chart 3: Total Deaths and Disease Groups
+    const chart3Canvas = document.getElementById('chart3');
+    const chart3Ctx = chart3Canvas.getContext('2d');
+    new Chart(chart3Ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Total Deaths', 'Cardiovascular Disease', 'High Blood Pressure', 'Diabetes', 'Lung Disease', 'No Disease Group', 'One Disease Group', 'Multiple Disease Groups'],
+            datasets: [{
+                label: 'Number of Deaths with Diseases',
+                data: [totalDeaths, cardiovascularDisease, highBloodPressure, diabetes, lungDisease, noDiseaseGroup, oneDiseaseGroup, multipleDiseaseGroups],
+                backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(75, 192, 192, 0.5)', 'rgba(255, 206, 86, 0.5)', 'rgba(153, 102, 255, 0.5)', 'rgba(255, 159, 64, 0.5)', 'rgba(102, 204, 255, 0.5)', 'rgba(255, 159, 164, 0.5)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)', 'rgba(255, 206, 86, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)', 'rgba(102, 204, 255, 1)', 'rgba(255, 159, 164, 1)'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+const specialHousing = {{ formattedData[0].special_housing }};
+const homeCare = {{ formattedData[0].home_care }};
+const hospitalDeaths = {{ formattedData[0].hospital_deaths }};
+const specialHousingDeaths = {{ formattedData[0].special_housing_deaths }};
+const ordinaryHousingDeaths = {{ formattedData[0].ordinary_housing_deaths }};
+
+// Chart 4: Special Housing, Home Care, and Deaths
+const chart4Canvas = document.getElementById('chart4');
+const chart4Ctx = chart4Canvas.getContext('2d');
+new Chart(chart4Ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Total Deaths', 'Special Housing', 'Home Care', 'Hospital Deaths', 'Special Housing Deaths', 'Ordinary Housing Deaths'],
+        datasets: [{
+            label: 'Number of Cases/Deaths',
+            data: [totalDeaths, specialHousing, homeCare, hospitalDeaths, specialHousingDeaths, ordinaryHousingDeaths],
+            backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(75, 192, 192, 0.5)', 'rgba(255, 206, 86, 0.5)', 'rgba(153, 102, 255, 0.5)', 'rgba(255, 159, 64, 0.5)'],
+            borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)', 'rgba(255, 206, 86, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+    
+    });
+    </script>
+{% endblock %}
+
+

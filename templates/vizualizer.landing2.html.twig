@@ -1,0 +1,32 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}API projects{% endblock %}
+
+{% block body %}
+    <h1>API Routes</h1>
+
+    <div class="grid-container">
+        {% for name, route in links %}
+            <div class="card-link" onclick="window.location.href={% if name == 'api_effekt_av_covid19' %}
+                '{{ path(name) }}'
+            {% elseif name == 'api_boende' %}
+                '{{ path(name) }}'
+            {% elseif name == 'api_unemployment' %}
+                '{{ path(name) }}'
+            {% elseif name == 'api_total_deaths' %}
+                '{{ path(name, {'total_deaths': '5771'}) }}'
+            {% elseif name == 'api_female_deaths' %}
+                '{{ path(name, {'female_deaths': '2667'}) }}'
+            {% elseif name == 'api_boende_deaths_v' %}
+                '{{ path(name, {'Vecka': '3'}) }}'
+            {% elseif name == 'api_unemployement_age' %}
+                '{{ path(name, {'ageRange': '15-19 år'}) }}'
+            {% else %}
+                ''
+            {% endif %}">
+                <a href="#" class="api-link">{{ name }}</a>
+                <p class="api-description">{{ route['description'] }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,220 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684088944">
-  <project timestamp="1684088944">
-    <file name="/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/blackJack.php">
-      <class name="Controller\Card\ScoreCalculator" namespace="global">
-        <metrics complexity="9" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="16" coveredelements="16"/>
+<coverage generated="1684856404">
+  <project timestamp="1684856404">
+    <file name="/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/EffektAvCovid19Helper.php">
+      <class name="App\Controller\EffektAvCovid19Helper" namespace="global">
+        <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="56" coveredstatements="56" elements="58" coveredelements="58"/>
       </class>
-      <class name="Controller\Card\PlayerWinHandler" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
-      </class>
-      <class name="Controller\Card\DealerWinHandler" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
-      </class>
-      <class name="Controller\Card\TieHandler" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
-      </class>
-      <class name="Controller\Card\BlackjackGame" namespace="global">
-        <metrics complexity="46" methods="18" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="99" coveredstatements="79" elements="117" coveredelements="91"/>
-      </class>
-      <line num="15" type="method" name="calculateScore" visibility="public" complexity="9" crap="9" count="12"/>
-      <line num="17" type="stmt" count="12"/>
-      <line num="18" type="stmt" count="12"/>
-      <line num="19" type="stmt" count="12"/>
-      <line num="20" type="stmt" count="11"/>
-      <line num="21" type="stmt" count="11"/>
-      <line num="22" type="stmt" count="6"/>
-      <line num="24" type="stmt" count="11"/>
-      <line num="25" type="stmt" count="3"/>
-      <line num="26" type="stmt" count="3"/>
-      <line num="28" type="stmt" count="11"/>
-      <line num="29" type="stmt" count="10"/>
-      <line num="33" type="stmt" count="12"/>
+      <line num="10" type="method" name="setEffektAvCovid19Data" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="12" type="stmt" count="1"/>
+      <line num="13" type="stmt" count="1"/>
+      <line num="14" type="stmt" count="1"/>
+      <line num="15" type="stmt" count="1"/>
+      <line num="16" type="stmt" count="1"/>
+      <line num="17" type="stmt" count="1"/>
+      <line num="18" type="stmt" count="1"/>
+      <line num="19" type="stmt" count="1"/>
+      <line num="20" type="stmt" count="1"/>
+      <line num="21" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="24" type="stmt" count="1"/>
+      <line num="25" type="stmt" count="1"/>
+      <line num="26" type="stmt" count="1"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="28" type="stmt" count="1"/>
+      <line num="29" type="stmt" count="1"/>
+      <line num="30" type="stmt" count="1"/>
+      <line num="31" type="stmt" count="1"/>
+      <line num="32" type="stmt" count="1"/>
+      <line num="33" type="stmt" count="1"/>
       <line num="34" type="stmt" count="1"/>
       <line num="35" type="stmt" count="1"/>
-      <line num="37" type="stmt" count="12"/>
-      <line num="54" type="method" name="handle" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="56" type="stmt" count="0"/>
-      <line num="57" type="stmt" count="0"/>
-      <line num="59" type="stmt" count="0"/>
-      <line num="75" type="method" name="handle" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="77" type="stmt" count="3"/>
-      <line num="78" type="stmt" count="3"/>
-      <line num="79" type="stmt" count="3"/>
-      <line num="95" type="method" name="handle" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="97" type="stmt" count="1"/>
-      <line num="155" type="method" name="resetGame" visibility="public" complexity="9" crap="10.27" count="1"/>
-      <line num="158" type="stmt" count="1"/>
-      <line num="159" type="stmt" count="1"/>
-      <line num="161" type="stmt" count="1"/>
-      <line num="162" type="stmt" count="1"/>
-      <line num="163" type="stmt" count="1"/>
-      <line num="164" type="stmt" count="1"/>
-      <line num="165" type="stmt" count="1"/>
-      <line num="166" type="stmt" count="1"/>
-      <line num="167" type="stmt" count="1"/>
-      <line num="168" type="stmt" count="1"/>
-      <line num="169" type="stmt" count="0"/>
-      <line num="170" type="stmt" count="0"/>
-      <line num="171" type="stmt" count="0"/>
-      <line num="173" type="stmt" count="1"/>
-      <line num="175" type="stmt" count="1"/>
-      <line num="176" type="stmt" count="0"/>
-      <line num="180" type="method" name="setGameOver" visibility="public" complexity="1" crap="1" count="4"/>
-      <line num="182" type="stmt" count="4"/>
-      <line num="189" type="method" name="getPlayerCards" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="191" type="stmt" count="3"/>
-      <line num="198" type="method" name="getDealerCards" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="200" type="stmt" count="2"/>
-      <line num="207" type="method" name="getPlayerChips" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="209" type="stmt" count="2"/>
-      <line num="216" type="method" name="getDealerChips" visibility="public" complexity="1" crap="1" count="5"/>
-      <line num="218" type="stmt" count="5"/>
-      <line num="225" type="method" name="getCurrentBet" visibility="public" complexity="1" crap="1" count="7"/>
-      <line num="227" type="stmt" count="7"/>
-      <line num="234" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="18"/>
-      <line num="236" type="stmt" count="18"/>
-      <line num="237" type="stmt" count="18"/>
-      <line num="238" type="stmt" count="18"/>
-      <line num="239" type="stmt" count="18"/>
-      <line num="240" type="stmt" count="18"/>
-      <line num="241" type="stmt" count="18"/>
-      <line num="242" type="stmt" count="18"/>
-      <line num="243" type="stmt" count="18"/>
-      <line num="244" type="stmt" count="18"/>
-      <line num="245" type="stmt" count="18"/>
-      <line num="246" type="stmt" count="18"/>
-      <line num="247" type="stmt" count="18"/>
-      <line num="255" type="method" name="startGame" visibility="public" complexity="2" crap="2.11" count="10"/>
-      <line num="259" type="stmt" count="10"/>
-      <line num="260" type="stmt" count="10"/>
-      <line num="261" type="stmt" count="10"/>
-      <line num="262" type="stmt" count="10"/>
-      <line num="263" type="stmt" count="10"/>
-      <line num="266" type="stmt" count="10"/>
-      <line num="267" type="stmt" count="0"/>
-      <line num="268" type="stmt" count="0"/>
-      <line num="269" type="stmt" count="0"/>
-      <line num="273" type="stmt" count="10"/>
-      <line num="281" type="method" name="getPlayerScore" visibility="public" complexity="1" crap="1" count="11"/>
-      <line num="283" type="stmt" count="11"/>
-      <line num="291" type="method" name="getDealerScore" visibility="public" complexity="1" crap="1" count="7"/>
-      <line num="294" type="stmt" count="7"/>
-      <line num="295" type="stmt" count="7"/>
-      <line num="303" type="method" name="isPlayerTurn" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="305" type="stmt" count="1"/>
-      <line num="313" type="method" name="isGameOver" visibility="public" complexity="1" crap="1" count="6"/>
-      <line num="315" type="stmt" count="6"/>
-      <line num="324" type="method" name="placeBet" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="327" type="stmt" count="2"/>
-      <line num="328" type="stmt" count="2"/>
-      <line num="329" type="stmt" count="2"/>
-      <line num="330" type="stmt" count="2"/>
-      <line num="338" type="method" name="playerHit" visibility="public" complexity="5" crap="7.19" count="1"/>
-      <line num="340" type="stmt" count="1"/>
-      <line num="341" type="stmt" count="0"/>
-      <line num="344" type="stmt" count="1"/>
-      <line num="345" type="stmt" count="1"/>
-      <line num="346" type="stmt" count="1"/>
-      <line num="350" type="stmt" count="1"/>
-      <line num="351" type="stmt" count="0"/>
-      <line num="352" type="stmt" count="0"/>
-      <line num="353" type="stmt" count="0"/>
-      <line num="362" type="method" name="playerStand" visibility="public" complexity="7" crap="7.48" count="3"/>
-      <line num="364" type="stmt" count="3"/>
-      <line num="365" type="stmt" count="0"/>
-      <line num="368" type="stmt" count="3"/>
-      <line num="370" type="stmt" count="3"/>
-      <line num="371" type="stmt" count="3"/>
-      <line num="374" type="stmt" count="3"/>
-      <line num="375" type="stmt" count="3"/>
-      <line num="377" type="stmt" count="3"/>
-      <line num="378" type="stmt" count="0"/>
-      <line num="379" type="stmt" count="0"/>
-      <line num="382" type="stmt" count="3"/>
-      <line num="383" type="stmt" count="2"/>
-      <line num="384" type="stmt" count="2"/>
-      <line num="387" type="stmt" count="1"/>
-      <line num="398" type="method" name="dealerPlay" visibility="public" complexity="5" crap="6.60" count="1"/>
-      <line num="400" type="stmt" count="1"/>
-      <line num="401" type="stmt" count="1"/>
-      <line num="404" type="stmt" count="1"/>
-      <line num="405" type="stmt" count="1"/>
-      <line num="406" type="stmt" count="1"/>
-      <line num="407" type="stmt" count="1"/>
-      <line num="410" type="stmt" count="0"/>
-      <line num="411" type="stmt" count="0"/>
-      <line num="412" type="stmt" count="0"/>
-      <line num="414" type="stmt" count="0"/>
-      <line num="422" type="method" name="getWinner" visibility="public" complexity="6" crap="6.13" count="6"/>
-      <line num="428" type="stmt" count="6"/>
-      <line num="429" type="stmt" count="6"/>
-      <line num="431" type="stmt" count="6"/>
-      <line num="432" type="stmt" count="1"/>
-      <line num="435" type="stmt" count="5"/>
-      <line num="436" type="stmt" count="1"/>
-      <line num="439" type="stmt" count="4"/>
-      <line num="440" type="stmt" count="0"/>
-      <line num="443" type="stmt" count="4"/>
-      <line num="444" type="stmt" count="0"/>
-      <line num="447" type="stmt" count="4"/>
-      <line num="448" type="stmt" count="2"/>
-      <line num="450" type="stmt" count="2"/>
-      <metrics loc="453" ncloc="291" classes="5" methods="22" coveredmethods="15" conditionals="0" coveredconditionals="0" statements="121" coveredstatements="98" elements="143" coveredelements="113"/>
-    </file>
-    <file name="/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/card.php">
-      <class name="Controller\Card\BaseCard" namespace="global">
-        <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="17" coveredelements="17"/>
-      </class>
-      <class name="Controller\Card\Deck" namespace="global">
-        <metrics complexity="16" methods="7" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="15" elements="27" coveredelements="20"/>
-      </class>
-      <line num="23" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="26"/>
-      <line num="25" type="stmt" count="26"/>
-      <line num="26" type="stmt" count="26"/>
-      <line num="34" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="12"/>
-      <line num="36" type="stmt" count="12"/>
-      <line num="44" type="method" name="getSuit" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="36" type="stmt" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <line num="40" type="method" name="formatEffektAvCovid19Data" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="42" type="stmt" count="1"/>
+      <line num="43" type="stmt" count="1"/>
+      <line num="44" type="stmt" count="1"/>
+      <line num="45" type="stmt" count="1"/>
       <line num="46" type="stmt" count="1"/>
-      <line num="55" type="method" name="getImagePath" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="47" type="stmt" count="1"/>
+      <line num="48" type="stmt" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="50" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="1"/>
+      <line num="52" type="stmt" count="1"/>
+      <line num="53" type="stmt" count="1"/>
+      <line num="54" type="stmt" count="1"/>
+      <line num="55" type="stmt" count="1"/>
+      <line num="56" type="stmt" count="1"/>
+      <line num="57" type="stmt" count="1"/>
       <line num="58" type="stmt" count="1"/>
       <line num="59" type="stmt" count="1"/>
       <line num="60" type="stmt" count="1"/>
       <line num="61" type="stmt" count="1"/>
       <line num="62" type="stmt" count="1"/>
       <line num="63" type="stmt" count="1"/>
+      <line num="64" type="stmt" count="1"/>
+      <line num="65" type="stmt" count="1"/>
       <line num="66" type="stmt" count="1"/>
+      <line num="67" type="stmt" count="1"/>
       <line num="68" type="stmt" count="1"/>
-      <line num="71" type="stmt" count="1"/>
-      <line num="84" type="method" name="__construct" visibility="public" complexity="3" crap="3" count="25"/>
-      <line num="86" type="stmt" count="25"/>
-      <line num="88" type="stmt" count="25"/>
-      <line num="89" type="stmt" count="25"/>
-      <line num="90" type="stmt" count="25"/>
-      <line num="91" type="stmt" count="25"/>
-      <line num="92" type="stmt" count="25"/>
-      <line num="102" type="method" name="shuffle" visibility="public" complexity="1" crap="1" count="11"/>
-      <line num="104" type="stmt" count="11"/>
-      <line num="105" type="stmt" count="11"/>
-      <line num="113" type="method" name="dealCard" visibility="public" complexity="2" crap="2" count="14"/>
-      <line num="115" type="stmt" count="14"/>
-      <line num="116" type="stmt" count="1"/>
-      <line num="118" type="stmt" count="14"/>
-      <line num="126" type="method" name="getAllCards" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="128" type="stmt" count="3"/>
-      <line num="136" type="method" name="countCards" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="138" type="stmt" count="3"/>
-      <line num="147" type="method" name="dealCardManually" visibility="public" complexity="4" crap="4.59" count="1"/>
-      <line num="149" type="stmt" count="1"/>
-      <line num="150" type="stmt" count="0"/>
-      <line num="152" type="stmt" count="1"/>
-      <line num="162" type="method" name="dealSpecificCard" visibility="public" complexity="4" crap="20" count="0"/>
-      <line num="164" type="stmt" count="0"/>
-      <line num="165" type="stmt" count="0"/>
-      <line num="166" type="stmt" count="0"/>
-      <line num="169" type="stmt" count="0"/>
-      <metrics loc="172" ncloc="104" classes="2" methods="11" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="33" coveredstatements="28" elements="44" coveredelements="37"/>
+      <line num="69" type="stmt" count="1"/>
+      <line num="70" type="stmt" count="1"/>
+      <line num="72" type="stmt" count="1"/>
+      <metrics loc="77" ncloc="77" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="56" coveredstatements="56" elements="58" coveredelements="58"/>
     </file>
-    <metrics files="2" loc="625" ncloc="395" classes="7" methods="33" coveredmethods="24" conditionals="0" coveredconditionals="0" statements="154" coveredstatements="126" elements="187" coveredelements="150"/>
+    <file name="/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/HelperBoende.php">
+      <class name="App\Controller\HelperBoende" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="16" coveredelements="16"/>
+      </class>
+      <line num="11" type="method" name="setData" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="13" type="stmt" count="1"/>
+      <line num="14" type="stmt" count="1"/>
+      <line num="15" type="stmt" count="1"/>
+      <line num="16" type="stmt" count="1"/>
+      <line num="17" type="stmt" count="1"/>
+      <line num="18" type="stmt" count="1"/>
+      <line num="21" type="method" name="getData" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="24" type="stmt" count="1"/>
+      <line num="25" type="stmt" count="1"/>
+      <line num="26" type="stmt" count="1"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="28" type="stmt" count="1"/>
+      <line num="29" type="stmt" count="1"/>
+      <line num="30" type="stmt" count="1"/>
+      <metrics loc="33" ncloc="32" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="16" coveredelements="16"/>
+    </file>
+    <file name="/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/UnemployementHelper.php">
+      <class name="App\Controller\UnemployementHelper" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
+      </class>
+      <line num="10" type="method" name="setUnemployemntData" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="12" type="stmt" count="1"/>
+      <line num="13" type="stmt" count="1"/>
+      <line num="14" type="stmt" count="1"/>
+      <line num="15" type="stmt" count="1"/>
+      <line num="18" type="method" name="formatUnemploymentData" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="20" type="stmt" count="1"/>
+      <line num="21" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="24" type="stmt" count="1"/>
+      <line num="25" type="stmt" count="1"/>
+      <metrics loc="31" ncloc="31" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
+    </file>
+    <metrics files="3" loc="141" ncloc="140" classes="3" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="80" coveredstatements="80" elements="86" coveredelements="86"/>
   </project>
 </coverage>

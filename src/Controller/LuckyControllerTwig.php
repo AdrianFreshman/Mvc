@@ -6,10 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Controller\Card\Card;
-use Controller\Card\Deck;
+use App\Controller\Card;
+use App\Controller\Deck;
 use Controller\Card\TexasHoldem;
-use Controller\Card\BlackjackGame;
+use App\Controller\BlackjackGame;
 use Symfony\Component\HttpFoundation\Request;
 
 class LuckyControllerTwig extends AbstractController
@@ -200,7 +200,7 @@ public function playBlackjack(SessionInterface $session, Request $request): Resp
     if (!$game) {
         $game = new BlackjackGame();
         $session->set('blackjack_game', $game);
-        
+
     }
 
     switch ($action) {

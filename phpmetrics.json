@@ -1,6 +1,24 @@
 {
-    "includes": ["src"],
-    "exclude": ["test[s]?"],
+    "includes": [
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/projectController.php",
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/UnemployementHelper.php",
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/HelperBoende.php",
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/EffektAvCovid19Helper.php",
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/tests/Proj/EffektAvCovid19HelperTest.php",
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/tests/Proj/HelperBoendeTest.php",
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/tests/Proj/UnemployementHelperTest.php"
+    ],
+
+    "exclude": [
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/LibraryController.php",
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/ApiController.php",
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/BlackjackGame.php",
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/Card.php",
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/texasHoldem.php",
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Controller/ProductController.php",
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Entity",
+        "/home/adriandedorson/dbwebb-kurser/mvc/me/report/src/Repository"
+    ],
     "report": {
         "html": "docs/metrics"
     },

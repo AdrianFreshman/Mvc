@@ -168,12 +168,12 @@ class Player
 
 }
 
-class AIPlayer extends Player
-{
-    private $cards;
+// class AIPlayer extends Player
+// {
+//     private $cards;
 
 
-}
+// }
 
 
 

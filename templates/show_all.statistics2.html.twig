@@ -1,0 +1,111 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}COVID-19 Statistics{% endblock %}
+
+{% block body %}
+    <h1>Number of deaths per 100,000 and week among people (aged 70 or older) in special housing during the weeks 4 Jan 2016–24 May 2020 (Age- and sex-standardised figures)</h1>
+        <h1>Analysis of Number of Deaths among Elderly in Special Housing</h1>
+
+    <div class="chart-container">
+        <canvas id="chart1"></canvas>
+    </div>
+        <h1>Interesting Findings</h1>
+   <p class="summary">The provided data represents the number of deaths per 100,000 individuals aged 70 or older in special housing during the period of January 4, 2016, to May 24, 2020. The figures are age- and sex-standardized.</p>
+<p class="summary">Upon analyzing the data, several interesting findings emerge:</p>
+<p class="summary">The number of deaths per 100,000 individuals shows some variations across the years.</p>
+<p class="summary">In the initial weeks of each year, the number of deaths tends to be relatively high and then gradually decreases.</p>
+<p class="summary">The year 2020 stands out as having relatively lower numbers of deaths compared to the preceding years.</p>
+<p class="summary">Weeks with higher mortality rates are observed intermittently throughout the years, indicating periods of increased vulnerability or specific events.</p>
+<h1 class="summary">Conclusion</h1>
+<p class="summary">From this data, we can make the following conclusion:</p>
+<p class="summary">Individuals in special living facilities experienced higher mortality rates compared to individuals without special living or home care. The average number of deaths per week in the special living group ranged from approximately 730 to 980, while in the non-special living group, it ranged from approximately 100 to 130.</p>
+<p class="summary">The mortality rate in special living facilities showed a decreasing trend from 2016 to 2020. Although there were fluctuations between years, the overall trend was a gradual decrease.</p>
+<p class="summary">The mortality rate in the non-special living group fluctuated but did not show a clear decreasing or increasing trend over the years.</p>
+<p class="summary">It's important to note that the data for week 53 is missing, which limits the analysis for that specific week.</p>
+<p class="summary">In summary, based on the provided data, individuals in special living facilities experienced higher mortality rates compared to those without special living or home care. However, further analysis and additional data would be needed to fully understand the factors contributing to these differences and draw more definitive summary.</p>
+<p class="summary">The dataset does not provide information for week 53, and there is missing data for some weeks in the later years.</p>
+<p class="summary">For more detailed information, please refer to the <a href="https://www.scb.se/contentassets/c9a909d7121b4968ad0324c20abe1d4f/effekter-av-covid-19-pandemin.xlsx">source data file</a> (Effekter av COVID-19 pandemin.xlsx) provided by Statistics Sweden (SCB). The data is sourced from the cause of death register and the register of interventions according to the Social Services Act for the elderly and persons with disabilities, maintained by the National Board of Health and Welfare.</p>
+
+    <div class="grid3">
+        {% for item in formattedData %}
+            <div>
+                <h1>Week</h1>
+                <p>{{ item.Vecka }}</p>
+            </div>
+
+            {% for year in ['2016', '2017', '2018', '2019', '2020'] %}
+                <div>
+                    <h1>{{ year }}</h1>
+                    <p>{{ item[year] }}</p>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+    
+
+
+    
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const data = [];
+            const labels = [];
+
+            // Retrieve the data from the server using Twig and populate the arrays
+            {% for item in formattedData %}
+                labels.push('{{ item.Vecka }}');
+                weeklyData = [
+                    {{ item['2016'] }},
+                    {{ item['2017'] }},
+                    {{ item['2018'] }},
+                    {{ item['2019'] }},
+                    {{ item['2020'] }}
+                ];
+                data.push(weeklyData);
+            {% endfor %}
+
+            // Create a line chart using Chart.js
+            const chart1Canvas = document.getElementById('chart1');
+            const chart1Ctx = chart1Canvas.getContext('2d');
+
+            const datasets = [];
+            const yearLabels = ['2016', '2017', '2018', '2019', '2020'];
+
+            for (let i = 0; i < yearLabels.length; i++) {
+                const datasetData = data.map(weekData => weekData[i]);
+
+                datasets.push({
+                    label: yearLabels[i],
+                    data: datasetData,
+                    borderColor: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 1)`,
+                    backgroundColor: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.5)`,
+                    borderWidth: 1,
+                    fill: false
+                });
+            }
+
+            new Chart(chart1Ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: datasets
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    
+       
+    </script>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Statistic vizuals{% endblock %}
+
+{% block body %}
+   
+    <h1>Statistic routesRoutes</h1>
+<div class="grid-container">
+
+        {% for name, link in links %}
+            <div class="card-link" onclick="window.location.href='{{ path(link.url) }}'">
+                <a href="#" class="api-link">{{ name }}</a>
+                <p class="api-description">{{ link.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+    
+

@@ -1,6 +1,14 @@
 <?php
 
-namespace Controller\Card;
+namespace App\Controller;
+
+use Controller\Card\Card;
+use Controller\Card\Deck;
+use App\Controller\BlackjackGame;
+use App\Controller\ScoreCalculator;
+use App\Controller\PlayerWinHandler;
+use App\Controller\DealerWinHandler;
+use App\Controller\TieHandler;
 
 /**
 *
@@ -10,6 +18,8 @@ namespace Controller\Card;
 *@param array $cards An array of cards to calculate the score for
 *@return int The total score of the given array of cards
 */
+
+
 class ScoreCalculator
 {
     public function calculateScore(array $cards): int
@@ -80,6 +90,7 @@ class DealerWinHandler
     }
 }
 
+
 /**
  * Class TieHandler
  * Handles the case when there is a tie.
@@ -128,10 +139,14 @@ class TieHandler
 *
 *@property ScoreCalculator $scoreCalculator A calculator for determining the score of a hand of cards.
 */
+
+
+
 class BlackjackGame
 {
     private Deck $deck;
     private array $playerCards = [];
+    private array $players = []; // Array to store player information
     private array $dealerCards = [];
     private bool $playerTurn;
     private bool $gameOver;
@@ -231,7 +246,7 @@ class BlackjackGame
      * Constructor for the class.
      * @param int $startingChips The starting number of chips for both player and dealer. Default is 100.
     */
-    public function __construct(int $startingChips = 100)
+    public function __construct(int $playerCount = 1, int $startingChips = 100)
     {
         $this->deck = new Deck();
         $this->playerCards = array();
@@ -272,6 +287,34 @@ class BlackjackGame
         // Set current bet to 0
         $this->currentBet = 0;
     }
+
+    // public function startGame(): void
+    // {
+    //     // Shuffle the deck
+    //     $this->deck->shuffle();
+
+    //     // Deal two cards to each player
+    //     for ($i = 0; $i < $this->numPlayers; $i++) {
+    //         $this->playerCards[$i][] = $this->deck->dealCard();
+    //         $this->playerCards[$i][] = $this->deck->dealCard();
+    //     }
+
+    //     // Deal two cards to the dealer
+    //     $this->dealerCards[] = $this->deck->dealCard();
+    //     $this->dealerCards[] = $this->deck->dealCard();
+
+    //     // Check if any player has a blackjack and declare the winner if they do
+    //     for ($i = 0; $i < $this->numPlayers; $i++) {
+    //         if ($this->getPlayerScore($i) === 21) {
+    //             $this->gameOver = true;
+    //             $this->winner = 'player';
+    //             return;
+    //         }
+    //     }
+
+    //     // Set current bet to 0
+    //     $this->currentBet = 0;
+    // }
 
     /**
      * Calculates and returns the score of the player's hand.
@@ -336,23 +379,23 @@ class BlackjackGame
      * @return void
      */
     public function playerHit(): void
-        {
-            if (!$this->playerTurn || $this->gameOver) {
-                return;
-            }
-
-            $this->playerCards[] = $this->deck->dealCard();
-            if ($this->getPlayerScore() > 21) {
-                $this->dealerWinsHandler->handle($this);
-            }
-
-            // Check if the player has a blackjack and declare the winner if they do
-            if ($this->getPlayerScore() === 21) {
-                $this->gameOver = true;
-                $this->winner = 'player';
-                return;
-            }
+    {
+        if (!$this->playerTurn || $this->gameOver) {
+            return;
         }
+
+        $this->playerCards[] = $this->deck->dealCard();
+        if ($this->getPlayerScore() > 21) {
+            $this->dealerWinsHandler->handle($this);
+        }
+
+        // Check if the player has a blackjack and declare the winner if they do
+        if ($this->getPlayerScore() === 21) {
+            $this->gameOver = true;
+            $this->winner = 'player';
+            return;
+        }
+    }
 
     /**
      * Handles the logic when the player chooses to stand.
@@ -360,41 +403,41 @@ class BlackjackGame
      * @return void
      */
     public function playerStand(): void
-{
-    if (!$this->playerTurn || $this->gameOver) {
-        return;
+    {
+        if (!$this->playerTurn || $this->gameOver) {
+            return;
+        }
+
+        $this->playerTurn = false;
+
+        while ($this->getDealerScore() < 17) {
+            $this->dealerCards[] = $this->deck->dealCard();
+        }
+
+        $dealerScore = $this->getDealerScore();
+        $playerScore = $this->getPlayerScore();
+
+        if ($dealerScore > 21 || $playerScore > $dealerScore) {
+            $this->playerWinsHandler->handle($this);
+            return;
+        }
+
+        if ($dealerScore > $playerScore) {
+            $this->dealerWinsHandler->handle($this);
+            return;
+        }
+
+        $this->tieHandler->handle($this);
     }
-
-    $this->playerTurn = false;
-
-    while ($this->getDealerScore() < 17) {
-        $this->dealerCards[] = $this->deck->dealCard();
-    }
-
-    $dealerScore = $this->getDealerScore();
-    $playerScore = $this->getPlayerScore();
-
-    if ($dealerScore > 21 || $playerScore > $dealerScore) {
-        $this->playerWinsHandler->handle($this);
-        return;
-    }
-
-    if ($dealerScore > $playerScore) {
-        $this->dealerWinsHandler->handle($this);
-        return;
-    }
-
-    $this->tieHandler->handle($this);
-}
 
 
 
 
     /**
-     * Plays the dealer's turn.
-     *
-     * @return void
-     */
+         * Plays the dealer's turn.
+         *
+         * @return void
+         */
     public function dealerPlay(): void
     {
         while ($this->getDealerScore() < 17) {

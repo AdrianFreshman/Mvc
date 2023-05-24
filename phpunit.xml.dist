@@ -25,8 +25,11 @@
 
     <coverage processUncoveredFiles="true">
           <include>
-        <file>src/Controller/card.php</file>
-        <file>src/Controller/blackJack.php</file>
+        <!-- <file>src/Controller/card.php</file>
+        <file>src/Controller/blackJack.php</file> -->
+        <file>src/Controller/HelperBoende.php</file>
+        <file>src/Controller/EffektAvCovid19Helper.php</file>
+        <file>src/Controller/UnemployementHelper.php</file>
         </include>
 
         <report>

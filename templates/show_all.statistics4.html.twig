@@ -1,0 +1,103 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}COVID-19 Statistics{% endblock %}
+
+{% block body %}
+    <h1>Percentage of unemployed in the population aged 15-74 by sex, age, quarter 2 2020
+Share in percent</h1>
+
+     <div class="chart-container">
+        <canvas id="chart1"></canvas>
+    </div>
+
+    <h1 class="summary">Conclusions:</h1>
+<p class="summary">Based on the data provided, I have drawn the following summary:</p>
+<p class="summary">The unemployment rate among the population aged 15-74 in the second quarter of 2020 varied based on gender and age. In general, the unemployment rate was higher for women compared to men.</p>
+<p class="summary">Among individuals aged 15-19, the unemployment rate was high for both genders, with a significant increase from 2018 to 2020. In 2020, the unemployment rate for women in this age group was 48.1%, while for men, it was slightly lower at 48.8%.</p>
+<p class="summary">For individuals aged 20-24, there was also an upward trend in unemployment rates from 2018 to 2020. In 2020, the unemployment rate for women in this age group was 21.1%, while for men, it was slightly higher at 22.8%.</p>
+<p class="summary">The age group 25-34 had relatively lower unemployment rates compared to the younger age groups. In 2020, the unemployment rate for women in this age group was 9.0%, while for men, it was slightly lower at 9.1%.</p>
+<p class="summary">Among individuals aged 35-44, 45-54, and 55-64, the unemployment rates were generally lower compared to the younger age groups. However, there was a slight increase in unemployment rates for some age groups from 2018 to 2020.</p>
+<p class="summary">It is important to note that these summary are based on data from the Swedish Labor Force Surveys (AKU), which is a sample survey and subject to uncertainty. In cases where the sample size was less than 20 observations per month, the estimates were considered highly uncertain and not reported.</p>
+<p class="summary">Please refer to the <a href="https://www.scb.se/contentassets/c9a909d7121b4968ad0324c20abe1d4f/effekter-av-covid-19-pandemin.xlsx">source data file</a> for more information.</p>
+
+
+
+    <div class="grid3">
+        {% for item in formattedData %}
+            <div>
+                <h1>Week</h1>
+                <p>{{ item.age_range }}</p>
+            </div>
+
+            {% for year in ['age_2018', 'age_2019', 'age_2020'] %}
+                <div>
+                    <h1>{{ year }}</h1>
+                    <p>{{ item[year] }}</p>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+
+    
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const data = [];
+            const labels = [];
+
+            // Retrieve the data from the server using Twig and populate the arrays
+            {% for item in formattedData %}
+                labels.push('{{ item.age_range }}');
+                weeklyData = [
+                    {{ item['age_2018'] }},
+                    {{ item['age_2019'] }},
+                    {{ item['age_2020'] }}
+                ];
+                data.push(weeklyData);
+            {% endfor %}
+
+            // Create a line chart using Chart.js
+            const chart1Canvas = document.getElementById('chart1');
+            const chart1Ctx = chart1Canvas.getContext('2d');
+
+            const datasets = [];
+            const yearLabels = ['age_2018', 'age_2019', 'age_2020'];
+
+            for (let i = 0; i < yearLabels.length; i++) {
+                const datasetData = data.map(weekData => weekData[i]);
+
+                datasets.push({
+                    label: yearLabels[i],
+                    data: datasetData,
+                    borderColor: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 1)`,
+                    backgroundColor: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.5)`,
+                    borderWidth: 1,
+                    fill: false
+                });
+            }
+
+            new Chart(chart1Ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: datasets
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    
+       
+    </script>
+{% endblock %}
